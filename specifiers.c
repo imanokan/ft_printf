@@ -97,6 +97,21 @@ void		specifier_p(const char *str, ...)
 		return (0);
 }*/
 
+
+int		cut_before(char *str)
+{
+	int i;
+	char bef[80];
+	
+	i = 0;
+	while (str)
+	{
+		if (str[i] == '%')
+			ft_strncpy(bef,str,i);
+		i++;
+	}
+	return (0);
+}
 int main(void)
 {
 	char c;
