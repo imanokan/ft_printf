@@ -10,7 +10,69 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf.h"*char   
+
+
+fill_0(int len, char *s)
+{
+    char *s;
+    int i;
+
+    i = 0;
+    while (i < len)
+    {
+        //printf(" i : %d\n", i);
+        s[i] = '0';
+        i++;
+    }
+    printf(" filled :%s\n",s );
+    return (s);
+}
+char     fill_space(int len, char *s)
+{
+    char *s;
+    int i;
+
+    i = 0;
+    while (i  < len)
+    {
+        s[i] = ' ';
+        i++;
+    }
+    return (s);
+}
+
+
+int     flags(const char *spec)
+{
+    int i;
+    int len;
+    i = 0;
+    char *s;
+    char c;
+    va_list a_list;
+
+    //s = (char *)malloc(sizeof(char) * 256);
+    va_start(a_list, format)
+   // c = va_arg(a_list, char);
+    //strcpy(s,c);
+    while (spec[i] '\0')
+    len = atoi(spec);
+    spec[1] == '-' ? ft_strjoin(s,fill_space(len,s)) : i++;
+    spec[1] == '+' ? ft_strjoin(s,fill_space(s,len)) : i++;
+    spec[1] == '0' ? ft_strjoin(s,filll_space(len,s)) : i++;
+
+    if (i < len)
+        s = (char *)malloc(sizeof(char) * len);
+        fill_space(len - 1, s); //pour char
+        fill_space(len - ft_strlen(arg), s);
+        i++;
+    }
+
+    return (0);
+
+}
+
 
 
 int flags(const char *str)
