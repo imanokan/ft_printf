@@ -1,10 +1,13 @@
+#include <stdio.h>
+#include "./libft/libft.h"
+
 int  type_spec(char c)
 {
     return (c == 'c' || c == 's' || c == 'p' | c == 'f'
     || c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o');
 }
 
-int       ft_printf(char *str, ...)
+int       ft_printf(char *str)
 {
     int i;
     int j;
@@ -29,10 +32,26 @@ int       ft_printf(char *str, ...)
             else
             {
                 if (str[i] == '%')
-                    i++;
+		{
+		      	i++;
+		}
                 write(1, &str[i], 1);
             }
             i++;
         }
-        retur (0);
+        return (0);
+}
+int main(void)
+{
+	char *s;
+	int d;
+	int c;
+
+	s = "% 12c ";
+	d = 45;
+	c = -34;
+	printf("space:%+d\n",d);
+	printf("space neg:%+d\n",c);
+	ft_printf(s);
+	return(0);
 }
