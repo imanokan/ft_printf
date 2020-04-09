@@ -6,14 +6,14 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/03/12 15:17:02 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/04/09 18:00:58 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"*char   
+#include "libftprintf.h"   
 
 
-fill_0(int len, char *s)
+char fill_0(int len, char *s)
 {
     char *s;
     int i;
@@ -59,7 +59,6 @@ int     flags(const char *spec)
     while (spec[i] '\0')
     len = atoi(spec);
     spec[1] == '-' ? ft_strjoin(s,fill_space(len,s)) : i++;
-    spec[1] == '+' ? ft_strjoin(s,fill_space(s,len)) : i++;
     spec[1] == '0' ? ft_strjoin(s,filll_space(len,s)) : i++;
 
     if (i < len)
