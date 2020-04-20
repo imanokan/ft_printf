@@ -53,7 +53,7 @@ void		specifier_p(const char *str, ...)
 }
 
 
-/*int			specifier_c(const char *str, ...)
+int			specifier_c(const char *str, ...)
 {
 		int i;
 		int c;
@@ -74,9 +74,9 @@ void		specifier_p(const char *str, ...)
 		write(1,"\n",1);
 		return (0);
 }
-*/
 
-/*int 	specifier_s(const char *str, ...)
+
+int 	specifier_s(const char *str, ...)
 {
 		int i;
 		char *s;
@@ -95,7 +95,7 @@ void		specifier_p(const char *str, ...)
 		va_end(a_list);
 		write(1, "\n",1);
 		return (0);
-}*/
+}
 
 
 int		cut_before(char *str)
@@ -110,19 +110,5 @@ int		cut_before(char *str)
 			ft_strncpy(bef,str,i);
 		i++;
 	}
-	return (0);
-}
-int main(void)
-{
-	char c;
-	char b;
-	char h;
-
-	c = 'a';
-	b = 'b';
-	h = 'j';
-
-	specifier_p(" len  %p %p %p \n",&c, &b , &h);
-
 	return (0);
 }

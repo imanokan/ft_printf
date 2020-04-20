@@ -12,7 +12,17 @@ int specifier_d(const char *str, ...)
 	va_start(a_list,str);
 	while (str[i] != '\0)
 	{
-		if (str[i] == '%' && (str[i + 1] == 'd' || 'i'))
+		if (str[i] == '%' && (str[i + 1] == 'd' || 'i'|| 'o'))
 		{
-			c = va_arg(a_list, int)
+			if (str[i+1] == 'o')
+				check_binary(va_arg);
+			c = va_arg(a_list, char *);
+			ft_putstr(c);
+		}
+		i++;
+	}
+	va_end(a_list);
+	write(1, "\n", 1);
+	return (0);
+}
 

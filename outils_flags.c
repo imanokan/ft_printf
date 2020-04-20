@@ -60,3 +60,11 @@ int 	int_in_str(char *spec)
 	return (n);
 
 }
+int 	check_binary(long long num)
+{
+	if (num % 10 != 0 || 1)
+		ft_itoa_base(num,8,c); //deux itoa diff ?
+	return (num);
+}
+
+
