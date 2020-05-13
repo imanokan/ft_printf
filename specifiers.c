@@ -10,105 +10,59 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
-#include "./libft/libft.h"
-#include "./libftprint.h"
+#include "./libftprintf.h"
 
-//str = "list avec les flgs et speficiers"
-// ... = "list avec les arguments "
-
-int		ft_isascii(int c)
-{
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
-}
-
-void		specifier_p(const char *str, ...)
-{
-	va_list a_list;
+int		specifier_p(t_spec *all, ...)
+{	
 	int i;
 	long c;
 
 	i = 0;
-	va_start(a_list,str);
-	while(str[i] != '\0')
+	while(all->spec[i] != '\0')
 	{
-			ft_putchar(str[i]);
-		if (str[i] == '%' && str[i + 1] == 'p')
+		if (all->spec[i] == '%' && all->spec[i + 1] == 'p')
 		{
-			c = va_arg(a_list, long);
-			//flags
-			//width
-			//precision
-			//length
+			c = va_arg(all->a_list, long);
+			all->len_arg = ft_strlen((const char*)c);
 			ft_putstr(ft_strjoin("0x", ft_itoa_base(c, 16, 'm')));
 		}
 		i++;
 	}
-	va_end(a_list);
 	write (1,"\n",1);
+	return (0);
 }
 
 
-int			specifier_c(const char *str, ...)
+int			specifier_c(t_spec *all, ...)
 {
 		int i;
-		int c;
-		va_list a_list;
+		char c;
 
 		i = 0;
-		va_start(a_list, str);
-		while (str[i] != '\0')
+		while (all->spec[i] != '\0')
 		{
-			if (str[i] == '%' && str[i + 1] == 'c')
+			if (all->spec[i] == '%' && all->spec[i + 1] == 'c')
 			{
-				c = va_arg(a_list, int);
+				c = va_arg(all->a_list, int);
+				all->len_arg = 1;
 				ft_putchar(c);
 			}
 			i++;
 		}
-		va_end(a_list);
 		write(1,"\n",1);
 		return (0);
 }
 
 
-int 	specifier_s(const char *str, ...)
+int 	specifier_s(t_spec *all, ...)
 {
-		int i;
-		char *s;
-
-		i = 0;
-		va_start(a_list, str);
-		while (str[i] != '\0')
-		{
-			if (str[i] == '%' && str[i + 1] == 's')
-			{
-				c = va_arg(a_list, char*);
-				ft_putstr(c);
-			}
-			i++;
-		}
-		va_end(a_list);
-		write(1, "\n",1);
+		char *c;
+		
+		c = va_arg(all->a_list, char*);
+		//printf("\n arg1 : %s\n", c);
+		all->len_arg = ft_strlen(c);
+		//ft_putchar(c);
+		ft_putstr(c);
+		//write(1, "\n",1);
 		return (0);
-}
-
-
-int		cut_before(char *str)
-{
-	int i;
-	char bef[80];
-	
-	i = 0;
-	while (str)
-	{
-		if (str[i] == '%')
-			ft_strncpy(bef,str,i);
-		i++;
-	}
-	return (0);
 }

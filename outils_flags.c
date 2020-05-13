@@ -11,60 +11,60 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"   
+#include "./libft/libft.h"
 
-
-char *fill_0(int space)
+char  *fill_0(t_spec *all)
 {
     char *s;
     int i;
 	
 // do not forget to free
-    i = 0;
-   if (!(s = malloc(sizeof(char*) * space + 1)))
-	return (-1);
-    while (i < space)
+   i = 0;
+   if (!(s = malloc(sizeof(char*) * all->space + 1)))
+	//return (-1);
+    while (i < all->space)
     {
         s[i] = '0';
         i++;
     }
     return (s);
 }
-char     *fill_space(int space)
+char     *fill_space(t_spec *all)
 {
-    char *s;
-    int i;
+    	char *s;
+    	int i;
 
-    i = 0;
-if (!( s = malloc(sizeof(char *) * space + 1)))
-	return (-1);
-    while (i  < space)
-    {
-        s[i] = ' ';
-        i++;
-    }
-    return (s);
+	i = 0;
+	if (!(s = malloc(sizeof(char *) * all->space + 1)))
+		//return (-1);
+    	while (i < all->space)
+   	{
+        	s[i] = ' ';
+       		i++;
+   	 }
+   	 return (s);
 }
 
-int 	int_in_str(char *spec)
+int 	int_in_str(t_spec *all)
 {
 	int i;
-	int n:
-	n = 0;
+
 	i = 0;
-	while (str[i] != '\0')
+	while (all->spec[i] != '\0')
 	{
-		if (isdigit(spec[i]))
-			n = n * 10 + (spec[i] - '0');
-		i++;
+		if (ft_isdigit(all->spec[i]))
+			all->n = all->n * 10 + (all->spec[i] - '0');
+	  	i++;
 	}
-	return (n);
+	return (all->n);
 
 }
-int 	check_binary(long long num)
+int 	check_binary(t_spec *all)
 {
-	if (num % 10 != 0 || 1)
-		ft_itoa_base(num,8,c); //deux itoa diff ?
-	return (num);
+	if (all->n % 10 != 0 || all->n % 1 != 0)
+		write(1,"a",1);
+		//ft_itoa_base(all->n,8,c); //deux itoa diff ?
+	return (1); 
 }
 
 

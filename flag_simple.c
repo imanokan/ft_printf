@@ -1,66 +1,77 @@
-int		flag_doublon(char *spec)
-{
-	int i; 
-	int sign;
+#include "libftprintf.h"
 
-	i = 0;
-	while (spec[i] != '\0')
-	{
-		 spec[i] == '-' && spec[i++] == '0' ? sign = 1: sign;
-		spec[i] == '+' && spec[i++] == ' ' ? sign = 2: sign;
-		i++;
-	}
-	return (sign)
-}
-void	flag_exist(char *spec)
+int	flag_exist(const char *format, t_spec *all)
 {
  	int i; 
 	i = 0;
-	while (spec[i] != '\0')
+	while (format[i] != '\0')
 	{
-		if (spec[i] == '+')
-			spec->plus = 1;
-		if (spec[i] == '-')
-			spec->moins = 1;
-		if (spec[i] == '0') 
-			spec->zero = 1;
-		if (spec[i] == ' ') 
-			spec->space = 1;
-		if (spec[i] == '#')
-			spec->hash = 1;
+		if (all->spec[i] == '+')
+		{
+			all->plus = 1;
+			printf("+K\n");
+		}
+		else if (all->spec[i] == '-')
+		{
+			all->moins = 1;
+			printf("-K\n");
+		}
+		else if (all->spec[i] == '0') 
+		{
+			all->zero = 1;
+			printf("0K\n");
+		}
+		else if (all->spec[i] == ' ') 
+		{
+			all->space = 1;
+			printf("sK\n");
+		}
+		else if (all->spec[i] == '#')
+		{
+			all->hash = 1;
+			printf("#K\n");
+		}
+		else if (all->moins == 1 && all->zero == 1)  
+		{
+			all->zero = 0;
+			printf("d-K\n");
+		}
+		else if (all->plus == 1 && all->space == 1)
+		{
+			all->space = 0;
+			printf("d+K\n");
+		}
 		i++;
 	}
 	return (0);
 }
-int 	width_min(char *spec)
+
+int 	width_min(t_spec *all)
 {
-	char arg;
-	int spec->len;
-	int spec->len_arg;
-	spec->len_arg = ft_strlen(arg);
-	spec->len = int_in_str(spec);
-	space = spec->len - spec->len_arg;
-	if (spec->len_arg < spec->len)
+	all->len = int_in_str(all); //spec
+	all->space = all->len - all->len_arg;
+	if (all->len_arg < all->len)
 	{
-		fill_space(space - 1) // char² 
-		fill_space(space);
+		fill_space(all) - 1; // char² all->space -1
+		fill_space(all);
 	}	
 	return (0);
 
-
-int 	flag_simple(char *spec, int sign)
+}
+int 	flag_simple(t_spec *all)
 {
-	if (sign == 1)
-		ft_strjoin(fill_space(len,s),arg);
-	if (sign == 2)
-		write(1,'+',1);
-	if (flag->plus)
-		write(1,'+',1);
-	if (flag->moins)
-		ft_strjoin(s,fill_space(len,s);
-	if (flag->zero)
-		fill_0(len,s);
-	if (flag->space)
-		write(1,' ',1);
+	//if (sign == 1)
+		//ft_strjoin(fill_space(len,s),arg);
+	//if (sign == 2)
+		//write(1,'+',1);
+	if (all->plus)
+		write(1,"+",1);
+	else if (all->moins)
+		fill_space(all);
+	else if (all->zero)
+		fill_0(all);
+	//else if (all->space)
+		//write(1," ",1);
+	return (0);
 }
 

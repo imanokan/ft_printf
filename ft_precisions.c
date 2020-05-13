@@ -11,24 +11,24 @@ int 	write_arg(char *va_arg, int prec)
 		write(1,va_arg[i],1);
 	return (0);
 }
-int	ft_precisions()
+
+//bourbier
+int	ft_precisions(t_spec all)
 {
 	char *spec;
 	char *str;
 	int i;
 	i = 0;
-	str = "audrey";
-	spec = "%.0s";
-	while (spec[i] != '\0')
+	while (all->spec[i] != '\0')
 	{
-		if (spec[i] == '.' && spec[i + 1] == '0')
+		if (all->spec[i] == '.' && all->spec[i + 1] == '0')
 			write(1," \n",2);
-		else if (spec[i] == '.' && spec[i + 1] == INT)
+		else if (all->spec[i] == '.' && all->spec[i + 1] == INT)
 		{
 			spec->prec = spec[i + 1];
-			write(va_arg, prec);
+			write_arg(va_arg, prec);
 		}
-		else if (spec[i] == '.' && spec[i] == '*')
+		else if (all->spec[i] == '.' && all->spec[i] == '*')
 		{
 			recup num après la virgule;
 			spec->prec = spec[i + 1];

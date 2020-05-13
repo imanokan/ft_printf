@@ -26,6 +26,7 @@ int       cut_str(const char *format, t_spec *all)
 	    all->type = format[i];
             all->spec = ft_strsub(format, i - j, j + 1);
             //printf("spec : %s\n", all->spec);
+	    //printf("type : %c\n",all->type);
             //free(all->spec); 
         }
             else
@@ -36,35 +37,36 @@ int       cut_str(const char *format, t_spec *all)
             }
             i++;
         }
-    	//va_end(a_list);
         return (0);
 }
 int 	ft_printf(const char *format, ...)
 {	
 	t_spec *all;
-	
+	int i; 
+	i = 0;
 	all = malloc(sizeof(t_spec));
 	va_start(all->a_list, format);
-	cut_str(format,all);
-	flag_exist(format, all);
-	flag_simple(all);
-	conversion_specifier(all);
+	while (format[i] != '\0')
+	{
+		cut_str(format,all);
+		flag_exist(format, all);
+		//flag_simple(all);
+		conversion_specifier(all);
+		i++;
+	}
 	va_end(all->a_list);
-	//²²free(all);
+	//free(all);
 	return(0);
 }
 
 int main(void)
 {
 	char *s;
-	int d;
-	int c;
+	char *d;
 
-	s = "aaa";
-	d = 45;
-	c = -3;
-	//printf("space:%+d\n",d);
-	//printf("real : %s\n",s);
-	ft_printf("mine : %s\n", s);
+	s = "aaa bbbb vvvv";
+	d = "cccc";
+	printf("real: %23s\n",s);
+	ft_printf("mine : %s %s\n", s,d);
 	return(0);
-}
+}	
