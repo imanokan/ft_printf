@@ -10,4 +10,19 @@ TO DO :
 -fsanitaize=address
 
 
-- specifier why espace ? et pq recup pas bien les args à mon avis erreur viens de là 
+mettre le s de specifier dans la struc
+plus et min en ternaire ? 
+flag hh_ll faut les caster mais parse le spec en brute force ou autre ?finir d'ecrire les fonctions specifiers pour o u 
+et puis verifier l'ordre des flags dans diouxX
+finalement f 
+
+
+flag space :
+tjrs avec d et i et f  
+avec X si pas de width specifier alors non 
+
+
+flag hh ll:
+fonction qui regarde si le flag est allumé si oui.
+c = va_arg(all->a_list,long long int) //par exemple
+	

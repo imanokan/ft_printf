@@ -20,29 +20,40 @@ char  *fill_0(t_spec *all)
 	
 // do not forget to free
    i = 0;
-   if (!(s = malloc(sizeof(char*) * all->space + 1)))
+   if (!(all->s_filled = malloc(sizeof(char*) * all->space + 1)))
 	//return (-1);
     while (i < all->space)
     {
-        s[i] = '0';
+        all->s_filled[i] = '0';
         i++;
     }
-    return (s);
+    return (all->s_filled);
 }
 char     *fill_space(t_spec *all)
 {
-    	char *s;
     	int i;
+	int j;
 
 	i = 0;
-	if (!(s = malloc(sizeof(char *) * all->space + 1)))
+	j = 0;
+	if (!(all->s_filled = malloc(sizeof(char *) * all->space + 1)))
 		//return (-1);
-    	while (i < all->space)
-   	{
-        	s[i] = ' ';
-       		i++;
-   	 }
-   	 return (s);
+	while (i < all->space)  
+	{
+		if (flag->zero)
+			all->s_filled[i++] = '0';
+		else
+			all->s_filled[i++] = ' ';
+	
+	}
+	if (all->type == 'd' || 'i' || 'o' || 'u' || 'x' || 'X' )//&& all->ision)
+	{
+		all->pision = all->vision - all->len_arg; 
+		while (j < all->pision)
+			all->s_filled[j++] = '0';
+	}		
+	printf("filled : %s\n", all->s_filled);
+   	return (all->s_filled);
 }
 
 int 	int_in_str(t_spec *all)
@@ -53,18 +64,20 @@ int 	int_in_str(t_spec *all)
 	while (all->spec[i] != '\0')
 	{
 		if (ft_isdigit(all->spec[i]))
-			all->n = all->n * 10 + (all->spec[i] - '0');
+			all->n = ft_atoi(all->spec,&i);
 	  	i++;
 	}
 	return (all->n);
 
 }
+/*
 int 	check_binary(t_spec *all)
 {
+	
 	if (all->n % 10 != 0 || all->n % 1 != 0)
 		write(1,"a",1);
 		//ft_itoa_base(all->n,8,c); //deux itoa diff ?
 	return (1); 
 }
-
+ mignon but i don't think that it will be necessary:*/
 

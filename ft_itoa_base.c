@@ -60,7 +60,7 @@
 // 	return (ret);
 // }
 
-#include "libft.h"
+#include "./libft/libft.h"
 #include <stdio.h>
 
 static long long	nlen(long long value, int base)

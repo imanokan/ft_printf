@@ -15,6 +15,7 @@
 #include <stdarg.h>
 #include "./libft/libft.h"
 #include <stdio.h>
+#include <limits.h>
 typedef struct  s_spec
 {
 	char *spec;
@@ -25,17 +26,20 @@ typedef struct  s_spec
 	int  hash;
 	int  len; 
 	int  len_arg;
+	int  vision;
+	int  ision;
+	int  pision;
 	int  n; //pour check binary
 	va_list a_list;
 	char type; 
-
+	char *s_filled;
 
 }		t_spec;
 
 	
 
 
-
+int		cut_str(const char *format, int *i, t_spec *all);
 int		conversion_specifier(t_spec *all);
 int 		type_spec(char c);
 char		*fill_0(t_spec *all);
@@ -48,3 +52,7 @@ int		flag_simple(t_spec *all);
 int 		specifier_c(t_spec *all, ...);
 int		specifier_s(t_spec *all, ...);
 int		specifier_p(t_spec *all, ...);
+int		specifier_d(t_spec *all, ...);
+int		width_min(t_spec *all);
+int		ft_precision(t_spec *all);
+int		size_nb(int n);
