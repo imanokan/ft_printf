@@ -9,26 +9,9 @@
 /*   Updated: 2020/04/09 18:00:58 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libftprintf.h"   
+#include "libftprintf.h"
 #include "./libft/libft.h"
 
-char  *fill_0(t_spec *all)
-{
-    char *s;
-    int i;
-	
-// do not forget to free
-   i = 0;
-   if (!(all->s_filled = malloc(sizeof(char*) * all->space + 1)))
-	//return (-1);
-    while (i < all->space)
-    {
-        all->s_filled[i] = '0';
-        i++;
-    }
-    return (all->s_filled);
-}
 char     *fill_space(t_spec *all)
 {
     	int i;
@@ -38,15 +21,16 @@ char     *fill_space(t_spec *all)
 	j = 0;
 	if (!(all->s_filled = malloc(sizeof(char *) * all->space + 1)))
 		//return (-1);
+		printf("in\n");
 	while (i < all->space)  
 	{
-		if (flag->zero)
+		if (all->zero)
 			all->s_filled[i++] = '0';
 		else
 			all->s_filled[i++] = ' ';
 	
 	}
-	if (all->type == 'd' || 'i' || 'o' || 'u' || 'x' || 'X' )//&& all->ision)
+	if (all->type == 'd' || 'i' || 'o' || 'u' || 'x' || 'X' && all->vision)
 	{
 		all->pision = all->vision - all->len_arg; 
 		while (j < all->pision)

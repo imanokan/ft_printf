@@ -10,10 +10,9 @@ TO DO :
 -fsanitaize=address
 
 
-mettre le s de specifier dans la struc
-plus et min en ternaire ? 
-flag hh_ll faut les caster mais parse le spec en brute force ou autre ?finir d'ecrire les fonctions specifiers pour o u 
+mettre le s de specifier dans la struc // tjrs sure ? 
 et puis verifier l'ordre des flags dans diouxX
+flag space et - 
 finalement f 
 
 
@@ -24,5 +23,12 @@ avec X si pas de width specifier alors non
 
 flag hh ll:
 fonction qui regarde si le flag est allumé si oui.
-c = va_arg(all->a_list,long long int) //par exemple
-	
+conv->c = va_arg(all->a_list,long long int) //par exemple
+check les variables de la fonction , me semble faux mais à cette heure ci flm de réfléchir
+
+Pour gérer les conversions créer une deuxième structure avec des variables de chaque type de conversion puis dans la fonction même faire un itoa afin de les pprint finally 
+t_spec *all;
+all->conv = (t_conv*)malloc(sizeof(t_conv)); //if everything okey	
+
+t_personnage Perso;
+Perso->anime = (t_anime*)malloc(sizeof(t_anime));

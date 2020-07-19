@@ -3,14 +3,20 @@
 #include <unistd.h>
 #include "libft/libft.h"
 #include <stdarg.h>
-/*
+
 typedef struct		a_all
 {
 	char *c;
+	t_ball *a;
 	char *b;
 	
 }			all;
 
+typedef struct 	b_all
+{
+	int d;
+}		t_ball;
+/*
 int ft_printf(char *format,...)
 {
 	va_list a_list;
@@ -43,7 +49,8 @@ int	bis(all *all)
 		i++;
 	}
 	return (0);
-}
+}*/
+
 int main()
 {
 	char *s;
@@ -51,19 +58,23 @@ int main()
 
 	//char *format;
 	all *all;
+	t_ball *a;
+	a = malloc(sizeof(t_ball));
 	all = malloc(sizeof(all));
+	all->a->d = 2;
+	printf("d : %d\n",all->a->d);
 	//format = "%s";
 	s = "aud";
 	n = "pop";
 	all->b = "zee";
 		
-	ft_printf("%s" "%s", s,n );
+	//ft_printf("%s" "%s", s,n );
 	//bis(all);
 	//printf("%.2d\n",n);
 	//printf("%+d\n",n);
 	return (0);
-}*/
-
+}
+/*
 int main()
 {
 	char *s;
@@ -83,4 +94,5 @@ int main()
 	//ft_putstr(u);
 	printf("s : %s\n", s);
 	return (0);
-}
+}*/
+		

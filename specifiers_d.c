@@ -9,28 +9,38 @@ int specifier_d(t_spec *all, ...)
 
 	i = 0;
 	//flag_hh_ll(all); //ordre
-	if (all->space)
-		write(1," ",1);
 	c = va_arg(all->a_list, int);
 	all->len_arg = size_nb(c);
-	fill_space(all);
-	//all->s = ft_itoa(c);
-	//printf("pvision : %d\n",all->vision);
+	width_min(all);
+	if (all->space)
+		write(1," ",1);
+	if (all->plus)
+		c < 0 ? write(1,"-",1) : write(1,"+",1);
+	all->s = ft_itoa(c);
 	write(1, "\n", 1);
 	return (0);
 }
-
+/*
 int specifier_x(t_spec *all, ...)
 {
-	int c;
+	int c; 
 	char *s;
-	//c = toupper(va_arg(all->all_list, int*));
+
 	//flag_hh_ll(all); //ordre 
-	c = va_arg(all->a_list, int);
+	if (all->type == 'X')
+		c = toupper(va_arg(all->a_list, int));
+	if (all->hash && c[0] != '0')
+	{
+		if (all->type == 'X')
+			write(1,"OX",2);
+		else 
+			write(1,"ox",2);
+	}
 	ft_itoa_base(c,16,c);
 	all->len_arg = size_nb(c);
-	//all->s = ft_itoa(c); add all->s dans la struct
-	//flag_hash(all); // ordre 
+	width_min(all); 
+	//fonction check flag - et space 
+	//all->s = ft_itoa(c); add all->s dans la struct 
 	return (0);
 }
 
@@ -38,18 +48,24 @@ int specifier_o(t_spec *all, ...)
 {
 	int c;
 
+	flag_hh_ll(all);
 	c = va_arg(all->a_list, int);
 	ft_itoa_base(c,8);
-	all_>len_arg = size_nb(c);
+	all->len_arg = size_nb(c);
+	width_min(all);
+	if (all->space)
+		write(1," ",1);
 	return (0);
 }
 
-int specifier_u(t_spec *all)
+int specifier_u(t_spec *all, ...)
 {
 	unsigned uint_max c;
 	
 	c = va_arg(all->a_list, unsigned uint_max);
 	all->len_arg = size_nb(c);
+	width_min(all);
 
+	return (0); 
 
-
+}*/

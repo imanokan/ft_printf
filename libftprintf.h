@@ -36,6 +36,8 @@ typedef struct  s_spec
 
 }		t_spec;
 
+//typedef struct	s_conv;
+
 	
 
 

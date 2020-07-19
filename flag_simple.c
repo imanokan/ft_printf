@@ -35,7 +35,6 @@ int	flag_exist(const char *format, t_spec *all)
 		{
 			//all->ision = 1;
 			all->vision = int_in_str(all);
-			printf("ision  : %d\n", all->vision);
 		}
 		else if (all->moins == 1 && all->zero == 1)   
 		{
@@ -52,40 +51,16 @@ int	flag_exist(const char *format, t_spec *all)
 	return (0);
 }
 
-//int	flag_exist_bis(t_spec *all)
 
 int 	width_min(t_spec *all)
 {
-	//char *s1;
 
-	//s1 = malloc(sizeof(char*));
-	all->len = int_in_str(all); //spec 
+	if (all->len = int_in_str(all)); //spec
+		//return (-1);
 	all->space = all->len - all->len_arg;
 	printf("len space : %d\n", all->len);	
 	if (all->len_arg < all->len)
-	{
 		fill_space(all);
-		//fill_0(all);
-	}	
 	return (0);
 
 }
-int 	flag_simple(t_spec *all)
-{
-	//if (sign == 1)
-		//ft_strjoin(fill_space(len,s),arg);
-	if (all->plus == 2)
-		write(1,"-",1);
-	//else 
-		//write(1,'+',1); CONDITION TO CHECK LATER 
-	//if (all->plus) 
-		//write(1,"+",1);
-	else if (all->moins)
-		fill_space(all);
-	else if (all->zero)
-		fill_0(all);
-	else if (all->space)
-		write(1," ",1);
-	return (0);
-}
-

@@ -23,7 +23,7 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	all->type = format[*i];
         all->spec = ft_strsub(format, *i - j, j + 1);
 	flag_exist(format, all);
-	flag_simple(all);
+	//flag_simple(all);
 	conversion_specifier(all);
        //	free(all->spec); 
         }
@@ -64,6 +64,6 @@ int main(void)
 	c = 'a';
 
 	//printf("real %0s\n",s);
-	ft_printf("[%5s] %d \n",d);
+	ft_printf("%05s\n",d);
 	return(0);
 }	

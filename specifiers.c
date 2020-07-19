@@ -62,7 +62,6 @@ int 	specifier_s(t_spec *all, ...)
 		i = 0;
 		c = va_arg(all->a_list, char*); //mettre dans la structure
 		all->len_arg = ft_strlen(c);
-		printf(" v ision : %d\n", all->vision);
 		//if (all->vision == 0)
 		width_min(all);
 	       	if (all->plus)	
