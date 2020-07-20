@@ -1,4 +1,4 @@
-https://www.cprogramming.com/tutorial/c/lesson17.html
+h;:ttps://www.cprogramming.com/tutorial/c/lesson17.html
 https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/va-arg-va-copy-va-end-va-start?view=vs-2019
 http://www.cplusplus.com/reference/cstdio/printf/
 
@@ -16,9 +16,6 @@ flag space et -
 finalement f 
 
 
-flag space :
-tjrs avec d et i et f  
-avec X si pas de width specifier alors non 
 
 
 flag hh ll:
@@ -32,3 +29,7 @@ all->conv = (t_conv*)malloc(sizeof(t_conv)); //if everything okey
 
 t_personnage Perso;
 Perso->anime = (t_anime*)malloc(sizeof(t_anime));
+
+A FAIRE:
+flg hh ll
+et petite fonction  + -

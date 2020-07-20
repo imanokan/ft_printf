@@ -23,7 +23,7 @@ int plus_min(t_spec *all)
 		all->s = ft_strjoin(c, all->s_filled);
 
 }
-/*
+
 int flag_hh_ll(t_spec *all)
 {
 	if (all->h && //type_dioux(all->type)) tu sais 
@@ -43,21 +43,41 @@ int flag_hh_ll(t_spec *all)
 	else if (all->ll && type_dioux(all->type))
 		all->type == 'u' ? conv->u = va_arg(all->a_list, unsigned long long int*) : conv->u = va_arg(all->a_list, long long int*);
 }
-*/					
-int flag_hash(t_spec *all)
+					
+int flag_hh_ll_d(t_spec *all)
 {
-	int c;
-	int x;
-	if (all->type == 'X')
-		c = toupper(va_arg(all->all_list, int));
-	if (all->hash)
-	{
-		if (all->type == 'X')
-			write(1,"OX",2);
-		else
-			write(1,"ox",2);
-	}
-	all->x = ft_itoa_base(x,16);
-	return (all->);
+	if (all->h)
+		all->conv->d = va_arg(all->a_list,short int);
+	else if (all->hh)
+		all->conv->d = va_arg(all->a_list, char);
+	else if (all->l)
+		all->conv->d = va_arg(all->a_list, long int);
+	else if (all->ll)
+		all->conv->d = va_arg(all->a_list, long long int);
 }
+void  flag_hh_ll_u(t_spec *all)
+{
+	if (all->h)
+		all->conv->u = va_arg(all->a_list, short unsigned int);
+	else if (all->hh)
+		all->conv->u = va_arg(all->a_list, unsigned char);
+	else if (all->l)
+		all->conv->u = va_arg(all->a_list,long unsigned int);
+	else if (all->ll)
+		all->conv->u = va_arg(all->a_list, unsigned long long int);
+}
+
+void  space_x(t_spec *all)
+{
+	int i;
+	i = 0;	
+	
+	while (s[i] != '\0')
+	{
+		if (all->spec[i] == ' ' && is_digit(all->spec[i + 1])
+				write(1," ",1);
+		i++;
+	}			
+}
+
 
