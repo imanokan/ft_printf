@@ -23,10 +23,10 @@ int plus_min(t_spec *all)
 		all->s = ft_strjoin(c, all->s_filled);
 
 }
-
+/*
 int flag_hh_ll(t_spec *all)
 {
-	if (all->h && type_dioux(all->type))
+	if (all->h && //type_dioux(all->type)) tu sais 
 		all->type == 'u' ? conv->d = va_arg(all->a_list, short unsigned int*) : conv->d = va_arg(all->a_list, short int*):
 	else if (all->hh && type_dioux(all->type))
 		all->type == 'u' ? conv->o = va_arg(all->a_list,unsigned char*): conv->o = va_arg(all->a_list, char*)
@@ -43,7 +43,7 @@ int flag_hh_ll(t_spec *all)
 	else if (all->ll && type_dioux(all->type))
 		all->type == 'u' ? conv->u = va_arg(all->a_list, unsigned long long int*) : conv->u = va_arg(all->a_list, long long int*);
 }
-					
+*/					
 int flag_hash(t_spec *all)
 {
 	int c;
@@ -60,5 +60,4 @@ int flag_hash(t_spec *all)
 	all->x = ft_itoa_base(x,16);
 	return (all->);
 }
-*/
 

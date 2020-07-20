@@ -31,12 +31,25 @@ typedef struct  s_spec
 	int  pision;
 	int  n; //pour check binary
 	va_list a_list;
+	t_conv conv;
 	char type; 
 	char *s_filled;
 
 }		t_spec;
 
-//typedef struct	s_conv;
+typedef struct	s_conv;
+{
+	long *p;
+	char *c;
+	char *s;
+	signed int d;
+	unsigned int x;
+	unsigned int u;
+	signed int o;
+	float f; 
+}		t_conv;
+
+
 
 	
 

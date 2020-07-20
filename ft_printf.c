@@ -41,6 +41,7 @@ int 	ft_printf(const char *format, ...)
 	int i; 
 	i = 0;
 	all = malloc(sizeof(t_spec));
+	all->conv = (t_conv*)malloc(sizeof(t_conv));
 	va_start(all->a_list, format);
 	while (format[i])
 	{
