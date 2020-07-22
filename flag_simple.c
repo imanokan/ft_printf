@@ -48,7 +48,11 @@ void	flag_exist_bis(const char *format, t_spec *all)
 int 	width_min(t_spec *all)
 {
 
+<<<<<<< HEAD
 	all->len = int_in_str(all); //spec
+=======
+	if (all->len = int_in_str(all)) //spec
+>>>>>>> 59a53178426524b25c6971a1d403f136bb8e60a6
 		//return (-1);
 	all->space = all->len - all->len_arg;
 	// printf("len space : %d\n", all->len);
