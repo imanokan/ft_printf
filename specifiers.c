@@ -15,19 +15,18 @@
 int		specifier_p(t_spec *all, ...)
 {	
 	int i;
-	void *c; //long 
+	long long c; 
+	char *s;
+	char *f;
 
 	i = 0;
-	while(all->spec[i] != '\0')
-	{
-		if (all->spec[i] == '%' && all->spec[i + 1] == 'p')
-		{
-			c = va_arg(all->a_list, void*);
-			all->len_arg = ft_strlen(c);
-			ft_putstr(ft_strjoin("0x", ft_itoa_base(c, 16, 'm')));
-		}
-		i++;
-	}
+	c = va_arg(all->a_list, long long);
+	s = ft_itoa_base(c,16);
+	f = ft_strjoin("0x",s);
+	all->len_arg = ft_strlen(c);
+	width_min(all);
+	ft_putstr(f);
+
 	write (1,"\n",1);
 	return (0);
 }
@@ -43,8 +42,6 @@ int			specifier_c(t_spec *all, ...)
 		c = va_arg(all->a_list, char*);
 		all->len_arg = 1;
 		width_min(all);
-		if (all->plus)
-			s = ft_strjoin(all->s_filled,c);
 		if (all->moins)
 			s = ft_strjoin(c, all->s_filled);
 		ft_putstr(s);
@@ -62,14 +59,12 @@ int 	specifier_s(t_spec *all, ...)
 		i = 0;
 		c = va_arg(all->a_list, char*); //mettre dans la structure
 		all->len_arg = ft_strlen(c);
-		//if (all->vision == 0)
 		width_min(all);
-	       	if (all->plus)	
-			s = ft_strjoin(all->s_filled,c);
-		else if (all->moins)
-			s = ft_strjoin(c,all->s_filled);
-		//while (i < all->vision)
-			//ft_putchar(c[i++]);
+		printf("ok\n");
+		//if (all->moins)
+			//s = ft_strjoin(c,all->s_filled);
+		printf("ok\n");
+		printf("%s\n",s);
 		ft_putstr(s);
 		//write(1, "\n",1);
 		return (0);

@@ -65,6 +65,6 @@ int main(void)
 	c = 'a';
 
 	//printf("real %0s\n",s);
-	ft_printf("%05s\n",d);
+	//ft_printf("%05s\n",d);		
 	return(0);
 }	

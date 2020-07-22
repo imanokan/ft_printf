@@ -74,7 +74,7 @@ static long long	nlen(long long value, int base)
 	}
 	return (count);
 }
-
+/*
 static	char 	*pick_size(char c)
 {
 	if (c == 'm')
@@ -83,8 +83,8 @@ static	char 	*pick_size(char c)
 		return ("0123456789ABCDEF");
 	return(NULL);
 }
-
-char 			*ft_itoa_base(long long value, int base, char c)
+*/
+char 			*ft_itoa_base(long long value, int base)
 {
 	char *str_base;
 	char *dst;
@@ -94,7 +94,7 @@ char 			*ft_itoa_base(long long value, int base, char c)
 
 	//n = value;
 	sign = 0;
-	str_base = pick_size(c);
+	str_base = "0123456789ABCDEF";
 	len = nlen(value, base);
 	if (base < 2 || base > 16)
 		return(NULL);
