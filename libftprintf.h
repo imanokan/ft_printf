@@ -37,12 +37,13 @@ typedef struct  s_spec
 	int  zero;
 	int  space;
 	int  hash;
+	int width;
 	char h;
 	char l;
 	char ll;
 	char L;
 	char hh;
-	int  len; 
+	int  len;
 	int  len_arg;
 	int  vision;
 	int  ision;
@@ -50,7 +51,7 @@ typedef struct  s_spec
 	int  n; //pour check binary
 	va_list a_list;
 	t_conv *conv;
-	char type; 
+	char type;
 	char *s_filled;
 
 }		t_spec;
@@ -65,12 +66,12 @@ typedef struct	s_conv;
 	unsigned int x;
 	unsigned int u;
 	signed int o;
-	float f; 
+	float f;
 }		t_conv;
 */
 
 
-	
+
 
 int		cut_str(const char *format, int *i, t_spec *all);
 int		conversion_specifier(t_spec *all);

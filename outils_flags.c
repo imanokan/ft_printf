@@ -19,24 +19,40 @@ char     *fill_space(t_spec *all)
 
 	i = 0;
 	j = 0;
-	if (!(all->s_filled = malloc(sizeof(char *) * all->space + 1)))
+
+	all->s_filled = malloc(sizeof(char *) * all->space + 1);
 		//return (-1);
-		printf("in\n");
-	while (i < all->space)  
-	{
-		if (all->zero)
-			all->s_filled[i++] = '0';
-		else
+	if (all->zero == 1)
+  {
+      while (i < all->space)
+			   all->s_filled[i++] = '0';
+    }
+
+// separate the two fucntions for clarity
+  else if (all->width == 1)
+  {
+    printf("in\n");
+    if (all->plus == 1)
+    {
+      printf("in\n");
+      all->space = all->space - 1;
+      printf("all->space after %d\n", all->space);
+    }
+    while (i < all->space )
 			all->s_filled[i++] = ' ';
-	
 	}
-	if (all->type == 'd' || 'i' || 'o' || 'u' || 'x' || 'X' && all->vision)
+
+  //
+
+
+	if ((all->type == 'd' ||all->type ==  'i' ||all->type ==  'o' ||all->type ==  'u' || all->type == 'x' || all->type == 'X') && all->vision)
 	{
-		all->pision = all->vision - all->len_arg; 
+		all->pision = all->vision - all->len_arg;
 		while (j < all->pision)
 			all->s_filled[j++] = '0';
-	}		
-	printf("filled : %s\n", all->s_filled);
+	}
+  //printf("filled : %d\n", all->pision);
+	//printf("filled : %s\n", all->s_filled);
    	return (all->s_filled);
 }
 
@@ -57,11 +73,10 @@ int 	int_in_str(t_spec *all)
 /*
 int 	check_binary(t_spec *all)
 {
-	
+
 	if (all->n % 10 != 0 || all->n % 1 != 0)
 		write(1,"a",1);
 		//ft_itoa_base(all->n,8,c); //deux itoa diff ?
-	return (1); 
+	return (1);
 }
  mignon but i don't think that it will be necessary:*/
-
