@@ -26,7 +26,6 @@ int		specifier_p(t_spec *all, ...)
 	all->len_arg = ft_strlen(c);
 	width_min(all);
 	ft_putstr(f);
-
 	write (1,"\n",1);
 	return (0);
 }
