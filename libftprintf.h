@@ -16,6 +16,19 @@
 #include "./libft/libft.h"
 #include <stdio.h>
 #include <limits.h>
+
+typedef struct 	s_conv
+{
+	long *p;
+	char *s;
+	char *c;
+	signed int d;
+	unsigned int x;
+	unsigned int u;
+	float f;
+	signed int o;
+}			t_conv;
+
 typedef struct  s_spec
 {
 	char *spec;
@@ -24,6 +37,11 @@ typedef struct  s_spec
 	int  zero;
 	int  space;
 	int  hash;
+	char h;
+	char l;
+	char ll;
+	char L;
+	char hh;
 	int  len; 
 	int  len_arg;
 	int  vision;
@@ -31,12 +49,13 @@ typedef struct  s_spec
 	int  pision;
 	int  n; //pour check binary
 	va_list a_list;
-	t_conv conv;
+	t_conv *conv;
 	char type; 
 	char *s_filled;
 
 }		t_spec;
 
+/*
 typedef struct	s_conv;
 {
 	long *p;
@@ -48,11 +67,10 @@ typedef struct	s_conv;
 	signed int o;
 	float f; 
 }		t_conv;
-
+*/
 
 
 	
-
 
 int		cut_str(const char *format, int *i, t_spec *all);
 int		conversion_specifier(t_spec *all);
@@ -62,7 +80,7 @@ int		int_in_str(t_spec *all);
 int		check_binary(t_spec *all);
 char		*fill_space(t_spec *all);
 int 		ft_printf(const char *format, ...);
-int		flag_exist(const char *format, t_spec *all);
+void		flag_exist(const char *format, t_spec *all);
 int		flag_simple(t_spec *all);
 int 		specifier_c(t_spec *all, ...);
 int		specifier_s(t_spec *all, ...);
@@ -72,3 +90,6 @@ int		width_min(t_spec *all);
 int		ft_precision(t_spec *all);
 int		size_nb(int n);
 void		space_x(t_spec *all);
+void		flag_exist_bis(const char *format, t_spec *all);
+void		flag_hh_ll_d(t_spec *all);
+void		flag_hh_ll_u(t_spec *all);
