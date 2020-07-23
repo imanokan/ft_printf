@@ -13,9 +13,9 @@
 #include "./libftprintf.h"
 
 int		specifier_p(t_spec *all, ...)
-{	
+{
 	int i;
-	long long c; 
+	long long c;
 	char *s;
 	char *f;
 
@@ -23,7 +23,7 @@ int		specifier_p(t_spec *all, ...)
 	c = va_arg(all->a_list, long long);
 	s = ft_itoa_base(c,16);
 	f = ft_strjoin("0x",s);
-	all->len_arg = ft_strlen(c);
+	all->len_arg = ft_strlen((const char*)c);
 	width_min(all);
 	ft_putstr(f);
 	write (1,"\n",1);
@@ -52,9 +52,9 @@ int			specifier_c(t_spec *all, ...)
 int 	specifier_s(t_spec *all, ...)
 {
 		char *c;
-		char *s; // malloc 
-		int i; 
-		
+		char *s; // malloc
+		int i;
+
 		i = 0;
 		c = va_arg(all->a_list, char*); //mettre dans la structure
 		all->len_arg = ft_strlen(c);
@@ -67,4 +67,4 @@ int 	specifier_s(t_spec *all, ...)
 		ft_putstr(s);
 		//write(1, "\n",1);
 		return (0);
-} 
+}
