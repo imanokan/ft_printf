@@ -64,8 +64,9 @@ int main(void)
 	d = "cc";
 	c = 'a';
 
-  printf("ORDI -->[%+05d]\n", 1);
-  ft_printf("MOI  -->[%+05d]\n", 1);
+  printf("ORDI -->[% 05.3d]\n", 1);
+  ft_printf("MOI  -->[% 05.3d]\n", 1);
+
 
   //printf("ORDI -->[%+.5d]\n", 1);
   //ft_printf("MOI  -->[%+.5d]\n", 1);
