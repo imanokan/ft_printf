@@ -8,18 +8,24 @@ int specifier_d(t_spec *all, ...)
 	unsigned int c;
 	char *s;
 	char *f;
-
+	char p;
 	i = 0;
 	//flag_hh_ll_d(all); //ordre
 	c = va_arg(all->a_list,int);
 	all->len_arg = size_nb(c);
 	width_min(all);
+	fill_precision(all);
 	//if (all->space == 1)
 		//write(1," ",1);
-	//if (all->plus)
-		//all->conv->d < 0 ? write(1,"-",1) : write(1,"+",1);
+	if (all->plus)
+		p = c < 0 ? '-' :  '+';
+	printf("%c\n", p);
 	s = ft_itoa(c);
-	f = ft_strjoin(all->s_filled,s);
+	//fucntion pour le general output
+	if (all->width == 1)
+		f = ft_strjoin(all->s_filled,s);
+	if (all->precision == 1)
+			f = ft_strjoin(all->s_filled_p,s);
 	//printf("filled : %s\n", all->s_filled);
 	ft_putstr(f);
 	return (0);

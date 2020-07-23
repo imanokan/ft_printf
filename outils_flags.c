@@ -12,50 +12,61 @@
 #include "libftprintf.h"
 #include "./libft/libft.h"
 
-char     *fill_space(t_spec *all)
+char  *fill_width(t_spec *all)
 {
-    	int i;
-	int j;
+    int corr; // corrected because of the sign
+    int i;
 
-	i = 0;
-	j = 0;
-
-	all->s_filled = malloc(sizeof(char *) * all->space + 1);
-		//return (-1);
-	if (all->zero == 1)
-  {
-      while (i < all->space)
-			   all->s_filled[i++] = '0';
-    }
-
-// separate the two fucntions for clarity
-  else if (all->width == 1)
-  {
-    printf("in\n");
+    i = 0;
+    corr = 0;
+    all->s_filled = (char*)malloc(sizeof(char));
     if (all->plus == 1)
     {
-      printf("in\n");
-      all->space = all->space - 1;
-      printf("all->space after %d\n", all->space);
+       corr = all->space - 1;
+       while (i < corr)
+		    {
+          if (all->zero == 1)
+            all->s_filled[i++] = '0';
+          else
+            all->s_filled[i++] = ' ';
+        }
     }
-    while (i < all->space )
-			all->s_filled[i++] = ' ';
-	}
-
-  //
-
-
-	if ((all->type == 'd' ||all->type ==  'i' ||all->type ==  'o' ||all->type ==  'u' || all->type == 'x' || all->type == 'X') && all->vision)
-	{
-		all->pision = all->vision - all->len_arg;
-		while (j < all->pision)
-			all->s_filled[j++] = '0';
-	}
-  //printf("filled : %d\n", all->pision);
-	//printf("filled : %s\n", all->s_filled);
-   	return (all->s_filled);
+    else
+      while (i < all->space)
+      {
+        if (all->zero == 1)
+          all->s_filled[i++] = '0';
+        else
+          all->s_filled[i++] = ' ';
+      }
+    return (all->s_filled);
 }
 
+char  *fill_precision(t_spec *all)
+{
+    int j;
+    j = 0;
+    all->s_filled_p = (char*)malloc(sizeof(char));
+    if (all->precision == 1)
+    {
+		    all->pision = all->vision - all->len_arg;
+		    while (j < all->pision)
+			    all->s_filled_p[j++] = '0';
+	 }
+  //printf("filled : %d\n", all->pision);
+	//printf("filled : %s\n", all->s_filled_p);
+  return (all->s_filled_p);
+}
+/*
+char  *fnct_output(t_spec *all)
+{
+  char c;
+  if (all->plus == 1)
+
+  }
+  if (all->plus == 1)
+
+}*/
 int 	int_in_str(t_spec *all)
 {
 	int i;
