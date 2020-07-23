@@ -12,7 +12,7 @@
 #include "libftprintf.h"
 #include "./libft/libft.h"
 
-char  *fill_width(t_spec *all)
+int fill_width_plus(t_spec *all)
 {
     int corr; // corrected because of the sign
     int i;
@@ -20,26 +20,31 @@ char  *fill_width(t_spec *all)
     i = 0;
     corr = 0;
     all->s_filled = (char*)malloc(sizeof(char));
-    if (all->plus == 1)
-    {
-       corr = all->space - 1;
-       while (i < corr)
-		    {
-          if (all->zero == 1)
-            all->s_filled[i++] = '0';
-          else
-            all->s_filled[i++] = ' ';
-        }
+    printf("%s\n", "in");
+    corr = all->space - 1;
+    while (i < corr)
+		{
+      if (all->zero == 1)
+          all->s_filled[i++] = '0';
+      else
+          all->s_filled[i++] = ' ';
+
     }
-    else
+    //printf("filled : %s", all->s_filled);
+    return (1);
+}
+int fill_width(t_spec *all)
+{
+      int i;
+      i = 0;
+      all->s_filled = (char*)malloc(sizeof(char));
       while (i < all->space)
       {
-        if (all->zero == 1)
-          all->s_filled[i++] = '0';
-        else
-          all->s_filled[i++] = ' ';
+          //if (all->zero == 1) autre fonction
+            //all->s_filled[i++] = '0';
+          all->s_filled[i++] = 'A';
       }
-    return (all->s_filled);
+    return (1);
 }
 
 char  *fill_precision(t_spec *all)
@@ -57,16 +62,27 @@ char  *fill_precision(t_spec *all)
 	//printf("filled : %s\n", all->s_filled_p);
   return (all->s_filled_p);
 }
-/*
-char  *fnct_output(t_spec *all)
+void fnct_output(t_spec *all)
 {
-  char c;
-  if (all->plus == 1)
-
+  if (all->plus == 1 && all->width == 1)
+  {
+     ft_putstr(all->s_filled);
+     ft_putchar(all->p);
   }
-  if (all->plus == 1)
-
-}*/
+  else if (all->plus == 1 && all->precision == 1)
+  {
+      ft_putchar(all->p);
+      ft_putstr(all->s_filled_p);
+  }
+  /*
+  else if (all->width == 1)
+		f = ft_strjoin(all->s_filled,s);
+	else if (all->precision == 1) autre fonction parce que flag - a prendre en compte
+			f = ft_strjoin(all->s_filled_p,s);*/
+  //else if (all->space)
+      //printf("%s\n", "in");
+      write(1," ", 1);
+}
 int 	int_in_str(t_spec *all)
 {
 	int i;

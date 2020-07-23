@@ -15,16 +15,7 @@ int size_nb(int n)
 	}
 	return (l);
 }
-/*
-void flag_plus(t_spec *all)
-{
-	if  (all->plus == 1) //fonctionne pour s mais à réfléchir pour diouxX
-		all->conv;
-	else
-		all->s = ft_strjoin(all->s_filled, c);
 
-
-}*/
 /*
 int flag_hh_ll(t_spec *all)
 {

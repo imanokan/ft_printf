@@ -18,7 +18,7 @@ void flag_exist(const char *format, t_spec *all)
 			all->hash = 1;
 		else if (all->spec[i] == '.' && ft_isdigit(all->spec[i + 1]))
     {
-      all->pision = NULL;
+      all->pision = (int)NULL;
       all->precision = 1;
 			all->vision = int_in_str(all);
     }
@@ -56,9 +56,13 @@ int 	width_min(t_spec *all)
 	all->len = int_in_str(all); //spec
 		//return (-1);
 	all->space = all->len - all->len_arg;
-	//printf("len space : %d\n", all->space);
 	if (all->len_arg < all->len)
-		fill_width(all);
+  {
+    if (all->width == 1 && all->plus != 1)
+		      fill_width(all);
+    else if (all->plus == 1 && all->width == 1)
+          fill_width_plus(all);
+  }
 	return (0);
 
 }

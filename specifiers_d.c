@@ -13,20 +13,17 @@ int specifier_d(t_spec *all, ...)
 	//flag_hh_ll_d(all); //ordre
 	c = va_arg(all->a_list,int);
 	all->len_arg = size_nb(c);
+	if (all->plus)
+		all->p = c < 0 ? '-' :  '+';
 	width_min(all);
 	fill_precision(all);
-	//if (all->space == 1)
-		//write(1," ",1);
-	if (all->plus)
-		p = c < 0 ? '-' :  '+';
-	printf("%c\n", p);
 	s = ft_itoa(c);
-	//fucntion pour le general output
-	if (all->width == 1)
+	fnct_output(all);
+	if (all->width == 1 && all->plus != 1)
 		f = ft_strjoin(all->s_filled,s);
-	if (all->precision == 1)
+	if (all->precision == 1 && all->plus != 1)
 			f = ft_strjoin(all->s_filled_p,s);
-	//printf("filled : %s\n", all->s_filled);
+	//ft_putstr(all->s_filled);
 	ft_putstr(f);
 	return (0);
 }
@@ -39,9 +36,8 @@ int specifier_x(t_spec *all, ...)
 	//flag_hh_ll(all); //ordre
 	all->conv->x = va_arg(all->a_list,signed int);
 	if (all->type == 'X')
-		//c = toupper(va_arg(all->a_list, int));
-		ft_toupper(all->conv->x);
-	ft_itoa_base(all->conv->x,16);
+		all->conv->x = ft_toupper(all->conv->x);
+	//all->conv->x = ft_itoa_base(all->conv->x,16);
 	if (all->hash && all->conv->x != 0)
 	{
 		if (all->type == 'X')
@@ -51,6 +47,7 @@ int specifier_x(t_spec *all, ...)
 	}
 	all->len_arg = size_nb(all->conv->x);
 	width_min(all);
+	fill_precision(all);
 	space_x(all);
 	s = ft_itoa(all->conv->x);
 	if (all->moins) // plus autre fonction ou pas ?
