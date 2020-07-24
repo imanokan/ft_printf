@@ -61,11 +61,11 @@ int main(void)
 	int a;
 
 	a = 24;
-	s = "cc";
+	s = "abcdefghijk";
 	c = 'a';
 
-// printf("ORDI-->[% 01.5d]\n", 252);
- //ft_printf("MOOI-->[% 01.5d]\n", 252); manque l'espace
+printf("ORDI-->[%.5d]\n", 252);
+ft_printf("MOOI-->[%.5d]\n", 252); //manque l'espace
 
 	//put va_arg  
  //printf("ORDI-->[%+.2d]\n",1); 
@@ -88,7 +88,7 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	printf("real[%-5s]\n",s);
-	ft_printf("meee[%-5s]\n",s);
+	printf("real[%.5s]\n",s);
+	ft_printf("meee[%.5s]\n",s);
 	return(0);
 }

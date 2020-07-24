@@ -18,7 +18,7 @@ void flag_exist(const char *format, t_spec *all)
 			all->hash = 1;
 		else if (all->spec[i] == '.' && ft_isdigit(all->spec[i + 1]))
     		{
-      			all->pision = (int)NULL;
+      			//all->pision = (int)NULL;
      			all->precision = 1;
 			all->vision = int_in_str(all);
     		}

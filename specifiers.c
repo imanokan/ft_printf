@@ -59,7 +59,13 @@ int 	specifier_s(t_spec *all, ...)
 		c = va_arg(all->a_list, char*); //mettre dans la structure
 		all->len_arg = ft_strlen(c);
 		width_min(all);
-		//fnct_output(all);
+		if (all->precision)
+		{
+			all->pision = all->len_arg - all->vision;
+			while (i < all->pision)
+				ft_putchar(c[i++]);
+		}
+		// partie précision mais faire un fnct output pour coordonner le tout
 		if (all->moins)
 		{
 			s = ft_strjoin(c,all->s_filled);
@@ -70,6 +76,5 @@ int 	specifier_s(t_spec *all, ...)
 			ft_putstr(all->s_filled);
 			ft_putstr(c);
 		}
-		
 		return (0);
 }

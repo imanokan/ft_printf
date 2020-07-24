@@ -57,12 +57,16 @@ char  *fill_precision(t_spec *all)
     int j;
     j = 0;
     all->s_filled_p = (char*)malloc(sizeof(char));
-    if (all->precision == 1)
+    if (all->precision == 1) // le mettre en deuxième position 
     {
-		    all->pision = all->vision - all->len_arg;
+		    all->pision = all->vision - all->len_arg; 
 		    while (j < all->pision)
 			    all->s_filled_p[j++] = '0';
-	 }
+	}
+   /* if (all->precision == 1 && all->type == 's')
+	    all->pision = all->vision - all->len_arg;
+            while ( i < all->pision) 
+		    ft_putchar(s[i])*/
   //printf("filled : %d\n", all->pision);
  // printf("filled : %s\n", all->s_filled_p);
   return (all->s_filled_p);
