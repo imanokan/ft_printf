@@ -13,11 +13,11 @@ int       cut_str(const char *format, int *i,  t_spec *all)
    int j;
 
    if (format[*i] == '%' && format[*i + 1] != '%')
-   {	
+   {
         j = 0;
        	while (format[*i] && !type_spec(format[*i]))
 	{
-		*i = *i + 1;	
+		*i = *i + 1;
                 j++;
 	}
 	all->type = format[*i];
@@ -25,7 +25,7 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	flag_exist(format, all);
 	//flag_simple(all);
 	conversion_specifier(all);
-       //	free(all->spec); 
+       //	free(all->spec);
         }
     else
     {
@@ -36,9 +36,9 @@ int       cut_str(const char *format, int *i,  t_spec *all)
         return (1);
 }
 int 	ft_printf(const char *format, ...)
-{	
+{
 	t_spec *all;
-	int i; 
+	int i;
 	i = 0;
 	all = malloc(sizeof(t_spec));
 	all->conv = (t_conv*)malloc(sizeof(t_conv));
@@ -64,7 +64,25 @@ int main(void)
 	d = "cc";
 	c = 'a';
 
-	//printf("real %0s\n",s);
-	//ft_printf("%05s\n",d);		
+  printf("ORDI -->[% 05.3d]\n", 1);
+  ft_printf("MOI  -->[% 05.3d]\n", 1);
+
+
+  //printf("ORDI -->[%+.5d]\n", 1);
+  //ft_printf("MOI  -->[%+.5d]\n", 1);
+/*printf("OCTAL/n");
+printf("printf    :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
+      ft_printf("ft_printf  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 0,0,0,0,0);
+
+      printf    ("printf1     :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 1,1,1,1,1);
+      ft_printf ("ft_printf1  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 1,1,1,1,1);
+printf("DECI/n");
+    printf    ("printf1     :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
+    ft_printf ("ft_printf1  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 0,0,0,0,0);
+printf("DECI/n");
+    printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
+      ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);
+	printf("real %0s\n",s);
+	ft_printf("%05s\n",d);*/
 	return(0);
-}	
+}

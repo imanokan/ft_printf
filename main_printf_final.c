@@ -101,7 +101,7 @@ int	main()
 
 	j +=  	printf("|%s|\n", "Salut");
 	  i += ft_printf("|%s|\n", "Salut");
-/*
+
 	j +=  	printf("|%.2s|\n", "Salut");
 	  i += ft_printf("|%.2s|\n", "Salut");
 
@@ -143,12 +143,12 @@ int	main()
 	printf("\n");
 	i += (ft_printf("Coucou = %% coucou\n"));
 	j +=    (printf("Coucou = %% coucou\n"));*/
-	display_return(i, j, "STRING"); 
+	display_return(i, j, "STRING");
 
 
 
 }
-/*
+
 
 
 
@@ -1660,12 +1660,12 @@ ft_printf ("ft_printf5  :|%-07p|%-07p|%-07p|%-07p|%-07p|\n", 999,999,999,999,999
 //
 //
 //
-// 
+//
 // //
 // //
 // // MAIN 3
 // //
-// 
+//
 //
 //
 //
