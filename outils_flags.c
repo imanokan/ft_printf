@@ -20,7 +20,7 @@ int fill_width_plus(t_spec *all)
     i = 0;
     corr = 0;
     all->s_filled = (char*)malloc(sizeof(char));
-    printf("%s\n", "in");
+    //printf("%s\n", "in");
     corr = all->space - 1;
     while (i < corr)
 		{
@@ -39,12 +39,17 @@ int fill_width(t_spec *all)
       i = 0;
       all->s_filled = (char*)malloc(sizeof(char));
       while (i < all->space)
-      {
-          //if (all->zero == 1) autre fonction
-            //all->s_filled[i++] = '0';
-          all->s_filled[i++] = 'A';
-      }
-    return (1);
+	      all->s_filled[i++] = ' ';
+      return (1);
+}
+int fill_zero(t_spec *all)
+{
+	int i; 
+	i = 0;
+	all->s_filled = (char*)malloc(sizeof(char));
+	while (i < all->space)
+		all->s_filled[i++] = '0';
+	return (1);
 }
 
 char  *fill_precision(t_spec *all)
@@ -59,29 +64,32 @@ char  *fill_precision(t_spec *all)
 			    all->s_filled_p[j++] = '0';
 	 }
   //printf("filled : %d\n", all->pision);
-	//printf("filled : %s\n", all->s_filled_p);
+ // printf("filled : %s\n", all->s_filled_p);
   return (all->s_filled_p);
 }
 void fnct_output(t_spec *all)
 {
-  if (all->plus == 1 && all->width == 1)
+  if (all->plus == 1 && all->width == 1 && all->precision != 1)
   {
-     ft_putstr(all->s_filled);
      ft_putchar(all->p);
+     ft_putstr(all->s_filled);
+     //ft_putchar(all->p);
   }
   else if (all->plus == 1 && all->precision == 1)
   {
       ft_putchar(all->p);
       ft_putstr(all->s_filled_p);
   }
+  //else if (all->moins == 1) 
+	 //ft_putstr(all->s_filled);
   /*
   else if (all->width == 1)
 		f = ft_strjoin(all->s_filled,s);
 	else if (all->precision == 1) autre fonction parce que flag - a prendre en compte
 			f = ft_strjoin(all->s_filled_p,s);*/
   //else if (all->space)
-      //printf("%s\n", "in");
-      write(1," ", 1);
+      //printf("%s\n", "in"); verfier ce space 
+   //write(1," ", 1);
 }
 int 	int_in_str(t_spec *all)
 {

@@ -59,12 +59,17 @@ int 	specifier_s(t_spec *all, ...)
 		c = va_arg(all->a_list, char*); //mettre dans la structure
 		all->len_arg = ft_strlen(c);
 		width_min(all);
-		printf("ok\n");
-		//if (all->moins)
-			//s = ft_strjoin(c,all->s_filled);
-		printf("ok\n");
-		printf("%s\n",s);
-		ft_putstr(s);
-		//write(1, "\n",1);
+		//fnct_output(all);
+		if (all->moins)
+		{
+			s = ft_strjoin(c,all->s_filled);
+			ft_putstr(s);
+		}
+		else
+		{	
+			ft_putstr(all->s_filled);
+			ft_putstr(c);
+		}
+		
 		return (0);
 }

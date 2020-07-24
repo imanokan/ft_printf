@@ -10,7 +10,7 @@ int specifier_d(t_spec *all, ...)
 	char *f;
 	char p;
 	i = 0;
-	//flag_hh_ll_d(all); //ordre
+	//flag_hh_ll_d(all); //ordre:
 	c = va_arg(all->a_list,int);
 	all->len_arg = size_nb(c);
 	if (all->plus)
@@ -19,12 +19,12 @@ int specifier_d(t_spec *all, ...)
 	fill_precision(all);
 	s = ft_itoa(c);
 	fnct_output(all);
-	if (all->width == 1 && all->plus != 1)
+	if (all->width == 1 && all->plus != 1) //output 
 		f = ft_strjoin(all->s_filled,s);
 	if (all->precision == 1 && all->plus != 1)
 			f = ft_strjoin(all->s_filled_p,s);
 	//ft_putstr(all->s_filled);
-	ft_putstr(f);
+	ft_putstr(f);  // put in condition ft_s si le reste n'a pas été fait
 	return (0);
 }
 
