@@ -101,3 +101,4 @@ char    	*fill_precision(t_spec *all);
 void 		fnct_output(t_spec *all);
 int 		fill_width_plus(t_spec *all);
 int		fill_zero(t_spec *all);
+int 		fnct_output_s(t_spec *all);

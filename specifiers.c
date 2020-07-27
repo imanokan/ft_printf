@@ -51,30 +51,12 @@ int			specifier_c(t_spec *all, ...)
 
 int 	specifier_s(t_spec *all, ...)
 {
-		char *c;
-		char *s; // malloc
-		int i;
 
-		i = 0;
-		c = va_arg(all->a_list, char*); //mettre dans la structure
-		all->len_arg = ft_strlen(c);
+		all->conv->c = va_arg(all->a_list, char*); //mettre dans la structure
+		//if (all->width == 1 && all->len_arg < all->len)
+			//fill_width(all);
+		all->len_arg = ft_strlen(all->conv->c);
 		width_min(all);
-		if (all->precision)
-		{
-			all->pision = all->len_arg - all->vision;
-			while (i < all->pision)
-				ft_putchar(c[i++]);
-		}
-		// partie précision mais faire un fnct output pour coordonner le tout
-		if (all->moins)
-		{
-			s = ft_strjoin(c,all->s_filled);
-			ft_putstr(s);
-		}
-		else
-		{	
-			ft_putstr(all->s_filled);
-			ft_putstr(c);
-		}
+		fnct_output_s(all);
 		return (0);
 }

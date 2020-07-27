@@ -39,7 +39,10 @@ int fill_width(t_spec *all)
       i = 0;
       all->s_filled = (char*)malloc(sizeof(char));
       while (i < all->space)
-	      all->s_filled[i++] = ' ';
+      {
+	      all->s_filled[i] = ' ';
+	      i++;
+	     }
       return (1);
 }
 int fill_zero(t_spec *all)

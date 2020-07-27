@@ -33,3 +33,15 @@ Perso->anime = (t_anime*)malloc(sizeof(t_anime));
 A FAIRE:
 flg hh ll
 et petite fonction  + -
+
+pour s 
+precision et width 
+si il y a les 2 , first width & precision 
+il y a d'abord une première fois ft_strlen puis une deuxième fois avec le space dedans pour recalculer le precision
+
+pour s 
+width 
+Pour finir S : dans la fonction width_min la condition if est dans ce sens all->len_arg > all->len ceci est valable juste pour la width pour le reste dans l'autre sens ça fonctionne idk why
+ d c'est dans l'autre sens all->len_arg < all->len 
+
+ 

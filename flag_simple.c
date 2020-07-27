@@ -18,10 +18,16 @@ void flag_exist(const char *format, t_spec *all)
 			all->hash = 1;
 		else if (all->spec[i] == '.' && ft_isdigit(all->spec[i + 1]))
     		{
-      			//all->pision = (int)NULL;
+      			//all->pision = (int)NULL; linux problem de compil
      			all->precision = 1;
 			all->vision = int_in_str(all);
     		}
+		else if (ft_isdigit(all->spec[i]) && type_spec(all->spec[i + 1]))
+		{
+				//all->width = 1;
+				all->len = int_in_str(all);
+				//printf("space = %d\n",all->len_arg);
+		}
 		else if (all->moins == 1 && all->zero == 1)
 			all->zero = 0;
 		else if (all->plus == 1 && all->space == 1)
@@ -54,20 +60,53 @@ void	flag_exist_bis(const char *format, t_spec *all)
 
 int 	width_min(t_spec *all)
 {
-  	all->width = 1;
+  	//all->width = 1;
 	all->len = int_in_str(all); //spec
-		//return (-1);
+		//return (-1); 
 	all->space = all->len - all->len_arg;
 	if (all->len_arg < all->len)
   	{
-		if ((all->width == 1 && all->plus != 1 && all->zero != 1) || (all->type == 's'))
+		all->width = 1;
+		if ((all->width == 1 /*not useful*/&& all->plus != 1 && all->zero != 1) || (all->type == 's'))
 		      fill_width(all);
-    		else if (all->plus == 1 && all->width == 1)
+    		else if (all->plus == 1 && all->width == 1 /*not useful*/)
          		 fill_width_plus(all);
-		else if (all->width == 1 && all->zero == 1)
+		else if (all->width == 1 /*not useful*/ && all->zero == 1)
 			fill_zero(all);
 
 	}
 	return (0);
 
+}
+
+int	fnct_output_s(t_spec *all)
+{
+	int i;
+       	char *s;	
+	char *j;
+	i = 0;
+	if (all->width == 1 && all->precision == 1) 
+	{
+		j = ft_strjoin(all->s_filled, all->conv->c);	
+		all->len_arg = ft_strlen(j); 
+		while (i < all->vision)
+			ft_putchar(j[i++]);
+	}
+	else if(all->precision) 
+	{
+		all->pision = all->len_arg - all->vision;
+		while (i < all->pision)
+			ft_putchar(all->conv->c[i++]);
+	}
+	else if (all->moins) 
+	{
+		s = ft_strjoin(all->conv->c,all->s_filled);
+		ft_putstr(s);
+	}
+	else if (all->width == 1)
+	{
+		ft_putstr(all->s_filled);
+		ft_putstr(all->conv->c);
+	}
+	return (0);
 }
