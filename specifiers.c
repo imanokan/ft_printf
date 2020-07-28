@@ -54,7 +54,6 @@ int 	specifier_s(t_spec *all, ...)
 
 		all->conv->c = va_arg(all->a_list, char*); //mettre dans la structure
 		//if (all->width == 1 && all->len_arg < all->len)
-			//fill_width(all);
 		all->len_arg = ft_strlen(all->conv->c);
 		width_min(all);
 		fnct_output_s(all);

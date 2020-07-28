@@ -2,18 +2,18 @@ h;:ttps://www.cprogramming.com/tutorial/c/lesson17.html
 https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/va-arg-va-copy-va-end-va-start?view=vs-2019
 http://www.cplusplus.com/reference/cstdio/printf/
 
-TO DO : 
-- test csp voir slack 
+TO DO :
+- test csp voir slack
 - precisions
-- float 
+- float
 - diouxX
 -fsanitaize=address
 
 
-mettre le s de specifier dans la struc // tjrs sure ? 
+mettre le s de specifier dans la struc // tjrs sure ?
 et puis verifier l'ordre des flags dans diouxX
-flag space et - 
-finalement f 
+flag space et -
+finalement f
 
 
 
@@ -23,9 +23,9 @@ fonction qui regarde si le flag est allumé si oui.
 conv->c = va_arg(all->a_list,long long int) //par exemple
 check les variables de la fonction , me semble faux mais à cette heure ci flm de réfléchir
 
-Pour gérer les conversions créer une deuxième structure avec des variables de chaque type de conversion puis dans la fonction même faire un itoa afin de les pprint finally 
+Pour gérer les conversions créer une deuxième structure avec des variables de chaque type de conversion puis dans la fonction même faire un itoa afin de les pprint finally
 t_spec *all;
-all->conv = (t_conv*)malloc(sizeof(t_conv)); //if everything okey	
+all->conv = (t_conv*)malloc(sizeof(t_conv)); //if everything okey
 
 t_personnage Perso;
 Perso->anime = (t_anime*)malloc(sizeof(t_anime));
@@ -34,14 +34,13 @@ A FAIRE:
 flg hh ll
 et petite fonction  + -
 
-pour s 
-precision et width 
-si il y a les 2 , first width & precision 
+pour s
+precision et width
+si il y a les 2 , first width & precision
 il y a d'abord une première fois ft_strlen puis une deuxième fois avec le space dedans pour recalculer le precision
 
-pour s 
-width 
-Pour finir S : dans la fonction width_min la condition if est dans ce sens all->len_arg > all->len ceci est valable juste pour la width pour le reste dans l'autre sens ça fonctionne idk why
- d c'est dans l'autre sens all->len_arg < all->len 
-
- 
+pour s
+width
+Pour finir S : dans la fonction width_min la condition if est dans ce sens all->len_arg > all->len ceci est valable juste pour la width que pour width et precision dans la meme condition
+pour le reste dans l'autre sens ça 
+ d c'est dans l'autre sens all->len_arg < all->len
