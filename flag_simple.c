@@ -4,29 +4,29 @@ void flag_exist(const char *format, t_spec *all)
 {
  	int i;
 	i = 0;
-	while (all->spec[i])
+	while (all->spec[i] != '\0')
 	{
 		if (all->spec[i] == '+')
 			all->plus = 1;
-		else if (all->spec[i] == '-')
+		if (all->spec[i] == '-')
 			all->moins = 1;
-		else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
+		if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
 			all->zero = 1;
-		else if (all->spec[i] == ' ')
+		if (all->spec[i] == ' ')
 			all->space = 1;
-		else if (all->spec[i] == '#')
+		if (all->spec[i] == '#')
 			all->hash = 1;
-		else if (all->spec[i] == '.' && ft_isdigit(all->spec[i + 1]))
-    		{
+		 (all->spec[i] == '.' && ft_isdigit(all->spec[i + 1]))
+    {
       			//all->pision = (int)NULL; linux problem de compil
      			all->precision = 1;
-			all->vision = int_in_str(all);
-    		}
-		else if (ft_isdigit(all->spec[i]) && type_spec(all->spec[i + 1]))
+			    all->vision = int_in_str(all);
+    }
+		if (ft_isdigit(all->spec[i]) && a)
 		{
 				//all->width = 1;
 				all->len = int_in_str(all);
-				//printf("space = %d\n",all->len_arg);
+				printf("space = %d\n",all->len);
 		}
 		else if (all->moins == 1 && all->zero == 1)
 			all->zero = 0;
@@ -62,13 +62,16 @@ int 	width_min(t_spec *all)
 {
   	//all->width = 1;
 	all->len = int_in_str(all); //spec
-		//return (-1); 
-	all->space = all->len - all->len_arg;
-	if (all->len_arg < all->len)
+		//return (-1);
+	all->space = all->len_arg - all->len; // s
+  //all->space  = all->len_arg - all->len;
+  printf("len : %d\n", all->len);
+  printf("space : %d\n", all->space);
+	if (all->len_arg  < all->len)
   	{
 		all->width = 1;
 		if ((all->width == 1 /*not useful*/&& all->plus != 1 && all->zero != 1) || (all->type == 's'))
-		      fill_width(all);
+             fill_width(all);
     		else if (all->plus == 1 && all->width == 1 /*not useful*/)
          		 fill_width_plus(all);
 		else if (all->width == 1 /*not useful*/ && all->zero == 1)
@@ -82,29 +85,34 @@ int 	width_min(t_spec *all)
 int	fnct_output_s(t_spec *all)
 {
 	int i;
-       	char *s;	
+  char *s;
 	char *j;
+  char *f;
 	i = 0;
-	if (all->width == 1 && all->precision == 1) 
+  //j = (malloc(sizeof(char));
+	if (all->width == 1 && all->precision == 1)
 	{
-		j = ft_strjoin(all->s_filled, all->conv->c);	
-		all->len_arg = ft_strlen(j); 
-		while (i < all->vision)
-			ft_putchar(j[i++]);
+      j = ft_strsub(all->conv->c,0,all->vision);
+      all->len_arg = ft_strlen(j);
+      width_min(all);
+      f = ft_strjoin(all->s_filled, j);
+      ft_putstr(f);
 	}
-	else if(all->precision) 
+	else if(all->precision)
 	{
 		all->pision = all->len_arg - all->vision;
 		while (i < all->pision)
 			ft_putchar(all->conv->c[i++]);
 	}
-	else if (all->moins) 
+	/*else if (all->moins)
 	{
+    printf("moins : %d\n", all->moins);
 		s = ft_strjoin(all->conv->c,all->s_filled);
 		ft_putstr(s);
-	}
+	}*/
 	else if (all->width == 1)
 	{
+    //printf("%s\n","in1" );
 		ft_putstr(all->s_filled);
 		ft_putstr(all->conv->c);
 	}
