@@ -72,6 +72,7 @@ SRCS = ft_memset.c \
 	  ft_lstmap.c\
 	  ft_lstnew.c\
 	  ft_itoa_base.c\
+		ft_atoi_bis.c\
 
 HEADER = libft.h
 OBJECT = $(SRCS:.c=.o)

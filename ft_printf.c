@@ -89,6 +89,6 @@ printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
 	printf("ORDI[%-4.3s]\n",s); // broken with the new fnct
-	ft_printf("meee[%-4.03s]\n",s);
+	ft_printf("meee[%689.038s]\n",s);
 	return(0);
 }

@@ -92,9 +92,9 @@ void	flag_exist_bis(const char *format, t_spec *all)
 int 	width_min(t_spec *all)
 {
   	//all->width = 1;
-	all->len = int_in_str(all); //spec
+	//all->len = int_in_str(all); //spec
 		//return (-1);
-	all->space = all->len_arg - all->len; // s
+	all->space = all->len_arg - all->width; // s
   //all->space  = all->len_arg - all->len;
   //printf("len : %d\n", all->len);
   //printf("space : %d\n", all->space);

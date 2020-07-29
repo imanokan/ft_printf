@@ -18,8 +18,8 @@ int specifier_d(t_spec *all, ...)
 	width_min(all);
 	fill_precision(all);
 	s = ft_itoa(c);
-	fnct_output(all);
-	if (all->width == 1 && all->plus != 1) //output 
+	fnct_output_d(all);
+	if (all->width == 1 && all->plus != 1) //output
 		f = ft_strjoin(all->s_filled,s);
 	if (all->precision == 1 && all->plus != 1)
 			f = ft_strjoin(all->s_filled_p,s);
@@ -52,6 +52,7 @@ int specifier_x(t_spec *all, ...)
 	s = ft_itoa(all->conv->x);
 	if (all->moins) // plus autre fonction ou pas ?
 		f = ft_strjoin(s, all->s_filled);
+	//fnct output precision && width
 	return (0);
 }
 
@@ -70,7 +71,7 @@ int specifier_o(t_spec *all, ...)
 	if (all->space == 1)
 		write(1," ",1);
 	s = ft_itoa(all->conv->o);
-	//plus autre fonction ou pas ?
+	//plus autre fonction ou pas
 	ft_putstr(s);
 	return (0);
 }

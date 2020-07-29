@@ -48,7 +48,7 @@ char					*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);
 int						ft_strcmp(const char *s1, const char *s2);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
-int						ft_atoi(char *str, int *i);
+int						ft_ato_bis(char *str, int *i);
 int						ft_isalpha(int c);
 int						ft_isdigit(int c);
 int						ft_isalnum(int c);
@@ -92,4 +92,5 @@ void					ft_lstadd(t_list **alst, t_list *new);
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 char 					*ft_itoa_base(long long value, int base);
+int						ft_atoi(const char *str);
 #endif

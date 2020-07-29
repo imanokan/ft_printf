@@ -75,7 +75,7 @@ char  *fill_precision(t_spec *all)
  // printf("filled : %s\n", all->s_filled_p);
   return (all->s_filled_p);
 }
-void fnct_output(t_spec *all)
+void fnct_output_d(t_spec *all)
 {
   if (all->plus == 1 && all->width == 1 && all->precision != 1)
   {
@@ -110,7 +110,7 @@ int 	int_in_str(t_spec *all)
 	while (all->spec[i] != '\0')
 	{
 		if (ft_isdigit(all->spec[i]))
-			all->n = ft_atoi(all->spec,&i);
+			all->n = ft_atoi_bis(all->spec,&i);
 	  	i++;
 	}
 	return (all->n);
