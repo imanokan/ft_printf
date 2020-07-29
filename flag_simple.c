@@ -1,8 +1,30 @@
 #include "libftprintf.h"
 
+static int		ft_numlen(int n)
+{
+	int		i;
+
+	i = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		i++;
+		n = -n;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
+
 void flag_exist(const char *format, t_spec *all)
 {
  	int i;
+  int j;
 	i = 0;
 	while (all->spec[i] != '\0')
 	{
@@ -10,34 +32,43 @@ void flag_exist(const char *format, t_spec *all)
 			all->plus = 1;
 		if (all->spec[i] == '-')
 			all->moins = 1;
+      i++;
 		if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
 			all->zero = 1;
 		if (all->spec[i] == ' ')
 			all->space = 1;
 		if (all->spec[i] == '#')
 			all->hash = 1;
-		 (all->spec[i] == '.' && ft_isdigit(all->spec[i + 1]))
-    {
-      			//all->pision = (int)NULL; linux problem de compil
-     			all->precision = 1;
-			    all->vision = int_in_str(all);
-    }
-		if (ft_isdigit(all->spec[i]) && a)
-		{
-				//all->width = 1;
-				all->len = int_in_str(all);
-				printf("space = %d\n",all->len);
-		}
-		else if (all->moins == 1 && all->zero == 1)
+    if (ft_isdigit(all->spec[i]))
+      all->width = ft_atoi(&all->spec[i]);
+      i = i + ft_numlen(all->width);
+      printf("i : %d\n",all->width);
+		if (all->spec[i] == '.')
+      			{//all->pision = (int)NULL; linux problem de compi
+          all->precision = 1;
+          //while (ft_isdigit(s[i + 1]))
+          all->vision = ft_atoi(&all->spec[i + 1]);
+          printf("vision %d\n",all->vision );
+        break;
+  }
+	/*	else if (all->moins == 1 && all->zero == 1)
 			all->zero = 0;
 		else if (all->plus == 1 && all->space == 1)
 			all->space = 0;
 		else if (all->zero == 1 && all->precision == 1)
-			all->zero = 0;
-		i++;
+			all->zero = 0;*/
 	}
 }
 
+void    flag_corr(t_spec *all)
+{
+	if (all->moins == 1 && all->zero == 1)
+    all->zero = 0;
+  if (all->plus == 1 && all->space == 1)
+    all->space = 0;
+  if (all->zero == 1 && all->precision == 1)
+    all->zero = 0;
+  }
 void	flag_exist_bis(const char *format, t_spec *all)
 {
 	int i;
@@ -65,8 +96,8 @@ int 	width_min(t_spec *all)
 		//return (-1);
 	all->space = all->len_arg - all->len; // s
   //all->space  = all->len_arg - all->len;
-  printf("len : %d\n", all->len);
-  printf("space : %d\n", all->space);
+  //printf("len : %d\n", all->len);
+  //printf("space : %d\n", all->space);
 	if (all->len_arg  < all->len)
   	{
 		all->width = 1;
