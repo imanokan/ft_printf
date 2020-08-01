@@ -7,7 +7,7 @@
 typedef struct		a_all
 {
 	char *c;
-	t_ball *a;
+//	t_ball *a;
 	char *b;
 	
 }			all;
@@ -57,16 +57,9 @@ int main()
 	char *n;
 
 	//char *format;
-	all *all;
-	t_ball *a;
-	a = malloc(sizeof(t_ball));
-	all = malloc(sizeof(all));
-	all->a->d = 2;
-	printf("d : %d\n",all->a->d);
-	//format = "%s";
 	s = "aud";
 	n = "pop";
-	all->b = "zee";
+	printf("%-4s\n","au");
 		
 	//ft_printf("%s" "%s", s,n );
 	//bis(all);

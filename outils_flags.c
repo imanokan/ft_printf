@@ -23,7 +23,7 @@ int fill_width_plus(t_spec *all)
     printf("%s\n", "in");
     corr = all->space - 1;
     while (i < corr)
-		{
+	{
       if (all->zero == 1)
           all->s_filled[i++] = '0';
       else
@@ -40,10 +40,9 @@ int fill_width(t_spec *all)
       all->s_filled = (char*)malloc(sizeof(char));
       while (i < all->space)
       {
-	      all->s_filled[i] = 'A';
+	      all->s_filled[i] = ' ';
 	      i++;
 	     }
-       printf("fillled : %d\n", all->space);
       return (1);
 }
 int fill_zero(t_spec *all)

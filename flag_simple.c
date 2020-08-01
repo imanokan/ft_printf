@@ -32,7 +32,7 @@ void flag_exist(const char *format, t_spec *all)
 			all->plus = 1;
 		if (all->spec[i] == '-')
 			all->moins = 1;
-      i++;
+     			 //i++;
 		if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
 			all->zero = 1;
 		if (all->spec[i] == ' ')
@@ -42,13 +42,11 @@ void flag_exist(const char *format, t_spec *all)
     if (ft_isdigit(all->spec[i]))
       all->width = ft_atoi(&all->spec[i]);
       i = i + ft_numlen(all->width);
-      printf("i : %d\n",all->width);
 		if (all->spec[i] == '.')
       			{//all->pision = (int)NULL; linux problem de compi
           all->precision = 1;
           //while (ft_isdigit(s[i + 1]))
           all->vision = ft_atoi(&all->spec[i + 1]);
-          printf("vision %d\n",all->vision );
         break;
   }
 	/*	else if (all->moins == 1 && all->zero == 1)
@@ -62,7 +60,7 @@ void flag_exist(const char *format, t_spec *all)
 
 void    flag_corr(t_spec *all)
 {
-	if (all->moins == 1 && all->zero == 1)
+  if (all->moins == 1 && all->zero == 1)
     all->zero = 0;
   if (all->plus == 1 && all->space == 1)
     all->space = 0;
@@ -94,18 +92,15 @@ int 	width_min(t_spec *all)
   	//all->width = 1;
 	//all->len = int_in_str(all); //spec
 		//return (-1);
-	all->space = all->len_arg - all->width; // s
+	all->space = all->width - all->len_arg; // s
   //all->space  = all->len_arg - all->len;
-  //printf("len : %d\n", all->len);
-  //printf("space : %d\n", all->space);
-	if (all->len_arg  < all->len)
+	if (all->len_arg  < all->space)
   	{
-		all->width = 1;
-		if ((all->width == 1 /*not useful*/&& all->plus != 1 && all->zero != 1) || (all->type == 's'))
+		if ((all->width/*not useful*/&& all->plus != 1 && all->zero != 1) || (all->type == 's'))
              fill_width(all);
-    		else if (all->plus == 1 && all->width == 1 /*not useful*/)
+    		else if (all->plus == 1 && all->width /*not useful*/)
          		 fill_width_plus(all);
-		else if (all->width == 1 /*not useful*/ && all->zero == 1)
+		else if (all->width/*not useful*/ && all->zero == 1)
 			fill_zero(all);
 
 	}
@@ -116,36 +111,39 @@ int 	width_min(t_spec *all)
 int	fnct_output_s(t_spec *all)
 {
 	int i;
-  char *s;
+  	char *s;
 	char *j;
-  char *f;
+ 	 char *f;
 	i = 0;
-  //j = (malloc(sizeof(char));
-	if (all->width == 1 && all->precision == 1)
+	if (all->width && all->precision == 1)
 	{
-      j = ft_strsub(all->conv->c,0,all->vision);
-      all->len_arg = ft_strlen(j);
-      width_min(all);
-      f = ft_strjoin(all->s_filled, j);
-      ft_putstr(f);
+     	 j = ft_strsub(all->conv->c,0,all->vision);
+      	all->len_arg = ft_strlen(j);
+      	width_min(all);
+      	if (all->moins == 1)
+	     		 f = ft_strjoin(j,all->s_filled);
+	else if (!all->moins)
+		f = ft_strjoin(all->s_filled, j);
+     	ft_putstr(f);
 	}
 	else if(all->precision)
 	{
-		all->pision = all->len_arg - all->vision;
-		while (i < all->pision)
+		while (i < all->vision)
 			ft_putchar(all->conv->c[i++]);
 	}
-	/*else if (all->moins)
+	else if (all->width)
 	{
-    printf("moins : %d\n", all->moins);
-		s = ft_strjoin(all->conv->c,all->s_filled);
-		ft_putstr(s);
-	}*/
-	else if (all->width == 1)
-	{
-    //printf("%s\n","in1" );
-		ft_putstr(all->s_filled);
-		ft_putstr(all->conv->c);
+		width_min(all);
+		if (all->moins) 
+		{	
+			ft_putstr(all->conv->c);
+			ft_putstr(all->s_filled);
+		}
+		else if (!all->moins)
+		{
+			ft_putstr(all->s_filled);
+			ft_putstr(all->conv->c);
+		}
 	}
 	return (0);
 }
