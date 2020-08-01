@@ -24,9 +24,7 @@ int		specifier_p(t_spec *all, ...)
 	s = ft_itoa_base(c,16);
 	f = ft_strjoin("0x",s);
 	all->len_arg = ft_strlen((const char*)c);
-	width_min(all);
-	ft_putstr(f);
-	write (1,"\n",1);
+	//fnct_output_p(all); same pour p
 	return (0);
 }
 
@@ -44,7 +42,6 @@ int			specifier_c(t_spec *all, ...)
 		if (all->moins)
 			s = ft_strjoin(c, all->s_filled);
 		ft_putstr(s);
-		write(1,"\n",1);
 		return (0);
 }
 

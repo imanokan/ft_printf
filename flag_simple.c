@@ -145,5 +145,7 @@ int	fnct_output_s(t_spec *all)
 			ft_putstr(all->conv->c);
 		}
 	}
+	else 
+		ft_putstr(all->conv->c);
 	return (0);
 }

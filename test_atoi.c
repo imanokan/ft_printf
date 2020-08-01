@@ -59,7 +59,7 @@ int main()
 	//char *format;
 	s = "aud";
 	n = "pop";
-	printf("%-4s\n","au");
+	printf("%.4c\n",'a');
 		
 	//ft_printf("%s" "%s", s,n );
 	//bis(all);
