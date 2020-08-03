@@ -54,5 +54,7 @@ int 	specifier_s(t_spec *all, ...)
 		all->len_arg = ft_strlen(all->conv->c);
 	//	width_min(all);
 		fnct_output_s(all);
+		if (all->w != 1 && all->precision != 1)
+				ft_putstr(all->conv->c);
 		return (0);
 }
