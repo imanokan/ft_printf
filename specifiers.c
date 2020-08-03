@@ -16,14 +16,17 @@ int		specifier_p(t_spec *all, ...)
 {
 	int i;
 	long long c;
-	char *s;
-	char *f;
+ 	char *s;
+	unsigned char *f;
 
 	i = 0;
 	c = va_arg(all->a_list, long long);
 	s = ft_itoa_base(c,16);
-	f = ft_strjoin("0x",s);
+	f = (unsigned char *)ft_strjoin("0x",s);
+	//ft_strcpy(all->conv->p, f);
 	all->len_arg = ft_strlen((const char*)c);
+	if (all->w != 1 && all->precision != 1)
+			ft_putstr((const char *)f);
 	//fnct_output_p(all); same pour p
 	return (0);
 }
@@ -48,7 +51,6 @@ int			specifier_c(t_spec *all, ...)
 
 int 	specifier_s(t_spec *all, ...)
 {
-
 		all->conv->c = va_arg(all->a_list, char*); //mettre dans la structure
 		//if (all->width == 1 && all->len_arg < all->len)
 		all->len_arg = ft_strlen(all->conv->c);

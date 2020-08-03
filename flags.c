@@ -50,7 +50,7 @@ int recup_precision(char *s)
 int main(void)
 {
   char *s;
-  s = "-5.8";
+  s = "-85.5558";
   int i = 0;
   int j;
   int w;
@@ -58,6 +58,8 @@ int main(void)
   int x;
   while (s[i] != '\0')
   {
+    if (s[i] == '+')
+        printf("+\n");
     if (s[i] == '-')
         printf("-\n");
         i++;

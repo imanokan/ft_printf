@@ -22,8 +22,8 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	}
 	all->type = format[*i];
         all->spec = ft_strsub(format, *i - j, j + 1);
-	flag_exist(format, all);
-	//flag_simple(all);
+	flag_exist(all);
+	ft_precision(all);
 	conversion_specifier(all);
        //	free(all->spec);
         }
@@ -56,7 +56,6 @@ int 	ft_printf(const char *format, ...)
 int main(void)
 {
 	char *s;
-	char *d;
 	char c;
 	int a;
 
@@ -88,7 +87,7 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	printf("ORDI[%p]\n",s); // broken with the new fnct
-	ft_printf("meee[%s]\n",s);
+	printf("ORDI[%8d]\n",a); // broken with the new fnct
+	ft_printf("meee[%8d]\n",a);
 	return(0);
 }

@@ -94,7 +94,7 @@ char 			*ft_itoa_base(long long value, int base)
 
 	//n = value;
 	sign = 0;
-	str_base = "0123456789ABCDEF";
+	str_base = "0123456789abcdef";
 	len = nlen(value, base);
 	if (base < 2 || base > 16)
 		return(NULL);

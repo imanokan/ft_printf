@@ -19,7 +19,7 @@
 
 typedef struct 	s_conv
 {
-	long *p;
+	unsigned char *p;
 	char *s;
 	char *c;
 	signed int d;
@@ -43,6 +43,7 @@ typedef struct  s_spec
 	char ll;
 	char L;
 	char hh;
+	int w;
 	int  len;
 	int  len_arg;
 	int  vision;
@@ -55,6 +56,7 @@ typedef struct  s_spec
 	char *s_filled;
 	char *s_filled_p;
 	int 	precision;
+	char *s_filled_d;
 	char 	p; // char + ou - pour all->plus
 
 }		t_spec;
@@ -83,23 +85,24 @@ int		int_in_str(t_spec *all);
 int		check_binary(t_spec *all);
 //char		*fill_space(t_spec *all);
 int 		ft_printf(const char *format, ...);
-void		flag_exist(const char *format, t_spec *all);
+void		flag_exist(t_spec *all);
 int		flag_simple(t_spec *all);
 int 		specifier_c(t_spec *all, ...);
 int		specifier_s(t_spec *all, ...);
 int		specifier_p(t_spec *all, ...);
 int		specifier_d(t_spec *all, ...);
 int		width_min(t_spec *all);
-int		ft_precision(t_spec *all);
 int		size_nb(int n);
 void		space_x(t_spec *all);
 void		flag_exist_bis(const char *format, t_spec *all);
 void		flag_hh_ll_d(t_spec *all);
 void		flag_hh_ll_u(t_spec *all);
 int 		fill_width(t_spec *all);
-char    	*fill_precision(t_spec *all);
+int			fill_precision(t_spec *all);
 void 		fnct_output_d(t_spec *all);
 int 		fill_width_plus(t_spec *all);
 int		fill_zero(t_spec *all);
 int 	fnct_output_s(t_spec *all);
 int			ft_atoi_bis(char *str, int *i);
+void 	ft_precision(t_spec *all);
+int		fill_width_diouxx(t_spec *all);

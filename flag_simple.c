@@ -38,7 +38,6 @@ void flag_exist(t_spec *all)
 		else if (all->spec[i] == '#')
 			all->hash = 1;
 		else if ((ft_isdigit(all->spec[i]) && all->spec[i - 1] != '.'))
-  	//else if ((ft_isdigit(all->spec[i])) && (all->spec[i - 1] ! = '.'))
 		{
 			all->w = 1;
 			all->width = ft_atoi(&all->spec[i]);
@@ -97,18 +96,26 @@ int 	width_min(t_spec *all)
 	//all->len = int_in_str(all); //spec
 		//return (-1);
 	//printf("width : %d\n",all->width);
-	//printf("vision : %d\n", all->vision);
-	all->space = all->width - all->len_arg; // s
-  //all->space  = all->len_arg - all->len;
+	//printf("len : %d\n", all->len_arg);
+	all->space = all->width - all->len_arg;
 	if (all->len_arg  < all->space)
   	{
-		if ((all->width/*not useful*/&& all->plus != 1 && all->zero != 1) || (all->type == 's'))
-             fill_width(all);
-    		else if (all->plus == 1 && all->width /*not useful*/)
-         		 fill_width_plus(all);
-		else if (all->width/*not useful*/ && all->zero == 1)
-			fill_zero(all);
-
+			printf("in2\n");
+		if (all->type == 's') //|| (all->type == 's'))
+							printf("in26\n");
+						 fill_width(all);
+		if (all->w == 1)
+						printf("in5\n");
+						fill_width_diouxx(all);
+		if (all->zero == 1)
+		{				printf("in7\n");
+						fill_zero(all);
+  	//lse if (all->plus == 1 && all->width /*not useful*/)
+						 //fill_width_plus(all);
+		}
+		else if (all->precision == 1 )//|| all->zero == 1)
+						printf("in4\n");
+						fill_precision(all);
 	}
 	return (0);
 

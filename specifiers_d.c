@@ -5,26 +5,34 @@
 int specifier_d(t_spec *all, ...)
 {
 	int i;
-	unsigned int c;
+	signed int c;
 	char *s;
 	char *f;
-	char p;
 	i = 0;
 	//flag_hh_ll_d(all); //ordre:
-	c = va_arg(all->a_list,int);
-	all->len_arg = size_nb(c);
+	all->conv->d= va_arg(all->a_list,int);
+	all->len_arg = size_nb(all->conv->d);
 	if (all->plus)
+	{
 		all->p = c < 0 ? '-' :  '+';
-	width_min(all);
-	fill_precision(all);
-	s = ft_itoa(c);
+		all->len_arg = size_nb(all->conv->d) + 1;
+	}
+	if (all->space == 1)
+	{
+		write(1, " ", 1);
+		all->len_arg = all->len_arg + 1;
+	}
+	//fill_precision(all);
+	//s = ft_itoa(all->conv->d);
 	fnct_output_d(all);
-	if (all->width == 1 && all->plus != 1) //output
+	/*if (all->width == 1 && all->plus != 1) //output
 		f = ft_strjoin(all->s_filled,s);
 	if (all->precision == 1 && all->plus != 1)
-			f = ft_strjoin(all->s_filled_p,s);
+			f = ft_strjoin(all->s_filled_p,s);*/
 	//ft_putstr(all->s_filled);
-	ft_putstr(f);  // put in condition ft_s si le reste n'a pas été fait
+	  // put in condition ft_s si le reste n'a pas été fait
+		if (all->w != 1 && all->precision != 1)
+				ft_putnbr(all->conv->d);
 	return (0);
 }
 
@@ -58,10 +66,8 @@ int specifier_x(t_spec *all, ...)
 
 int specifier_o(t_spec *all, ...)
 {
-	int c;
-	char *f;
-	char *s;
 
+	char *s;
 
 	//flag_hh_ll(all);
 	all->conv->o = va_arg(all->a_list, signed int);
