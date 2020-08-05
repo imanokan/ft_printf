@@ -13,26 +13,10 @@ int specifier_d(t_spec *all, ...)
 	all->conv->d= va_arg(all->a_list,int);
 	all->len_arg = size_nb(all->conv->d);
 	if (all->plus)
-	{
-		all->p = c < 0 ? '-' :  '+'; //ternaire pour verifier aussi la precision
-		all->len_arg = size_nb(all->conv->d) + 1;
-	}
-	if (all->space == 1)
-	{
-		write(1, " ", 1); //ternaire pour verifier la precision
-		all->len_arg = all->len_arg + 1;
-	}
-	//fill_precision(all);
-	//s = ft_itoa(all->conv->d);
+		all->p = all->conv->d < 0 ? '-' :  '+';
 	fnct_output_d(all);
-	/*if (all->width == 1 && all->plus != 1) //output
-		f = ft_strjoin(all->s_filled,s);
-	if (all->precision == 1 && all->plus != 1)
-			f = ft_strjoin(all->s_filled_p,s);*/
-	//ft_putstr(all->s_filled);
-	  // put in condition ft_s si le reste n'a pas été fait
-		if (all->w != 1 && all->precision != 1)
-				ft_putnbr(all->conv->d);
+	fnct_output_d_bis(all);
+	ft_putnbr(all->conv->d);
 	return (0);
 }
 
@@ -66,9 +50,7 @@ int specifier_x(t_spec *all, ...)
 
 int specifier_o(t_spec *all, ...)
 {
-
 	char *s;
-
 	//flag_hh_ll(all);
 	all->conv->o = va_arg(all->a_list, signed int);
 	ft_itoa_base(all->conv->o,8);
@@ -87,7 +69,6 @@ int specifier_u(t_spec *all, ...)
 	//unsigned uint_max c;
 	char *s;
 	char *f;
-
 	flag_hh_ll_u(all);
 	all->conv->u = va_arg(all->a_list, uintmax_t);
 	all->len_arg = size_nb(all->conv->u);
