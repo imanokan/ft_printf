@@ -98,7 +98,8 @@ int fill_precision(t_spec *all)
 }
 void fnct_output_d(t_spec *all)
 {
-  if (all->plus == 1 && all->w == 1 && all->precision != 1)
+  // fnct space plus
+  if (all->plus == 1 /* ou space*/&& all->w == 1) /*&& all->precision != 1)*/
   {
     printf("in2\n");
      ft_putstr(all->s_filled_d);
@@ -106,7 +107,7 @@ void fnct_output_d(t_spec *all)
      ft_putnbr(all->conv->d);
 
   }
-  else if (all->plus == 1 && all->precision == 1)
+  else if (all->plus == 1 /*ou space*/&& all->precision == 1)
   {
       printf("in1\n");
       fill_precision(all);
@@ -114,6 +115,14 @@ void fnct_output_d(t_spec *all)
       ft_putstr(all->s_filled_p);
       ft_putnbr(all->conv->d);
   }
+  if (all->w != 1 && all->precision != 1)
+    if (all->space == 1)
+        write (1, " ", 1);
+    if (all->plus == 1)
+       all->conv->d < 0 ? write(1,"-",1) :  write(1,"+",1);
+    ft_putnbr(all->conv->d);
+
+  // fnct witdh precision
   if (all->w == 1)
   {
 
@@ -131,11 +140,8 @@ void fnct_output_d(t_spec *all)
   else if (all->w && all->precision == 1)
   {
     fill_precision(all);
-  /*in the struct*/  s = ft_strjoin(all->s_filled_p, all->conv->d);
+  /*in the struct*/  //s = ft_strjoin(all->s_filled_p, all->conv->d) conv-d faut itoa;
     fill_width_diouxx(all);
-
-
-    
 }
 
 }

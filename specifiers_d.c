@@ -14,12 +14,12 @@ int specifier_d(t_spec *all, ...)
 	all->len_arg = size_nb(all->conv->d);
 	if (all->plus)
 	{
-		all->p = c < 0 ? '-' :  '+';
+		all->p = c < 0 ? '-' :  '+'; //ternaire pour verifier aussi la precision
 		all->len_arg = size_nb(all->conv->d) + 1;
 	}
 	if (all->space == 1)
 	{
-		write(1, " ", 1);
+		write(1, " ", 1); //ternaire pour verifier la precision
 		all->len_arg = all->len_arg + 1;
 	}
 	//fill_precision(all);
