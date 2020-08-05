@@ -58,6 +58,8 @@ typedef struct  s_spec
 	int 	precision;
 	char *s_filled_d;
 	char 	p; // char + ou - pour all->plus
+	int check;
+	int point;
 
 }		t_spec;
 
@@ -81,7 +83,7 @@ typedef struct	s_conv;
 int		cut_str(const char *format, int *i, t_spec *all);
 int		conversion_specifier(t_spec *all);
 int 		type_spec(char c);
-int		int_in_str(t_spec *all);
+//int		int_in_str(t_spec *all);
 int		check_binary(t_spec *all);
 //char		*fill_space(t_spec *all);
 int 		ft_printf(const char *format, ...);
@@ -101,8 +103,10 @@ int 		fill_width(t_spec *all);
 int			fill_precision(t_spec *all);
 void 		fnct_output_d(t_spec *all);
 int 		fill_width_plus(t_spec *all);
-int		fill_zero(t_spec *all);
+//int		fill_zero(t_spec *all);
 int 	fnct_output_s(t_spec *all);
 int			ft_atoi_bis(char *str, int *i);
 void 	ft_precision(t_spec *all);
 int		fill_width_diouxx(t_spec *all);
+void fnct_output_d_bis(t_spec *all);
+void flag_corr(t_spec *all);

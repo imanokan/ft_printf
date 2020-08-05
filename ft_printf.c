@@ -23,6 +23,7 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	all->type = format[*i];
         all->spec = ft_strsub(format, *i - j, j + 1);
 	flag_exist(all);
+  flag_corr(all);
 	ft_precision(all);
 	conversion_specifier(all);
        //	free(all->spec);
@@ -41,6 +42,15 @@ int 	ft_printf(const char *format, ...)
 	int i;
 	i = 0;
 	all = malloc(sizeof(t_spec));
+  all->zero = 0;
+  all->space = 0;
+  all->len_arg = 0;
+  all->width = 0;
+  all->s_filled_d = NULL;
+  all->s_filled_p = NULL;
+  all->pision = 0;
+  all->w = 0;
+  all->point = 0;
 	all->conv = (t_conv*)malloc(sizeof(t_conv));
 	va_start(all->a_list, format);
 	while (format[i])
@@ -87,7 +97,7 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	printf("ORDI[%8d]\n",a); // broken with the new fnct
-	ft_printf("meee[%8d]\n",a);
+	printf("ORDI[%-8d]\n",a); // broken with the new fnct
+	ft_printf("meee[%-8d]\n",a);
 	return(0);
 }
