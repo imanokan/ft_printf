@@ -12,11 +12,29 @@ int specifier_d(t_spec *all, ...)
 	//flag_hh_ll_d(all); //ordre:
 	all->conv->d= va_arg(all->a_list,int);
 	all->len_arg = size_nb(all->conv->d);
-	if (all->plus)
-		all->p = all->conv->d < 0 ? '-' :  '+';
-	fnct_output_d(all);
-	fnct_output_d_bis(all);
-	ft_putnbr(all->conv->d);
+	all->p = all->conv->d < 0 ? '-' :  '+';
+	if (all->conv->d < 0)
+ 	{
+		all->isneg = 1;
+		all->conv->d  = all->conv->d * - 1;
+	}
+	all->len_arg = size_nb(all->conv->d);
+	if (all->w == 1 && all->precision == 0)
+				width(all);
+  else if (all->w == 0 && all->precision == 1)
+			precision(all);
+	else if (all->w == 1 && all->precision == 1)
+			width_precision(all);
+	if (all->check != 1)
+	{
+		if (all->isneg == 1 && all->check1 != 1)
+		{
+			ft_putchar(all->p);
+			ft_putnbr(all->conv->d);
+		}
+	else
+		ft_putnbr(all->conv->d);
+	}
 	return (0);
 }
 
@@ -55,29 +73,23 @@ int specifier_o(t_spec *all, ...)
 	all->conv->o = va_arg(all->a_list, signed int);
 	ft_itoa_base(all->conv->o,8);
 	all->len_arg = size_nb(all->conv->o);
-	width_min(all);
-	if (all->space == 1)
-		write(1," ",1);
-	s = ft_itoa(all->conv->o);
-	//plus autre fonction ou pas
-	ft_putstr(s);
 	return (0);
 }
 
-int specifier_u(t_spec *all, ...)
+int specifier_u(t_spec *all)
 {
 	//unsigned uint_max c;
 	char *s;
-	char *f;
-	flag_hh_ll_u(all);
-	all->conv->u = va_arg(all->a_list, uintmax_t);
+	//flag_hh_ll_u(all);
+	all->conv->u = va_arg(all->a_list, unsigned int);
 	all->len_arg = size_nb(all->conv->u);
-	width_min(all);
-	if (all->space)
-		write(1," ",1);
-	s = ft_itoa(all->conv->u);
-	if (all->moins) //fnct
-		f = ft_strjoin(s,all->s_filled);
-	ft_putstr(f);
+	if (all->w == 1 && all->precision == 0)
+			width(all); // moyen de recup la vale
+	else if (all->w == 0 && all->precision == 1)
+			precision(all);
+	else if (all->w == 1 && all->precision == 1)
+				width_precision(all); // pour chaque fnction une diff
+	if (all->check != 1)
+		ft_putnbr(all->conv->u);
 	return (0);
 }

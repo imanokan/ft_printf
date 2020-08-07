@@ -66,90 +66,76 @@ int fill_precision(t_spec *all)
     all->len_arg = all->len_arg + j;
     return (1);
 }
-void fnct_output_d(t_spec *all)
+void space_plus(t_spec *all)
 {
-  if (all->plus == 1 && all->w == 1) // ok sans le ft_putnbr
+  if (all->plus == 1 && all->isneg != 1)
   {
-    all->check = 1;
-    all->len_arg = all->len_arg + 1;
-    fill_width_diouxx(all);
-    ft_putstr(all->s_filled_d);
-    if (all->plus == '+')
-        ft_putchar(all->p);
-    //ft_putstr(all->s_filled_d);
-    //ft_putnbr(all->conv->d);
+    ft_putchar(all->p);
+    all->check1 = 1;
   }
-  else if (all->plus == 1 && all->precision == 1)
-  {
-      fill_precision(all);
-      if (all->plus == '+')
-          ft_putchar(all->p); // si neg faut le mettre devant
-      ft_putstr(all->s_filled_p);
-      //ft_putnbr(all->conv->d);
-  }
-  else if (all->space == 1 && all->w == 1) // to check avec  moins et doublons
-  {
-      //printf("in4\n");
+  if (all->space == 1)
       write(1," ",1);
-      all->len_arg = all->len_arg + 1;
-      fill_width_diouxx(all);
-      ft_putstr(all->s_filled_d);
-      //ft_putnbr(all->conv->d);
-  }
-else if (all->space == 1 && all->precision == 1)
-  {
-      //printf("in5\n");
-      write(1," ", 1);
-      fill_precision(all);
-      ft_putstr(all->s_filled_p);
-      //ft_putnbr(all->conv->d);
-  }
 }
-void fnct_output_d_bis(t_spec *all)
+int     width(t_spec *all)
 {
-  if (all->w != 1 && all->precision != 1) //ok
+  fill_width_diouxx(all);
+  //space_plus(all);
+  //printf("%s\n","widht");
+  if (all->moins == 1) //avec plus un char en trop
   {
-    //printf("in6\n");
-     if (all->space == 1)
-        write (1, " ", 1);
-    else if (all->plus == 1)
-        ft_putchar(all->p);
-    //ft_putnbr(all->conv->d);
-  }
-  else if (all->w == 1 && all->precision == 1) //ok
-  {
-    fill_precision(all);
-    fill_width_diouxx(all);
+    //printf("%s\n","w4idht");
+    space_plus(all);
+    if (all->check1 != 1 && all->isneg == 1)
+      ft_putchar(all->p);
+    ft_putnbr(all->conv->d);
     ft_putstr(all->s_filled_d);
-    ft_putstr(all->s_filled_p);
-    //ft_putnbr(all->conv->d);
-}
-  else if (all->w == 1 && all->precision != 1 && all->check != 1 ) //ok
-  {
-    //printf("in48\n");
-    fill_width_diouxx(all);
-    if (all->moins != 1)
-    {
-      //printf("im\n");
-      ft_putstr(all->s_filled_d);
-      //ft_putnbr(all->conv->d); //fonctionne ainsi
-    }
-    else if (all->moins == 1) // ici fonctionne pas
-    {
-      //printf("i\n");
-        ft_putnbr(all->conv->d); //double d
-        ft_putstr(all->s_filled_d);
-    }
+    all->check = 1;
   }
-  /*else if (all->precision == 1 && all->w != 1)
+  //printf("%s\n","widh4t");
+  else if (all->moins != 1)
   {
-    printf("in9\n");
+    //same but all different types
+    ft_putstr(all->s_filled_d);
+    space_plus(all);
+    if (all->check1 != 1 && all->isneg == 1)
+      ft_putchar(all->p);
+  }
+return (1);
+}
+int   precision(t_spec *all)
+{
     fill_precision(all);
+    space_plus(all);
+    if (all->isneg == 1)
+      ft_putchar(all->p);
+    ft_putstr(all->s_filled_p);
+    return(1);
+}
+int width_precision(t_spec *all)
+{
+  fill_precision(all);
+  fill_width_diouxx(all);
+  if (all->moins == 1)
+  {
+    space_plus(all);
     ft_putstr(all->s_filled_p);
     ft_putnbr(all->conv->d);
-  }*/
+    ft_putstr(all->s_filled_d);
+    all->check = 1;
+  }
+  else if (all->moins == 0)
+  {
+    //types
+    ft_putstr(all->s_filled_d);
+    space_plus(all);
+    if (all->isneg == 1)
+      ft_putchar(all->p);
+    ft_putstr(all->s_filled_p);
+  }
+  return (1);
 
 }
+
 /*int 	int_in_str(t_spec *all)
 {
 	int i;

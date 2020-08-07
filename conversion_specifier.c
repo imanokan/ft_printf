@@ -11,6 +11,8 @@ int     conversion_specifier(t_spec *all)
          specifier_p(all);
     else if (all->type == 'd' || all->type == 'i')
 	    specifier_d(all);
+    else if (all->type == 'u')
+             specifier_u(all);
 /*
     else if (all->type == 'o')
          specifier_o(all);

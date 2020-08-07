@@ -5,9 +5,29 @@
 int  type_spec(char c)
 {
     return (c == 'c' || c == 's' || c == 'p' | c == 'f'
-    || c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o');
+    || c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o' || c == 'u');
 }
-
+void initialisation(t_spec *all)
+{
+  all->zero = 0;
+  all->space = 0;
+  all->len_arg = 0;
+  all->width = 0;
+  all->s_filled_d = NULL;
+  all->s_filled_p = NULL;
+  all->pision = 0;
+  all->w = 0;
+  all->point = 0;
+  all->plus = 0;
+  all->wp = 0;
+  all->check = 0;
+  all->moins = 0;
+  all->hash = 0;
+  all->precision = 0;
+  all->vision = 0;
+  all->isneg = 0;
+  all->check1  = 0;
+}
 int       cut_str(const char *format, int *i,  t_spec *all)
 {
    int j;
@@ -42,15 +62,6 @@ int 	ft_printf(const char *format, ...)
 	int i;
 	i = 0;
 	all = malloc(sizeof(t_spec));
-  all->zero = 0;
-  all->space = 0;
-  all->len_arg = 0;
-  all->width = 0;
-  all->s_filled_d = NULL;
-  all->s_filled_p = NULL;
-  all->pision = 0;
-  all->w = 0;
-  all->point = 0;
 	all->conv = (t_conv*)malloc(sizeof(t_conv));
 	va_start(all->a_list, format);
 	while (format[i])
@@ -68,10 +79,12 @@ int main(void)
 	char *s;
 	char c;
 	int a;
+  unsigned int b;
 
 	a = 24;
 	s = "abcdef";
 	c = 'a';
+  b = 45;
 
 //printf("ORDI-->[%.5d]\n", 252);
 //ft_printf("MOOI-->[%.5d]\n", 252); //manque l'espace

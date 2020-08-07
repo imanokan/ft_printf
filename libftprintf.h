@@ -60,6 +60,9 @@ typedef struct  s_spec
 	char 	p; // char + ou - pour all->plus
 	int check;
 	int point;
+	int wp; // check si w et p existe en meme temps
+	int isneg;
+	int check1; //check doublon de signes
 
 }		t_spec;
 
@@ -93,6 +96,7 @@ int 		specifier_c(t_spec *all, ...);
 int		specifier_s(t_spec *all, ...);
 int		specifier_p(t_spec *all, ...);
 int		specifier_d(t_spec *all, ...);
+int specifier_u(t_spec *all);
 int		width_min(t_spec *all);
 int		size_nb(int n);
 void		space_x(t_spec *all);
@@ -101,12 +105,14 @@ void		flag_hh_ll_d(t_spec *all);
 void		flag_hh_ll_u(t_spec *all);
 int 		fill_width(t_spec *all);
 int			fill_precision(t_spec *all);
-void 		fnct_output_d(t_spec *all);
 int 		fill_width_plus(t_spec *all);
 //int		fill_zero(t_spec *all);
 int 	fnct_output_s(t_spec *all);
 int			ft_atoi_bis(char *str, int *i);
 void 	ft_precision(t_spec *all);
 int		fill_width_diouxx(t_spec *all);
-void fnct_output_d_bis(t_spec *all);
 void flag_corr(t_spec *all);
+void space_plus(t_spec *all);
+int     width(t_spec *all);
+int   precision(t_spec *all);
+int width_precision(t_spec *all);

@@ -72,6 +72,8 @@ void    flag_corr(t_spec *all)
     all->space = 0;
   if (all->zero == 1 && all->precision == 1)
     all->zero = 0;
+	if (all->w == 1 && all->precision == 1)
+		all->wp = 1;
   }
 void	flag_exist_bis(const char *format, t_spec *all)
 {
