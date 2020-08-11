@@ -116,3 +116,6 @@ void space_plus(t_spec *all);
 int     width(t_spec *all);
 int   precision(t_spec *all);
 int width_precision(t_spec *all);
+void check_type(t_spec *all); //pour width - le bon specifier
+int specifier_o(t_spec *all);
+int specifier_x(t_spec *all);

@@ -38,16 +38,13 @@ int specifier_d(t_spec *all, ...)
 	return (0);
 }
 
-int specifier_x(t_spec *all, ...)
+int specifier_x(t_spec *all)
 {
-	char *f;
-	char *s;
-
 	//flag_hh_ll(all); //ordre
 	all->conv->x = va_arg(all->a_list,signed int);
 	if (all->type == 'X')
 		all->conv->x = ft_toupper(all->conv->x);
-	//all->conv->x = ft_itoa_base(all->conv->x,16);
+	all->conv->x = (unsigned int)ft_itoa_base(all->conv->x,16);
 	if (all->hash && all->conv->x != 0)
 	{
 		if (all->type == 'X')
@@ -56,33 +53,47 @@ int specifier_x(t_spec *all, ...)
 			write(1,"ox",2);
 	}
 	all->len_arg = size_nb(all->conv->x);
-	width_min(all);
-	fill_precision(all);
-	space_x(all);
-	s = ft_itoa(all->conv->x);
-	if (all->moins) // plus autre fonction ou pas ?
-		f = ft_strjoin(s, all->s_filled);
-	//fnct output precision && width
+	if (all->w == 1 && all->precision == 0)
+				width(all);
+  else if (all->w == 0 && all->precision == 1)
+			precision(all);
+	else if (all->w == 1 && all->precision == 1)
+			width_precision(all);
+	if (all->check != 1)
+			ft_putnbr(all->conv->x);
 	return (0);
 }
 
-int specifier_o(t_spec *all, ...)
+int specifier_o(t_spec *all)
 {
 	char *s;
 	//flag_hh_ll(all);
 	all->conv->o = va_arg(all->a_list, signed int);
 	ft_itoa_base(all->conv->o,8);
 	all->len_arg = size_nb(all->conv->o);
+	if (all->w == 1 && all->precision == 0)
+			width(all); // moyen de recup la vale
+	else if (all->w == 0 && all->precision == 1)
+			precision(all);
+	else if (all->w == 1 && all->precision == 1)
+				width_precision(all); // pour chaque fnction une diff
+	if (all->check != 1)
+		ft_putnbr(all->conv->o); //do not print the right value even if it has it
+		//printf("4:%o\n",all->conv->o);
 	return (0);
 }
 
 int specifier_u(t_spec *all)
 {
 	//unsigned uint_max c;
-	char *s;
 	//flag_hh_ll_u(all);
 	all->conv->u = va_arg(all->a_list, unsigned int);
+	//printf("%u\n", all->conv->u);
+	if (all->conv->u < 0)
+		all->conv->u = UINT_MAX - all->conv->u;
+		//printf("%u\n", all->conv->u);
 	all->len_arg = size_nb(all->conv->u);
+	//printf("len :%u\n", all->len_arg);
 	if (all->w == 1 && all->precision == 0)
 			width(all); // moyen de recup la vale
 	else if (all->w == 0 && all->precision == 1)

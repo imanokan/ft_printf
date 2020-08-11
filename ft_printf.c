@@ -80,8 +80,10 @@ int main(void)
 	char c;
 	int a;
   unsigned int b;
+  signed int d;
 
-	a = 24;
+  d = 28;
+	a = -35;
 	s = "abcdef";
 	c = 'a';
   b = 45;
@@ -110,7 +112,9 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	printf("ORDI[%-8d]\n",a); // broken with the new fnct
-	ft_printf("meee[%-8d]\n",a);
+  ft_itoa_base(d,16);
+  printf("x:%x\n",d);
+	printf("ORDI[%x]\n",b);
+	ft_printf("meee[%x]\n",b);
 	return(0);
 }

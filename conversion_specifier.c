@@ -13,13 +13,11 @@ int     conversion_specifier(t_spec *all)
 	    specifier_d(all);
     else if (all->type == 'u')
              specifier_u(all);
-/*
     else if (all->type == 'o')
          specifier_o(all);
-    else if (all->type == 'u')
-         specifier_u(all);
     else if (all->type == 'x' )
          specifier_x(all);
+  /*
     else if (all->type == 'f')
          specifier_f(all);*/
       return (0);

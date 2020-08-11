@@ -76,6 +76,15 @@ void space_plus(t_spec *all)
   if (all->space == 1)
       write(1," ",1);
 }
+void check_type(t_spec *all)
+{
+  if (all->type == 'd' || all->type == 'i')
+      ft_putnbr(all->conv->d);
+  if (all->type == 'u')
+      ft_putnbr(all->conv->u);
+  if (all->type == 'o')
+      ft_putnbr(all->conv->o);
+}
 int     width(t_spec *all)
 {
   fill_width_diouxx(all);
@@ -87,7 +96,7 @@ int     width(t_spec *all)
     space_plus(all);
     if (all->check1 != 1 && all->isneg == 1)
       ft_putchar(all->p);
-    ft_putnbr(all->conv->d);
+      check_type(all);
     ft_putstr(all->s_filled_d);
     all->check = 1;
   }
@@ -119,7 +128,7 @@ int width_precision(t_spec *all)
   {
     space_plus(all);
     ft_putstr(all->s_filled_p);
-    ft_putnbr(all->conv->d);
+    check_type(all);
     ft_putstr(all->s_filled_d);
     all->check = 1;
   }
