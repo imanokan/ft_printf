@@ -39,7 +39,7 @@ void flag_exist(t_spec *all)
 		else if (all->spec[i] == '#')
 			all->hash = 1;
 		else if (all->spec[i] == '.')
-			all->point = 1;
+				all->point = 1;
 		else if ((ft_isdigit(all->spec[i]) && all->point != 1))// all->spec[i - 1] != '.'))
 		{
 			all->w = 1;

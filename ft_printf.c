@@ -62,6 +62,7 @@ int 	ft_printf(const char *format, ...)
 	int i;
 	i = 0;
 	all = malloc(sizeof(t_spec));
+  initialisation(all);
 	all->conv = (t_conv*)malloc(sizeof(t_conv));
 	va_start(all->a_list, format);
 	while (format[i])
@@ -112,9 +113,7 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-  ft_itoa_base(d,16);
-  printf("x:%x\n",d);
-	printf("ORDI[%x]\n",b);
-	ft_printf("meee[%x]\n",b);
+	printf("ORDI[%.5x]\n",b);
+	ft_printf("meee[%.5X]\n",b);
 	return(0);
 }

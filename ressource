@@ -42,5 +42,10 @@ il y a d'abord une première fois ft_strlen puis une deuxième fois avec le spac
 pour s
 width
 Pour finir S : dans la fonction width_min la condition if est dans ce sens all->len_arg > all->len ceci est valable juste pour la width que pour width et precision dans la meme condition
-pour le reste dans l'autre sens ça 
+pour le reste dans l'autre sens ça
  d c'est dans l'autre sens all->len_arg < all->len
+
+
+
+float;
+apres la premiere etape , quand tu veux soustraire nb-float et nb-int alors verifier l'arrondi dans la memoire stocker diff
