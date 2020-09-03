@@ -17,8 +17,7 @@ int     conversion_specifier(t_spec *all)
          specifier_o(all);
     else if (all->type == 'x' || all->type == 'X')
          specifier_x(all);
-  /*
     else if (all->type == 'f')
-         specifier_f(all);*/
+         specifiers_f(all);
       return (0);
 }

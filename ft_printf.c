@@ -43,10 +43,10 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	all->type = format[*i];
         all->spec = ft_strsub(format, *i - j, j + 1);
 	flag_exist(all);
-  flag_corr(all);
+  	flag_corr(all);
 	ft_precision(all);
 	conversion_specifier(all);
-       //	free(all->spec);
+	//free(all->spec);
         }
     else
     {
@@ -62,7 +62,7 @@ int 	ft_printf(const char *format, ...)
 	int i;
 	i = 0;
 	all = malloc(sizeof(t_spec));
-  initialisation(all);
+  	initialisation(all);
 	all->conv = (t_conv*)malloc(sizeof(t_conv));
 	va_start(all->a_list, format);
 	while (format[i])
@@ -71,6 +71,7 @@ int 	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(all->a_list);
+	//free(all->conv);
 	//free(all);
 	return(0);
 }
@@ -80,14 +81,15 @@ int main(void)
 	char *s;
 	char c;
 	int a;
-  unsigned int b;
-  signed int d;
+  unsigned int d;
+  	float b;
 
-  d = 28;
+
+  	d = 28;
 	a = -35;
 	s = "abcdef";
 	c = 'a';
-  b = 45;
+  	b = 45.523;
 
 //printf("ORDI-->[%.5d]\n", 252);
 //ft_printf("MOOI-->[%.5d]\n", 252); //manque l'espace
@@ -113,7 +115,7 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	printf("ORDI[%.5x]\n",b);
-	ft_printf("meee[%.5X]\n",b);
+	printf("ORDI[%d]\n",b);
+	ft_printf("meee[%f]\n",b);
 	return(0);
 }

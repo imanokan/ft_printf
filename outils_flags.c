@@ -30,20 +30,18 @@ int fill_width_diouxx(t_spec *all)
       int j;
       i = 0;
       all->space = all->width - all->len_arg;
-      all->s_filled_d = (char*)malloc(sizeof(char));// * all->space);
-      ft_bzero(all->s_filled_d, all->space);
+    //irintf("width : %d len_arg: %d\n",all->width, all->len_arg);
+      all->s_filled_d = (char*)malloc(sizeof(char));
+      //ft_bzero(all->s_filled_d, all->space);
+      //printf("all->space : %d\n", all->space);
       while (i < all->space)
       {
         if (all->zero == 1)
-            all->s_filled_d[i] = '0';
+            all->s_filled_d[i++] = '0';
         if (all->zero != 1)
-              all->s_filled_d[i] = ' ';
-        i++;
-	     }
+              all->s_filled_d[i++] = ' ';
+	}
        all->s_filled_d[i] ='\0';
-       //printf("filled:[%s] %zu\n",all->s_filled_d, ft_strlen(all->s_filled_d));
-       //j = ft_strlen(all->s_filled_d);
-       //all->len_arg = all->len_arg + j;
       return (1);
 }
 
@@ -60,8 +58,8 @@ int fill_precision(t_spec *all)
           all->s_filled_p[j] = '0';
           j++;
     }
-    //all->s_filled_p[i] ='\0';
-    //printf("filled :%s\n", all->s_filled_p);
+    all->s_filled_p[j] ='\0';
+  //  printf("filled :%s\n", all->s_filled_p);
     //j = all->vision;
     all->len_arg = all->len_arg + j;
     return (1);
@@ -124,26 +122,29 @@ int width_precision(t_spec *all)
 {
   fill_precision(all);
   fill_width_diouxx(all);
-  if (all->moins == 1)
-  {
-    space_plus(all);
-    ft_putstr(all->s_filled_p);
-    check_type(all);
-    ft_putstr(all->s_filled_d);
-    all->check = 1;
-  }
-  else if (all->moins == 0)
-  {
-    //types
-    ft_putstr(all->s_filled_d);
-    space_plus(all);
-    if (all->isneg == 1)
-      ft_putchar(all->p);
-    ft_putstr(all->s_filled_p);
-  }
-  return (1);
-
-}
+  //if (all->width >= all->len_arg)
+ // {
+	  fill_width_diouxx(all);
+	  if (all->moins == 1)
+ 	 {
+    		space_plus(all);
+   		 ft_putstr(all->s_filled_p);
+    		check_type(all);
+    		ft_putstr(all->s_filled_d);
+   		all->check = 1;
+	 }
+ 	 else if (all->moins == 0)
+ 	 {
+   	 //types
+    	ft_putstr(all->s_filled_d);
+    	space_plus(all);
+    	if (all->isneg == 1)
+      	ft_putchar(all->p);
+   	ft_putstr(all->s_filled_p);
+	 }
+  //}
+  return(1);
+ }
 
 /*int 	int_in_str(t_spec *all)
 {

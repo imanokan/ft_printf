@@ -73,19 +73,16 @@ int specifier_o(t_spec *all)
 	char *s;
 	//flag_hh_ll(all);
 	all->conv->o = va_arg(all->a_list, signed int);
-	printf("i\n");
-	ft_itoa_base(all->conv->o,8);
-	printf("o\n");
+	s = ft_itoa_base(all->conv->o,8);
 	all->len_arg = size_nb(all->conv->o);
 	if (all->w == 1 && all->precision == 0)
 			width(all); // moyen de recup la vale
 	else if (all->w == 0 && all->precision == 1)
 			precision(all);
 	else if (all->w == 1 && all->precision == 1)
-				width_precision(all); // pour chaque fnction une diff
+			width_precision(all); // pour chaque fnction une diff
 	if (all->check != 1)
-		ft_putnbr(all->conv->o); //do not print the right value even if it has it
-		//printf("4:%o\n",all->conv->o);
+		ft_putstr(s); //do not print the right value even if it has it
 	return (0);
 }
 
@@ -105,7 +102,7 @@ int specifier_u(t_spec *all)
 	else if (all->w == 0 && all->precision == 1)
 			precision(all);
 	else if (all->w == 1 && all->precision == 1)
-				width_precision(all); // pour chaque fnction une diff
+			width_precision(all); // pour chaque fnction une diff
 	if (all->check != 1)
 		ft_putnbr(all->conv->u);
 	return (0);

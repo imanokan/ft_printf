@@ -1,5 +1,5 @@
 #include "libftprintf.h"
-
+/*
 static int		ft_numlen(int n)
 {
 	int		i;
@@ -19,7 +19,7 @@ static int		ft_numlen(int n)
 	}
 	return (i);
 }
-
+*/
 
 void flag_exist(t_spec *all)
 {

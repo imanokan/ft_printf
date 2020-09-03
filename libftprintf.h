@@ -25,7 +25,7 @@ typedef struct 	s_conv
 	signed int d;
 	unsigned int x;
 	unsigned int u;
-	float f;
+	double f;
 	signed int o;
 }			t_conv;
 
@@ -97,6 +97,7 @@ int		specifier_s(t_spec *all, ...);
 int		specifier_p(t_spec *all, ...);
 int		specifier_d(t_spec *all, ...);
 int specifier_u(t_spec *all);
+int		specifiers_f(t_spec *all);
 int		width_min(t_spec *all);
 int		size_nb(int n);
 void		space_x(t_spec *all);
