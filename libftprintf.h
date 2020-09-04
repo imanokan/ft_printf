@@ -57,6 +57,7 @@ typedef struct  s_spec
 	char *s_filled_p;
 	int 	precision;
 	char *s_filled_d;
+	char *filled_float;
 	char 	p; // char + ou - pour all->plus
 	int check;
 	int point;

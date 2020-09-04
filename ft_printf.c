@@ -46,7 +46,7 @@ int       cut_str(const char *format, int *i,  t_spec *all)
   	flag_corr(all);
 	ft_precision(all);
 	conversion_specifier(all);
-	//free(all->spec);
+	free(all->spec);
         }
     else
     {
@@ -71,8 +71,8 @@ int 	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(all->a_list);
-	//free(all->conv);
-	//free(all);
+	free(all->conv);
+	free(all);
 	return(0);
 }
 
@@ -115,7 +115,7 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	printf("ORDI[%d]\n",b);
+	//printf("ORDI[%d]\n",d);
 	ft_printf("meee[%f]\n",b);
 	return(0);
 }
