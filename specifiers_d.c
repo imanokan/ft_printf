@@ -21,7 +21,7 @@ int specifier_d(t_spec *all, ...)
 	all->len_arg = size_nb(all->conv->d);
 	if (all->w == 1 && all->precision == 0)
 				width(all);
-  else if (all->w == 0 && all->precision == 1)
+ 	else if (all->w == 0 && all->precision == 1)
 			precision(all);
 	else if (all->w == 1 && all->precision == 1)
 			width_precision(all);
@@ -59,7 +59,7 @@ int specifier_x(t_spec *all)
 	all->len_arg = size_nb(all->conv->x);
 	if (all->w == 1 && all->precision == 0)
 				width(all);
-  else if (all->w == 0 && all->precision == 1)
+ 	else if (all->w == 0 && all->precision == 1)
 			precision(all);
 	else if (all->w == 1 && all->precision == 1)
 			width_precision(all);

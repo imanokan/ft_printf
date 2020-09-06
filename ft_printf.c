@@ -45,6 +45,7 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	flag_exist(all);
   	flag_corr(all);
 	ft_precision(all);
+	printf("width : %d precision: %d\n", all->width, all->vision);
 	conversion_specifier(all);
 	free(all->spec);
         }
@@ -101,7 +102,7 @@ int main(void)
   //printf("ORDI -->[%-8d]\n", 6);
   //ft_printf("MOI  -->[%-8d]\n", 6);
 
- //printf("ORDI-->[%-4d]\n", 1);
+ //printf("ORDI-->i%-4d]\n", 1);
  //ft_printf("MOOI-->[%-4d]\n",1); //gerer le  output du moins
 /*printf("OCTAL/n");
 /printf("printf    :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
@@ -116,6 +117,6 @@ printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
 	//printf("ORDI[%d]\n",d);
-	ft_printf("meee[%f]\n",b);
+	ft_printf("mee[%f]\n",b);
 	return(0);
 }

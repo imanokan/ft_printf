@@ -25,8 +25,12 @@ typedef struct 	s_conv
 	signed int d;
 	unsigned int x;
 	unsigned int u;
-	double f;
+	double f; //float de va_arg
 	signed int o;
+	double deci;
+       	int fl;  //float utilisé pour les calculs
+	int ent; //partie entière float
+
 }			t_conv;
 
 typedef struct  s_spec
@@ -121,3 +125,5 @@ int width_precision(t_spec *all);
 void check_type(t_spec *all); //pour width - le bon specifier
 int specifier_o(t_spec *all);
 int specifier_x(t_spec *all);
+int sep_int_deci(t_spec *all);
+void round_up(t_spec *all);
