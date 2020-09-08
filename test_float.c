@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int size_nb(double n)
 {
@@ -53,22 +54,57 @@ int main(void)
 	//printf(" f : %d\n",f);
 	return (0);
 }*/
+static double nlen(double value, int base) 
+{
+	int count  = 0; 
+	while (value)
+	 {
+	 	count++; 
+       		value /=base; 
+	}
+	return(count); 
+}	
+
+static char *ft_itoa_base_float(double value, int base) 
+{
+	char *str_base;
+	char *dst; 
+	int len; 
+	int sign; 
+
+	sign = 0; 
+	str_base = "0123456789";
+	if (value == 0) 
+		return (0); 
+	(base == 10 && value < 0) ? sign = 1 && len++ : sign; 
+	dst = malloc(sizeof(char) * (len + 1)); 
+	sign ? dst[0] = '-' : 0; 
+	dst[len] = '\0'; 
+	while (value) 
+	{
+		dst[--len] = str_base[value % base];
+		value /= base; 
+	}
+	return (dst);
+}
+       	
+
 int main()
 {
-	int deci = 597; 
+	int after_deci = 0; 
 	int count = 0; 
 	//t new = 0;
 	int new;
-	int sous = 1; 
+	double fl = 0.945;
+	char *str;
 
-	new = deci % 10;
-	while (new != 10)
-	{	
-		new += 1;
-		count += 1;
+	str = ft_itoa_base_float(fl, 10);
+	printf("str : %s\n",str); 
+	while (isdigit(fl))
+	{
+		printf("ok\n");
+	
 	}
-	deci = deci + count;
-	printf("deci : %d\n",deci);
 	return (1);
 }
 	

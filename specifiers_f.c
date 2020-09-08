@@ -20,6 +20,7 @@ int	sep_int_deci(t_spec *all)
 	all->conv->ent = (int)all->conv->f;
 	all->conv->deci = all->conv->f - all->conv->ent;
        	dix = 10;
+	printf("all->deci : %f\n",all->conv->deci);
 	stop = all->vision != 0 ? all->vision : 6;
 	while (a != stop)
 	{
@@ -27,7 +28,12 @@ int	sep_int_deci(t_spec *all)
 		dix = dix * 10;
 		a++;
 	}
+	printf("deci : %d\n",all->conv->fl);
 	round_up(all);
+	// stop < 6
+	// cut from the moment str[i] == 00 ou 10  
+
+	printf("fl : %d\n", all->conv->fl);
 	return (1);
 }
 void round_up(t_spec *all)
@@ -42,5 +48,11 @@ void round_up(t_spec *all)
 		count += 1; 
 	}
 	all->conv->fl = all->conv->fl + count; 
+}
+int num_after_deci(t_spec *all)
+{
+	int after_deci; //
+
+	after_deci = 0;
 }
 		

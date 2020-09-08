@@ -90,7 +90,7 @@ int main(void)
 	a = -35;
 	s = "abcdef";
 	c = 'a';
-  	b = 45.523;
+	b = 45.002;
 
 //printf("ORDI-->[%.5d]\n", 252);
 //ft_printf("MOOI-->[%.5d]\n", 252); //manque l'espace
