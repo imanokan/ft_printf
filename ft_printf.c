@@ -90,7 +90,7 @@ int main(void)
 	a = -35;
 	s = "abcdef";
 	c = 'a';
-	b = 45.002;
+	b = 45.2002;
 
 //printf("ORDI-->[%.5d]\n", 252);
 //ft_printf("MOOI-->[%.5d]\n", 252); //manque l'espace
@@ -117,6 +117,6 @@ printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
 	//printf("ORDI[%d]\n",d);
-	ft_printf("mee[%f]\n",b);
+	ft_printf("mee[%.1f]\n",b);
 	return(0);
 }

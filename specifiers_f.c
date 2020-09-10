@@ -29,10 +29,10 @@ int	sep_int_deci(t_spec *all)
 		a++;
 	}
 	printf("deci : %d\n",all->conv->fl);
-	round_up(all);
+	if (stop == 6)
+		round_up(all);
 	// stop < 6
 	// cut from the moment str[i] == 00 ou 10  
-
 	printf("fl : %d\n", all->conv->fl);
 	return (1);
 }
