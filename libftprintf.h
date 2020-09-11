@@ -28,7 +28,7 @@ typedef struct 	s_conv
 	double f; //float de va_arg
 	signed int o;
 	double deci;
-       	int fl;  //float utilisé pour les calculs
+ 	 double fl;  //float utilisé pour les calculs
 	int ent; //partie entière float
 
 }			t_conv;

@@ -82,10 +82,10 @@ int main(void)
 	char c;
 	int a;
   unsigned int d;
-  	float b;
+  float b;
 
 
-  	d = 28;
+  d = 28;
 	a = -35;
 	s = "abcdef";
 	c = 'a';
@@ -115,8 +115,8 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	printf("ORDI[%.8f]\n",b);
-	ft_printf("mee[%.8f]\n",b);
+	printf("ORDI[%.0f]\n",b);
+	ft_printf("mee[%.0f]\n",b);
 	/*printf("ORDI[%.8f]\n",1.1234);
 	ft_printf("mee[%.8f]\n",1.1234);
 	printf("ORDI[%.8f]\n",1.1233);
