@@ -45,7 +45,6 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	flag_exist(all);
   	flag_corr(all);
 	ft_precision(all);
-	printf("width : %d precision: %d\n", all->width, all->vision);
 	conversion_specifier(all);
 	free(all->spec);
         }
@@ -90,7 +89,7 @@ int main(void)
 	a = -35;
 	s = "abcdef";
 	c = 'a';
-	b = 45.2002;
+	b = 45.123456;
 
 //printf("ORDI-->[%.5d]\n", 252);
 //ft_printf("MOOI-->[%.5d]\n", 252); //manque l'espace
@@ -116,7 +115,15 @@ printf("DECI/n");
 printf("DECI/n");
     printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
       ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	//printf("ORDI[%d]\n",d);
-	ft_printf("mee[%.1f]\n",b);
+	printf("ORDI[%.8f]\n",b);
+	ft_printf("mee[%.8f]\n",b);
+	/*printf("ORDI[%.8f]\n",1.1234);
+	ft_printf("mee[%.8f]\n",1.1234);
+	printf("ORDI[%.8f]\n",1.1233);
+	ft_printf("mee[%.8f]\n",1.1233);
+	printf("ORDI[%.8f]\n",1.155);
+	ft_printf("mee[%.8f]\n",1.155);
+	printf("ORDI[%.8f]\n",1.8889);
+	ft_printf("mee[%.8f]\n",1.8889);*/
 	return(0);
 }
