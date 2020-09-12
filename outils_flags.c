@@ -6,11 +6,12 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/12 21:17:48 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/12 21:25:30 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
+#include "libftprintf.h"
 
 int fill_width(t_spec *all)
 {

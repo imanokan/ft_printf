@@ -5,9 +5,10 @@ int	specifiers_f(t_spec *all)
 	//hh LL
 	sep_int_deci(all);
 	all->len_arg = ft_strlen(all->conv->fl_str);
-	fill_width_diouxx(all);
-	//if (all->isneg == 1)
-		//ft_putchar(all->p);
+	fill_width_diouxx(all); // changer la len_arg quand il y a le signe 
+	if (all->plus == 1 && all->p == '+')
+		ft_putchar(all->p);
+
 	if (all->w == 1 && all->moins == 0)
 	{
 
