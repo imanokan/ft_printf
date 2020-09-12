@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags.c                                            :+:      :+:    :+:   */
+/*   outils_flags.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/04/09 18:00:58 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/12 21:17:48 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+
 #include "./libft/libft.h"
 
 int fill_width(t_spec *all)
@@ -118,6 +118,7 @@ int   precision(t_spec *all)
     ft_putstr(all->s_filled_p);
     return(1);
 }
+
 int width_precision(t_spec *all)
 {
   fill_precision(all);

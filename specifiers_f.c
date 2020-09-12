@@ -4,8 +4,34 @@ int	specifiers_f(t_spec *all)
 {
 	//hh LL
 	sep_int_deci(all);
-	//fill precision si necessaire
-	//width et autres petit flag
+	all->len_arg = ft_strlen(all->conv->fl_str);
+	fill_width_diouxx(all);
+	//if (all->isneg == 1)
+		//ft_putchar(all->p);
+	if (all->w == 1 && all->moins == 0)
+	{
+
+			ft_putstr(all->s_filled_d);
+			if (all->vision == 0)
+			{
+				ft_putnbr(all->conv->ent);
+				//printf(" ent %d\n", all->conv->ent);
+			}
+			else
+				ft_putstr(all->conv->fl_str);
+	}
+	else if (all-> w == 1 && all->moins == 1)
+	{
+		ft_putstr(all->conv->fl_str);
+		ft_putstr(all->s_filled_d);
+	}
+	else if (all->w == 0)
+	{
+		if (all->vision == 0)
+			ft_putnbr(all->conv->ent);
+		else
+			ft_putstr(all->conv->fl_str);
+	}
 	return (1);
 }
 
@@ -13,12 +39,12 @@ int	sep_int_deci(t_spec *all)
 {
 	int dix; // MACRO
 
-
 	dix = 10;
 	all->conv->f = va_arg(all->a_list,double);
 	all->conv->ent = (int)all->conv->f;
 	if (all->conv->ent < 0)
 		all->isneg = 1;
+	all->p = all->conv->ent < 0 ? '-' :  '+';
 	all->conv->deci = all->conv->f - all->conv->ent;
 	if (all->precision == 0)
 		all->stop = 6;
@@ -30,7 +56,6 @@ int	sep_int_deci(t_spec *all)
 	if (all->vision != 0)
 		join_float(all);
 	return (1);
-
 }
 
 char 	*join_float(t_spec *all)
@@ -44,11 +69,13 @@ char 	*join_float(t_spec *all)
 	float_str = malloc(sizeof(char*));
 	point = ".";
 	tmp_ent = ft_itoa(all->conv->ent);
+	if (all->conv->fl_int < 0)
+		all->conv->fl_int *= -1;
 	tmp_float = ft_itoa(all->conv->fl_int);
 	float_str = ft_strjoin(tmp_ent, point); //float_tmp
 	all->conv->fl_str = ft_strjoin(float_str,tmp_float);
 	free(float_str);
-	printf("final : %s\n", all->conv->fl_str);
+	//printf("final : %s\n", all->conv->fl_str);
 	return (all->conv->fl_str);
 }
 
@@ -113,6 +140,9 @@ int	 round_up_bis(t_spec *all)
 	}
 	return (1);
 }
+
+
+
 // if all->deci est plus petit que 6 et precsion de 6 leave it as is
 //if all->deci est plus petit que 6 et precision moins que 6 ok multiplication par 10
 //if precision = 10 stop a 9 et arrondir

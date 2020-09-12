@@ -104,7 +104,7 @@ int 	width_min(t_spec *all)
 	//printf("len : %d\n", all->len_arg);
 	all->space = all->width - all->len_arg;
 	if (all->len_arg  < all->space)
-  	{
+	{
 		if (all->type == 's')
 						 fill_width(all);
 		if (all->w == 1)
