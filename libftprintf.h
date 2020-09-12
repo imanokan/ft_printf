@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/11 18:09:25 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/12 19:57:52 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ typedef struct 	s_conv
 	double f; //float de va_arg
 	signed int o;
 	double deci;
- 	 double fl;  //float utilisé pour les calculs
+	double fl;  //float utilisé pour les calculs
 	int ent; //partie entière float
-
+	int fl_int; // partie float arrondie caster en un int
+	char *fl_str; // float en str
 }			t_conv;
 
 typedef struct  s_spec
@@ -68,6 +69,7 @@ typedef struct  s_spec
 	int wp; // check si w et p existe en meme temps
 	int isneg;
 	int check1; //check doublon de signes
+	int stop;
 
 }		t_spec;
 
@@ -126,4 +128,6 @@ void check_type(t_spec *all); //pour width - le bon specifier
 int specifier_o(t_spec *all);
 int specifier_x(t_spec *all);
 int sep_int_deci(t_spec *all);
-void round_up(t_spec *all);
+int round_up(t_spec *all);
+int	 round_up_bis(t_spec *all);
+char 	*join_float(t_spec *all);
