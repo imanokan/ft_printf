@@ -43,8 +43,9 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	all->type = format[*i];
         all->spec = ft_strsub(format, *i - j, j + 1);
 	flag_exist(all);
-  	flag_corr(all);
 	ft_precision(all);
+  	flag_corr(all);
+//	ft_precision(all);
 	conversion_specifier(all);
 	free(all->spec);
         }
@@ -83,28 +84,28 @@ int main(void)
 	int a;
   unsigned int d;
   float b;
+int kiki;
+int coucou = 0;
+int caca = 1;
 
-
+kiki = 2;
   d = 28;
 	a = -35;
 	s = "abcdef";
 	c = 'a';
 	b = 45.123456;
 
-//printf("ORDI-->[%.5d]\n", 252);
-//ft_printf("MOOI-->[%.5d]\n", 252); //manque l'espace
 
-	//put va_arg
-//printf("ORDI-->[%+.2d]\n",5);
-//ft_printf("MOOI-->[%+.2d]\n",5);
 
-  //printf("ORDI -->[%-8d]\n", 6);
-  //ft_printf("MOI  -->[%-8d]\n", 6);
+     	printf("|%-2s|\n", "Hola hola");
+      ft_printf("|%-2s|\n", "Hola hola");
 
- //printf("ORDI-->i%-4d]\n", 1);
- //ft_printf("MOOI-->[%-4d]\n",1); //gerer le  output du moins
-/*printf("OCTAL/n");
-/printf("printf    :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
+     	printf("|%s|\n", NULL);
+      ft_printf("|%s|\n", NULL);
+
+
+	//printf("#25 hello\n", coucou, caca, kiki);
+/*printf("printf    :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
       ft_printf("ft_printf  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 0,0,0,0,0);
 
       printf    ("printf1     :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 1,1,1,1,1);
@@ -112,13 +113,21 @@ int main(void)
 printf("DECI/n");
     printf    ("printf1     :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
     ft_printf ("ft_printf1  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 0,0,0,0,0);
-printf("DECI/n");
-    printf    ("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
-      ft_printf ("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 1,1,1,1,1);*/
-	printf("ORDI[%+015.8f]\n",b);
-	ft_printf("meee[%+015.8f]\n",b);
-	/*printf("ORDI[%.8f]\n",1.1234);
+printf("DECI/n");*/
+
+//printf("Salut %20.12d this % 5.8d % 5d % 4.8i is not a test\n", 0x11ffaa147, 45, 45, 23));
+//ft_printf("Salut %20.12d this % 5.8d % 5d % 4.8i is not a test\n", 0x11ffaa147, 45, 45, 23));
+
+	/*printf("ft_printf1:|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
+	ft_printf("#4 %00.0d\n", 542);
+	printf("#4 %00.0d\n", 542);
+    ft_printf("ft_printf1:|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
+
+	printf("ORDI[%.8f]\n",b);
+	ft_printf("meee[%.8f]\n",b);
+	printf("ORDI[%.8f]\n",1.1234);
 	ft_printf("mee[%.8f]\n",1.1234);
+
 	printf("ORDI[%.8f]\n",1.1233);
 	ft_printf("mee[%.8f]\n",1.1233);
 	printf("ORDI[%.8f]\n",1.155);

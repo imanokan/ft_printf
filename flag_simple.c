@@ -67,14 +67,16 @@ void ft_precision(t_spec *all)
 void    flag_corr(t_spec *all)
 {
   if (all->moins == 1 && all->zero == 1)
-    all->zero = 0;
+   	  all->zero = 0;
   if (all->plus == 1 && all->space == 1)
-    all->space = 0;
-  if (all->zero == 1 && all->precision == 1)
-    all->zero = 0;
-	if (all->w == 1 && all->precision == 1)
-		all->wp = 1;
-  }
+	  all->space = 0;
+  if (all->zero == 1 && all->precision == 1 && all->type != 'f')
+	  all->zero = 0;
+  if (all->w == 1 && all->precision == 1)
+  	  all->wp = 1;
+  if (all->plus == 1 && all->moins == 1)
+  	 all->plus = 1;
+ }
 void	flag_exist_bis(const char *format, t_spec *all)
 {
 	int i;

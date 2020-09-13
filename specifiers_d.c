@@ -22,17 +22,16 @@ int specifier_d(t_spec *all, ...)
 	if (all->w == 1 && all->precision == 0)
 				width(all);
  	else if (all->w == 0 && all->precision == 1)
-			precision(all);
+		precision(all);
 	else if (all->w == 1 && all->precision == 1)
 			width_precision(all);
 	if (all->check != 1)
 	{
 		if (all->isneg == 1 && all->check1 != 1)
-		{
-			ft_putchar(all->p);
 			ft_putnbr(all->conv->d);
-		}
 	else
+		if (all->plus == 1)
+			ft_putchar(all->p);
 		ft_putnbr(all->conv->d);
 	}
 	return (0);

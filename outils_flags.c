@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/12 21:25:30 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/13 18:56:55 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,17 @@ int fill_width_diouxx(t_spec *all)
       int j;
       i = 0;
       all->space = all->width - all->len_arg;
-    //irintf("width : %d len_arg: %d\n",all->width, all->len_arg);
+	  if (all->isneg == 1 && all->plus == 1)
+		  all->space = all->space - 1;
       all->s_filled_d = (char*)malloc(sizeof(char));
-      //ft_bzero(all->s_filled_d, all->space);
-      //printf("all->space : %d\n", all->space);
       while (i < all->space)
       {
-        if (all->zero == 1)
-            all->s_filled_d[i++] = '0';
-        if (all->zero != 1)
-              all->s_filled_d[i++] = ' ';
+        if (all->zero == 1 )// (all->zero == 1 && all->type == 'f'))
+			all->s_filled_d[i++] = '0';
+		else if (all->zero != 1)
+		 	all->s_filled_d[i++] = ' ';
 	}
-       all->s_filled_d[i] ='\0';
+      all->s_filled_d[i] ='\0';
       return (1);
 }
 
@@ -126,23 +125,24 @@ int width_precision(t_spec *all)
   fill_width_diouxx(all);
   //if (all->width >= all->len_arg)
  // {
-	  fill_width_diouxx(all);
+	  //fill_width_diouxx(all);
 	  if (all->moins == 1)
  	 {
     		space_plus(all);
-   		 ft_putstr(all->s_filled_p);
+   			 ft_putstr(all->s_filled_p);
     		check_type(all);
     		ft_putstr(all->s_filled_d);
-   		all->check = 1;
+   			all->check = 1;
 	 }
  	 else if (all->moins == 0)
  	 {
    	 //types
     	ft_putstr(all->s_filled_d);
+		//ft_putstr(all->s_filled_p);
     	space_plus(all);
     	if (all->isneg == 1)
       	ft_putchar(all->p);
-   	ft_putstr(all->s_filled_p);
+  	 	ft_putstr(all->s_filled_p);
 	 }
   //}
   return(1);

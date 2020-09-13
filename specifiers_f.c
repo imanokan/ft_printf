@@ -4,21 +4,19 @@ int	specifiers_f(t_spec *all)
 {
 	//hh LL
 	sep_int_deci(all);
-	all->len_arg = ft_strlen(all->conv->fl_str);
-	fill_width_diouxx(all); // changer la len_arg quand il y a le signe 
+	all->len_arg = ft_strlen(all->conv->fl_str); //+ 1
+	if (all->plus == 1)
+		all->len_arg += 1;
+	fill_width_diouxx(all);
 	if (all->plus == 1 && all->p == '+')
 		ft_putchar(all->p);
-
 	if (all->w == 1 && all->moins == 0)
 	{
 
 			ft_putstr(all->s_filled_d);
-			if (all->vision == 0)
-			{
-				ft_putnbr(all->conv->ent);
-				//printf(" ent %d\n", all->conv->ent);
-			}
-			else
+			if (all->vision == 0 && all->precision == 1)
+					ft_putnbr(all->conv->ent);
+			else if (all->vision != 0)
 				ft_putstr(all->conv->fl_str);
 	}
 	else if (all-> w == 1 && all->moins == 1)
@@ -33,6 +31,8 @@ int	specifiers_f(t_spec *all)
 		else
 			ft_putstr(all->conv->fl_str);
 	}
+	else
+		ft_putstr(all->conv->fl_str);
 	return (1);
 }
 
@@ -43,9 +43,11 @@ int	sep_int_deci(t_spec *all)
 	dix = 10;
 	all->conv->f = va_arg(all->a_list,double);
 	all->conv->ent = (int)all->conv->f;
+	all->p = all->conv->ent < 0 ? '-' : '+';
 	if (all->conv->ent < 0)
+	{
 		all->isneg = 1;
-	all->p = all->conv->ent < 0 ? '-' :  '+';
+	}
 	all->conv->deci = all->conv->f - all->conv->ent;
 	if (all->precision == 0)
 		all->stop = 6;
@@ -54,8 +56,8 @@ int	sep_int_deci(t_spec *all)
 	all->conv->fl = all->conv->deci;
 	round_up(all);
 	round_up_bis(all);
-	if (all->vision != 0)
-		join_float(all);
+	//if (all->vision != 0)
+	join_float(all);
 	return (1);
 }
 
@@ -91,6 +93,7 @@ int 	round_up(t_spec *all)
 	int dix;
 
 	cp_float = all->conv->fl;
+
 	up = 1.0;
 	a = 0;
 	dix = 10;
@@ -120,7 +123,6 @@ int 	round_up(t_spec *all)
 int	 round_up_bis(t_spec *all)
 {
 	int tmp;
-
 	if (all->stop == 1)
 	{
 		tmp = all->conv->deci * 100;
@@ -128,12 +130,11 @@ int	 round_up_bis(t_spec *all)
 			all->conv->fl = all->conv->deci * 10 + 1;
 		else if (tmp % 10 < 5)
 			all->conv->fl = all->conv->deci * 10;
-		all->conv->fl_int = (int)all->conv->fl; // faut un int
+		all->conv->fl_int = (int)all->conv->fl;
 	}
 	else if (all->vision == 0)
 	{
 		tmp = all->conv->deci * 10;
-
 		if (tmp >= 5)
 			all->conv->ent += 1;
 		if (tmp < 5)
@@ -141,12 +142,3 @@ int	 round_up_bis(t_spec *all)
 	}
 	return (1);
 }
-
-
-
-// if all->deci est plus petit que 6 et precsion de 6 leave it as is
-//if all->deci est plus petit que 6 et precision moins que 6 ok multiplication par 10
-//if precision = 10 stop a 9 et arrondir
-
-
-// if we don't want to round up than add 1 if round up 0

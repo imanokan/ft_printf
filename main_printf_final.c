@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_printf_final.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuzen <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tjuzen <tjuzen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 15:50:50 by tjuzen            #+#    #+#             */
-/*   Updated: 2018/12/18 15:35:02 by tjuzen           ###   ########.fr       */
+/*   Updated: 2020/09/13 19:46:09 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,22 +106,22 @@ int	main()
 	  i += ft_printf("|%.2s|\n", "Salut");
 
 		j +=  printf("|%-45.s|\n", "Salut");
-	 i +=  ft_printf("|%-45.s|\n", "Salut");
+	 i +=  ft_printf("|%-45.s|\n", "Salut"); // a check prob de free
 
 	j +=  	printf("|%45.10s|\n", "Salut");
-	 i +=  ft_printf("|%45.10s|\n", "Salut");
+	 i +=  ft_printf("|%45.10s|\n", "Salut"); // a check prob de free
 
 	j +=  	printf("|%-2s|\n", "Hola hola");
 	 i +=  ft_printf("|%-2s|\n", "Hola hola");
 
 	j +=  	printf("|%s|\n", NULL);
-	 i +=  ft_printf("|%s|\n", NULL);
+	 i +=  ft_printf("|%s|\n", NULL); // a check
 
 	j +=  	printf("|%.145s|\n", "La vie est belle");
-	 i +=  ft_printf("|%.145s|\n", "La vie est belle");
+	 i +=  ft_printf("|%.145s|\n", "La vie est belle"); // a check
 
 	j +=  	printf("|%45.10s|\n", "Salut");
-	i +=   ft_printf("|%45.10s|\n", "Salut");
+	i +=   ft_printf("|%45.10s|\n", "Salut"); // a check
 	printf("--------------------\n");
 	printf("STRING TEST\n");
 	printf("--------------------\n");
@@ -1491,6 +1491,7 @@ printf("\n");
  printf("--------------------\n");
  printf("\n");
 
+//tout a check
 	printf("|%c|\n", 'c');
   ft_printf("|%c|\n", 'c');
 
@@ -1541,7 +1542,7 @@ printf("\n");
   ft_printf("|%%|\n");
 
 	printf("|%5%|\n");
-  ft_printf("|%5%|\n");
+  ft_printf("|%5%|\n"); // a faire
 
 	printf("|%045%|\n");
   ft_printf("|%045%|\n");
@@ -1689,15 +1690,15 @@ printf("#2 %d %d %d\n", 542);
 ft_printf("#3 %+-d\n", 542);
 printf("#3 %+-d\n", 542);
 ft_printf("#4 %00.0d\n", 542);
-printf("#4 %00.0d\n", 542);
+printf("#4 %00.0d\n", 542); //a check
 ft_printf("#5 %00.00d\n", 542);
-printf("#5 %00.00d\n", 542);
+printf("#5 %00.00d\n", 542); //a check
 ft_printf("#6 %%%%%d\n", 542);
 printf("#6 %%%%%d\n", 542);
 ft_printf("#9 %+10d\n", 42);
-printf("#9 %+10d\n", 42);
+printf("#9 %+10d\n", 42); //double signe a check
 					ft_printf("#10 %++0d\n", 542);
-					   printf("#10 %++0d\n", 542);
+					   printf("#10 %++0d\n", 542); //double sign a check
 					   ft_printf("#10 %-++0d\n", 542);
 					      printf("#10 %-++0d\n", 542);
 ft_printf("#11 %ld\n", nono);
@@ -1712,14 +1713,14 @@ printf("#11 %ld\n", nono);
 
 ft_printf("#19 %.3d\n", kiki);
 printf("#19 %.3d\n", kiki);
-ft_printf("#20 %#o\n", kiki);
+ft_printf("#20 %#o\n", kiki); // a check
 printf("#20 %#o\n", kiki);
 ft_printf("#21 %o\n", kiki);
 printf("#21 %o\n", kiki);
-ft_printf("#22 %0+3d\n", kiki);
+ft_printf("#22 %0+3d\n", kiki); //a check
 printf("#22 %0+3d\n", kiki);
 ft_printf("#23 abc%%%0+3d\n", kiki);
-printf("#23 abc%%%0+3d\n", kiki);
+printf("#23 abc%%%0+3d\n", kiki); // a check
 ft_printf("#24 %.3d\n", kiki);
 printf("#24 %.3d\n", kiki);
 ft_printf("#25 hello\n", coucou, caca, kiki);
@@ -1727,11 +1728,11 @@ printf("#25 hello\n", coucou, caca, kiki);
 ft_printf("#26 %d\n", coucou, caca, kiki);
 printf("#26 %d\n", coucou, caca, kiki);
 ft_printf("#27 %s\n", coucou, caca, kiki);
-printf("#27 %s\n", coucou, caca, kiki);
+printf("#27 %s\n", coucou, caca, kiki); // a check if wrong type
 ft_printf("#28 %%\n");
 printf("#28 %%\n");
 ft_printf("#30 %caca\n", coucou, caca, kiki);
-printf("#30 %caca\n", coucou, caca, kiki);
+printf("#30 %caca\n", coucou, caca, kiki); //a check
 ft_printf("#31 %%%d\n", coucou, caca, kiki);
 printf("#31 %%%d\n", coucou, caca, kiki);
 
@@ -1746,10 +1747,10 @@ ft_printf("#18 %+0#t\n", 9000000000);
    printf( "printf    : %i\n", 9000000000);
 
    ft_printf("ft_printf : %-*s%d\n", 14, "Hello world", 19);
-   printf( "printf    : %-*s%d\n\n", 14, "Hello world", 19);
+   printf( "printf    : %-*s%d\n\n", 14, "Hello world", 19); //a check
 
    ft_printf("ft_printf : %*s%d\n", 14, "Hello world", 19);
-   printf( "printf    : %*s%d\n\n", 14, "Hello world", 19);
+   printf( "printf    : %*s%d\n\n", 14, "Hello world", 19); // a check
 
    ft_printf("ft_printf : %-.*s%d\n", 14, "Hello world", 19);
    printf( "printf    : %-.*s%d\n\n", 14, "Hello world", 19);
@@ -1758,57 +1759,57 @@ ft_printf("#18 %+0#t\n", 9000000000);
    printf( "printf    : %.*s%d\n\n", 14, "Hello world", 19);
 
    ft_printf("ft_printf : %11.10s\n", "Hello world");
-   printf( "printf    : %11.10s\n\n", "Hello world");
+   printf( "printf    : %11.10s\n\n", "Hello world"); // a check espace
 
    ft_printf("ft_printf : %00.13s3\n", "Hello world");
-   printf( "printf    : %00.13s3\n\n", "Hello world");
+   printf( "printf    : %00.13s3\n\n", "Hello world"); // a check espace en trop
 
    ft_printf("ft_printf : % -15s7\n", "Hello world");
-   printf( "printf    : % -15s7\n\n", "Hello world");
+   printf( "printf    : % -15s7\n\n", "Hello world"); // a check
 
    ft_printf("ft_printf : %011.0s8\n", "Hello world");
-   printf( "printf    : %011.0s8\n\n", "Hello world");
+   printf( "printf    : %011.0s8\n\n", "Hello world"); // a check manque les 0
 
    ft_printf("ft_printf : %10.0s4\n", "Hello world");
    printf( "printf    : %10.0s4\n\n", "Hello world");
 
    ft_printf("ft_printf : %-014s2\n", "Hello world");
-   printf( "printf    : %-014s2\n\n", "Hello world");
+   printf( "printf    : %-014s2\n\n", "Hello world"); //a check
 
 	 ft_printf("ft_printf1 : %#010.4i-\n", -10);
- printf( "printf1    : %#010.4i-\n", -10);
+ printf( "printf1    : %#010.4i-\n", -10); // a check 10 de trop
 
  ft_printf("ft_printf2 : %-10.4i-\n", -10);
- printf( "printf2    : %-10.4i-\n", -10);
+ 	printf( "printf2    : %-10.4i-\n", -10); // a check signe en trop
 
- ft_printf("ft_printf3 : %00000000010.4i-\n", -10);
+ 	ft_printf("ft_printf3 : %00000000010.4i-\n", -10); // a check
  printf( "printf3    : %00000000010.4i-\n", -10);
 
- ft_printf("ft_printf4 : %0-10.4i-\n", -10);
+ ft_printf("ft_printf4 : %0-10.4i-\n", -10); // a check
  printf( "printf4    : %0-10.4i-\n", -10);
 
  ft_printf("ft_printf5 : %010i-\n", -10);
- printf( "printf5    : %010i-\n", -10);
+ printf( "printf5    : %010i-\n", -10); // a check
 
  ft_printf("ft_printf6 : %-1.3i-\n", -10);
- printf( "printf6    : %-1.3i-\n", -10);
+ printf( "printf6    : %-1.3i-\n", -10); // a check
 
  ft_printf("ft_printf7 : %+#10.4i-\n", 0);
- printf( "printf7    : %+#10.4i-\n", 0);
+ printf( "printf7    : %+#10.4i-\n", 0); // a check
 
- ft_printf("ft_printf8 : %+-10.4i-\n", 0);
+ ft_printf("ft_printf8 : %+-10.4i-\n", 0); // a check espace
     printf("printf8    : %+-10.4i-\n", 0);
 
   ft_printf("ft_printf9 : %+010.4i-\n", 0);
-    printf( "printf9    : %+010.4i-\n", 0);
+    printf( "printf9    : %+010.4i-\n", 0); // a check espace
 
  ft_printf("ft_printf10 : %+0-10.4i-\n", 10);
-   printf( "printf10    : %+0-10.4i-\n", 10);
+   printf( "printf10    : %+0-10.4i-\n", 10); // a check espace
 
  ft_printf("ft_printf11 : %+-5.3i-\n", 0);
-   printf( "printf1     : %+-5.3i-\n", 0);
+   printf( "printf1     : %+-5.3i-\n", 0); // a check espace
 
-	 ft_printf("ft_printf11 : %hhhhhi-\n", 0);
+	 ft_printf("ft_printf11 : %hhhhhi-\n", 0); // a check espace
 		 printf( "printf1     : %hhhhhi-\n", 0);
 
 x += (ft_printf("Coucou float %-#15.1f\n", -0));
@@ -1816,7 +1817,7 @@ y +=    (printf("Coucou float %-#15.1f\n", -0));
 printf("\n");
 
 x += (ft_printf("Coucou float %f\n", -0.0));
-y +=    (printf("Coucou float %f\n", -0.0));
+y +=    (printf("Coucou float %f\n", -0.0)); // add le signe a check add precision
 printf("\n");
 
 x += (ft_printf("%-05d\n", -42));
@@ -1828,21 +1829,21 @@ y += (printf("%-0+5d\n", -42));
 printf("\n");
 
 x += (ft_printf("%05d\n", -42));
-y += (printf("%05d\n", -42));
+y += (printf("%05d\n", -42)); // a check
 printf("\n");
 
 x += (ft_printf("%0+5d\n", -42));
-y += (printf("%0+5d\n", -42));
+y += (printf("%0+5d\n", -42)); // a check
 printf("\n");
 
 x += (ft_printf("%5d\n", -42));
-y += (printf("%5d\n", -42));
+y += (printf("%5d\n", -42)); //a check
 printf("\n");
 
 x += (ft_printf("%+5d\n", -42));
-y += (printf("%+5d\n", -42));
+y += (printf("%+5d\n", -42)); // a chek rep du arg
 printf("\n");
-*/
+
 
 	return (0);
 }
