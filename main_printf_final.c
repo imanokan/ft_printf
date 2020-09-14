@@ -243,7 +243,7 @@ int	main()
 
 
 
-
+//WIDTH = 0  && PRECISION = 0
 
 
 // 	/*
@@ -351,6 +351,7 @@ int	main()
 	e += (ft_printf("Salut %-20.12ld this %- 5d%- 4.8i is not a testbipboup\n", 0x11ffaa147, 45, 23));
 	f +=    (printf("Salut %-20.12ld this %- 5d%- 4.8i is not a testbipboup\n", 0x11ffaa147, 45, 23));
 	printf("\n");
+	//ICI
 	e += (ft_printf("Salut %- .d this %-.0d %-+.i %-     .0d s not a test\n", 0, 0, 0, 0));
 	f +=    (printf("Salut %- .d this %-.0d %-+.i %-     .0d s not a test\n", 0, 0, 0, 0));
 	printf("\n");
@@ -1763,7 +1764,7 @@ ft_printf("#18 %+0#t\n", 9000000000);
    printf( "printf    : %11.10s\n\n", "Hello world"); // a check espace
 
    ft_printf("ft_printf : %00.13s3\n", "Hello world");
-   printf( "printf    : %00.13s3\n\n", "Hello world"); 
+   printf( "printf    : %00.13s3\n\n", "Hello world");
 
    ft_printf("ft_printf : % -15s7\n", "Hello world");
    printf( "printf    : % -15s7\n\n", "Hello world"); // a check
