@@ -70,6 +70,7 @@ typedef struct  s_spec
 	int isneg;
 	int check1; //check doublon de signes
 	int stop;
+	int esp; //flag space 
 
 }		t_spec;
 

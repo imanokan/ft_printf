@@ -381,6 +381,7 @@ int	main()
 	e += (ft_printf("% 20.12ld et % 05d% 4.8hi !\n", 0x11ffaa147, 24, (short)-2345));
 	f +=    (printf("% 20.12ld et % 05d% 4.8hi !\n", 0x11ffaa147, 24, (short)-2345));
 	printf("\n");
+
 	e += printf ("printf6     :|42%-42.2d42|\n", -890298152);
 	f += ft_printf ("ft_printf6  :|42%-42.2d42|\n", -890298152);
 	printf("DECI\n");
@@ -1762,7 +1763,7 @@ ft_printf("#18 %+0#t\n", 9000000000);
    printf( "printf    : %11.10s\n\n", "Hello world"); // a check espace
 
    ft_printf("ft_printf : %00.13s3\n", "Hello world");
-   printf( "printf    : %00.13s3\n\n", "Hello world"); // a check espace en trop
+   printf( "printf    : %00.13s3\n\n", "Hello world"); 
 
    ft_printf("ft_printf : % -15s7\n", "Hello world");
    printf( "printf    : % -15s7\n\n", "Hello world"); // a check

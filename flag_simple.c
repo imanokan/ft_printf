@@ -26,21 +26,39 @@ void flag_exist(t_spec *all)
  	int i;
 	i = 0;
 
+  //printf("spec : %s\n", all->spec);
 	while (all->spec[i] != '\0')
 	{
+    //printf("spec : %c\n", all->spec[i]);
 		if (all->spec[i] == '+')
-			all->plus = 1;
+    {
+      //printf("in\n");
+       all->plus = 1;
+       //printf("all->plus : %d\n", all->plus);
+    }
 		else if (all->spec[i] == '-')
-			all->moins = 1;
-		else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
-			all->zero = 1;
-		else if (all->spec[i] == ' ')
-			all->space = 1;
-		else if (all->spec[i] == '#')
-			all->hash = 1;
-		else if (all->spec[i] == '.')
-				all->point = 1;
-		else if ((ft_isdigit(all->spec[i]) && all->point != 1))// all->spec[i - 1] != '.'))
+		{
+      all->moins = 1;
+    }
+		 else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
+  	 {
+       all->zero = 1;
+       i++;
+
+     }
+		 else if (all->spec[i] == ' ')
+		{
+      	all->space = 1;
+      }
+		 else if (all->spec[i] == '#')
+		{
+      all->hash = 1;
+    }
+		 else if (all->spec[i] == '.')
+		{
+      all->point = 1;
+    }
+	   else if ((ft_isdigit(all->spec[i]) && all->point != 1))// all->spec[i - 1] != '.'))
 		{
 			all->w = 1;
 			all->width = ft_atoi(&all->spec[i]);
@@ -75,7 +93,8 @@ void    flag_corr(t_spec *all)
   if (all->w == 1 && all->precision == 1)
   	  all->wp = 1;
   if (all->plus == 1 && all->moins == 1)
-  	 all->plus = 1;
+        all->plus = 1;
+  //printf("flags; %d %d %d\n", all->space, all->plus, all->wp);
  }
 void	flag_exist_bis(const char *format, t_spec *all)
 {

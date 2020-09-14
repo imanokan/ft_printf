@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+ #include "libftprintf.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -18,7 +18,7 @@ int specifier_d(t_spec *all, ...)
 		all->isneg = 1;
 		all->conv->d  = all->conv->d * - 1;
 	}
-	all->len_arg = size_nb(all->conv->d);
+	//all->len_arg = size_nb(all->conv->d);
 	if (all->w == 1 && all->precision == 0)
 				width(all);
  	else if (all->w == 0 && all->precision == 1)
@@ -30,8 +30,8 @@ int specifier_d(t_spec *all, ...)
 		if (all->isneg == 1 && all->check1 != 1)
 			ft_putnbr(all->conv->d);
 	else
-		if (all->plus == 1)
-			ft_putchar(all->p);
+		//if (all->plus == 1)
+			//ft_putchar(all->p);
 		ft_putnbr(all->conv->d);
 	}
 	return (0);

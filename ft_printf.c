@@ -27,6 +27,7 @@ void initialisation(t_spec *all)
   all->vision = 0;
   all->isneg = 0;
   all->check1  = 0;
+  all->esp = 0;
 }
 int       cut_str(const char *format, int *i,  t_spec *all)
 {
@@ -44,8 +45,8 @@ int       cut_str(const char *format, int *i,  t_spec *all)
         all->spec = ft_strsub(format, *i - j, j + 1);
 	flag_exist(all);
 	ft_precision(all);
-  	flag_corr(all);
-//	ft_precision(all);
+  flag_corr(all);
+  ft_precision(all);
 	conversion_specifier(all);
 	free(all->spec);
         }
@@ -96,51 +97,22 @@ kiki = 2;
 	b = 45.123456;
 
 
-	//printf("|%-45.s|\n", "Salut");
-	//ft_printf("|%-45.s|\n", "Salut");
-	/*printf("|%45.10s|\n", "Salut");
-	ft_printf("|%45.10s|\n", "Salut");
-	printf("|%45.10s|\n", "Salut");
-	ft_printf("|%45.10s|\n", "Salut");
-	ft_printf("Coucou = %s %.5s %.6s %.7s %.s %.0s %.s %.1s %5s %4s %6s %7s %8s, coucou\n", "Coucou", "Coucou", "Coucou", "Coucou", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou");
-	printf("Coucou = %s %.5s %.6s %.7s %.s %.0s %.s %.1s %5s %4s %6s %7s %8s, coucou\n", "Coucou", "Coucou", "Coucou", "Coucou", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou");
 
-	ft_printf("Salut = %.3s coucou %.3s haha\n", "bite", "chien");
-	printf("Salut = %.3s coucou %.3s haha\n", "bite", "chien");
-	ft_printf("Coucou =  coucou\n");
-	printf("Coucou =  coucou\n");*/
+  //printf("Salut %00+10.4d  %+12.5d %.5d %.0d %.i\n", 50, 140, -587, -21, 23);
 
-	printf(" 1:%--5d\n", 45);
-	ft_printf("2:%--5d\n", 45);
-	//printf("#25 hello\n", coucou, caca, kiki);
-/*printf("printf    :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
-      ft_printf("ft_printf  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 0,0,0,0,0);
+  //ft_printf("Salut %00+10.4d  %+12.5d %.5d %.0d %.i\n", 50, 140, -587, -21, 23);
 
-      printf    ("printf1     :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 1,1,1,1,1);
-      ft_printf ("ft_printf1  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 1,1,1,1,1);
-printf("DECI/n");
-    printf    ("printf1     :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
-    ft_printf ("ft_printf1  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 0,0,0,0,0);
-printf("DECI/n");*/
 
-//printf("Salut %20.12d this % 5.8d % 5d % 4.8i is not a test\n", 0x11ffaa147, 45, 45, 23));
-//ft_printf("Salut %20.12d this % 5.8d % 5d % 4.8i is not a test\n", 0x11ffaa147, 45, 45, 23));
 
-	/*printf("ft_printf1:|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
-	ft_printf("#4 %00.0d\n", 542);
-	printf("#4 %00.0d\n", 542);
-    ft_printf("ft_printf1:|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 1,1,1,1,1);
+//printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
+//ft_printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
 
-	printf("ORDI[%.8f]\n",b);
-	ft_printf("meee[%.8f]\n",b);
-	printf("ORDI[%.8f]\n",1.1234);
-	ft_printf("mee[%.8f]\n",1.1234);
 
-	printf("ORDI[%.8f]\n",1.1233);
-	ft_printf("mee[%.8f]\n",1.1233);
-	printf("ORDI[%.8f]\n",1.155);
-	ft_printf("mee[%.8f]\n",1.155);
-	printf("ORDI[%.8f]\n",1.8889);
-	ft_printf("mee[%.8f]\n",1.8889);*/
+printf("%-8i\n",-7);
+ft_printf("%-8i\n",-7);
+
+
+
+
 	return(0);
 }

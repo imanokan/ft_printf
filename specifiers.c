@@ -35,16 +35,26 @@ int		specifier_p(t_spec *all, ...)
 int			specifier_c(t_spec *all, ...)
 {
 		int i;
-		char *c;
-		char *s;
+		int c;
 
 		i = 0;
-		c = va_arg(all->a_list, char*);
+		c = va_arg(all->a_list, int);
 		all->len_arg = 1;
-		width_min(all);
-		if (all->moins)
-			s = ft_strjoin(c, all->s_filled);
-		ft_putstr(s);
+		all->space = all->width - all->len_arg;
+		if (all->len_arg < all->space)
+				fill_width(all);
+		if (all->moins == 1)
+		{
+			ft_putchar(c);
+			ft_putstr(all->s_filled);
+		}
+		else if (all->moins == 0)
+		{
+			ft_putstr(all->s_filled);
+			ft_putchar(c);
+		}
+		else
+			ft_putchar(c);
 		return (0);
 }
 

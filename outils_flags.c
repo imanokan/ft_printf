@@ -30,13 +30,18 @@ int fill_width_diouxx(t_spec *all)
       int i;
       int j;
       i = 0;
+
       all->space = all->width - all->len_arg;
-	  if (all->isneg == 1 && all->plus == 1)
-		  all->space = all->space - 1;
+	  if ((all->isneg == 1 && all->plus == 1 ) || (all->plus == 1)
+    || (all->moins == 1))
+		 {
+      
+       all->space = all->space - 1;
       all->s_filled_d = (char*)malloc(sizeof(char));
+    }
       while (i < all->space)
       {
-        if (all->zero == 1 )// (all->zero == 1 && all->type == 'f'))
+        if (all->zero == 1 )
 			all->s_filled_d[i++] = '0';
 		else if (all->zero != 1)
 		 	all->s_filled_d[i++] = ' ';
@@ -67,12 +72,12 @@ int fill_precision(t_spec *all)
 void space_plus(t_spec *all)
 {
   if (all->plus == 1 && all->isneg != 1)
-  {
+{
     ft_putchar(all->p);
     all->check1 = 1;
   }
-  if (all->space == 1)
-      write(1," ",1);
+  if (all->esp == 1)
+    write(1," ",1);
 }
 
 void check_type(t_spec *all)
@@ -93,6 +98,7 @@ int     width(t_spec *all)
   if (all->moins == 1) //avec plus un char en trop
   {
     //printf("%s\n","w4idht");
+
     space_plus(all);
     if (all->check1 != 1 && all->isneg == 1)
       ft_putchar(all->p);
@@ -103,6 +109,7 @@ int     width(t_spec *all)
   //printf("%s\n","widh4t");
   else if (all->moins != 1)
   {
+
     //same but all different types
     ft_putstr(all->s_filled_d);
     space_plus(all);
@@ -113,16 +120,22 @@ return (1);
 }
 int   precision(t_spec *all)
 {
-    fill_precision(all);
-    space_plus(all);
-    if (all->isneg == 1)
-      ft_putchar(all->p);
-    ft_putstr(all->s_filled_p);
+  if (all->vision > 0)
+  {
+        fill_precision(all);
+        space_plus(all);
+        if (all->isneg == 1)
+          ft_putchar(all->p);
+        ft_putstr(all->s_filled_p);
+    }
+    else if (all->vision == 0)
+      space_plus(all);
     return(1);
 }
 
 int width_precision(t_spec *all)
 {
+
   fill_precision(all);
   fill_width_diouxx(all);
   //if (all->width >= all->len_arg)
@@ -130,6 +143,7 @@ int width_precision(t_spec *all)
 	  //fill_width_diouxx(all);
 	  if (all->moins == 1)
  	 {
+
     		space_plus(all);
    			 ft_putstr(all->s_filled_p);
     		check_type(all);
@@ -146,6 +160,7 @@ int width_precision(t_spec *all)
       	ft_putchar(all->p);
   	 	ft_putstr(all->s_filled_p);
 	 }
+
   //}
   return(1);
  }
