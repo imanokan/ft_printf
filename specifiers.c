@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 13:30:01 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/03/12 15:47:54 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/14 12:21:03 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,16 @@ int			specifier_c(t_spec *all, ...)
 
 int 	specifier_s(t_spec *all, ...)
 {
-		all->conv->c = va_arg(all->a_list, char*); //mettre dans la structure
-		//if (all->width == 1 && all->len_arg < all->len)
+		all->conv->c = va_arg(all->a_list, char*);
 		all->len_arg = ft_strlen(all->conv->c);
-	//	width_min(all);
-		fnct_output_s(all);
-		if (all->w != 1 && all->precision != 1)
+		if (all->w == 1  && all->precision == 0)
+			width_s(all);
+		else if (all->precision == 1 && all->w == 0)
+			precision_s(all);
+		else if (all->wp == 1)
+			width_precision_s(all);
+		//else if (all->conv->c == NULL)
+		else if (all->w != 1 && all->precision != 1)
 				ft_putstr(all->conv->c);
 		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/13 18:56:55 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/14 12:15:01 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int fill_width(t_spec *all)
 {
       int i;
       i = 0;
-      all->s_filled = (char*)malloc(sizeof(char));
+      all->s_filled = (char*)malloc(sizeof(char) + 1);
       while (i < all->space)
       {
 	      all->s_filled[i] = ' ';
 	      i++;
-	     }
+	  }
       return (1);
 }
 int fill_width_diouxx(t_spec *all)
@@ -74,6 +74,7 @@ void space_plus(t_spec *all)
   if (all->space == 1)
       write(1," ",1);
 }
+
 void check_type(t_spec *all)
 {
   if (all->type == 'd' || all->type == 'i')
@@ -83,6 +84,7 @@ void check_type(t_spec *all)
   if (all->type == 'o')
       ft_putnbr(all->conv->o);
 }
+
 int     width(t_spec *all)
 {
   fill_width_diouxx(all);

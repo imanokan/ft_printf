@@ -6,7 +6,7 @@
 /*   By: tjuzen <tjuzen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 15:50:50 by tjuzen            #+#    #+#             */
-/*   Updated: 2020/09/13 19:46:09 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/14 13:00:58 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,28 +106,28 @@ int	main()
 	  i += ft_printf("|%.2s|\n", "Salut");
 
 		j +=  printf("|%-45.s|\n", "Salut");
-	 i +=  ft_printf("|%-45.s|\n", "Salut"); // a check prob de free
+	 i +=  ft_printf("|%-45.s|\n", "Salut");
 
 	j +=  	printf("|%45.10s|\n", "Salut");
-	 i +=  ft_printf("|%45.10s|\n", "Salut"); // a check prob de free
+	 i +=  ft_printf("|%45.10s|\n", "Salut");
 
 	j +=  	printf("|%-2s|\n", "Hola hola");
 	 i +=  ft_printf("|%-2s|\n", "Hola hola");
 
 	j +=  	printf("|%s|\n", NULL);
-	 i +=  ft_printf("|%s|\n", NULL); // a check
+	 i +=  ft_printf("|%s|\n", NULL); //RAMA
 
 	j +=  	printf("|%.145s|\n", "La vie est belle");
-	 i +=  ft_printf("|%.145s|\n", "La vie est belle"); // a check
+	 i +=  ft_printf("|%.145s|\n", "La vie est belle");
 
 	j +=  	printf("|%45.10s|\n", "Salut");
-	i +=   ft_printf("|%45.10s|\n", "Salut"); // a check
+	i +=   ft_printf("|%45.10s|\n", "Salut");
 	printf("--------------------\n");
 	printf("STRING TEST\n");
 	printf("--------------------\n");
 	printf("\n");
 	 i += (ft_printf("Coucou = %s %.5s %.6s %.7s %.s %.0s %.s %.1s %5s %4s %6s %7s %8s, coucou\n", "Coucou", "Coucou", "Coucou", "Coucou", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou"));
-	 j +=    (printf("Coucou = %s %.5s %.6s %.7s %.s %.0s %.s %.1s %5s %4s %6s %7s %8s, coucou\n", "Coucou", "Coucou", "Coucou", "Coucou", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou"));
+	 j +=    (printf("Coucou = %s %.5s %.6s %.7s %.s %.0s %.s %.1s %5s %4s %6s %7s %8s, coucou\n", "Coucou", "Coucou", "Coucou", "Coucou", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou")); //comprend meme pas
 	 printf("\n");
 	i += (ft_printf("Salut = %.3s coucou %.3s haha\n", "bite", "chien"));
 	j +=    (printf("Salut = %.3s coucou %.3s haha\n", "bite", "chien"));

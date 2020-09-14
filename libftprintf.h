@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/13 16:33:16 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/14 12:14:09 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,3 +131,6 @@ int sep_int_deci(t_spec *all);
 int round_up(t_spec *all);
 int	 round_up_bis(t_spec *all);
 char 	*join_float(t_spec *all);
+int  width_s(t_spec *all);
+int precision_s(t_spec *all);
+int width_precision_s(t_spec *all);

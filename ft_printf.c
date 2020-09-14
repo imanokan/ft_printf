@@ -96,14 +96,22 @@ kiki = 2;
 	b = 45.123456;
 
 
+	//printf("|%-45.s|\n", "Salut");
+	//ft_printf("|%-45.s|\n", "Salut");
+	/*printf("|%45.10s|\n", "Salut");
+	ft_printf("|%45.10s|\n", "Salut");
+	printf("|%45.10s|\n", "Salut");
+	ft_printf("|%45.10s|\n", "Salut");
+	ft_printf("Coucou = %s %.5s %.6s %.7s %.s %.0s %.s %.1s %5s %4s %6s %7s %8s, coucou\n", "Coucou", "Coucou", "Coucou", "Coucou", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou");
+	printf("Coucou = %s %.5s %.6s %.7s %.s %.0s %.s %.1s %5s %4s %6s %7s %8s, coucou\n", "Coucou", "Coucou", "Coucou", "Coucou", "Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou","Coucou");
 
-     	printf("|%-2s|\n", "Hola hola");
-      ft_printf("|%-2s|\n", "Hola hola");
+	ft_printf("Salut = %.3s coucou %.3s haha\n", "bite", "chien");
+	printf("Salut = %.3s coucou %.3s haha\n", "bite", "chien");
+	ft_printf("Coucou =  coucou\n");
+	printf("Coucou =  coucou\n");*/
 
-     	printf("|%s|\n", NULL);
-      ft_printf("|%s|\n", NULL);
-
-
+	printf(" 1:%--5d\n", 45);
+	ft_printf("2:%--5d\n", 45);
 	//printf("#25 hello\n", coucou, caca, kiki);
 /*printf("printf    :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n", 0,0,0,0,0);
       ft_printf("ft_printf  :|%5o|%5.3o|%5.1o|%5.0o|%5.o|\n\n", 0,0,0,0,0);

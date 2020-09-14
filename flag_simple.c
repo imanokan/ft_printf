@@ -99,11 +99,6 @@ void	flag_exist_bis(const char *format, t_spec *all)
 
 int 	width_min(t_spec *all)
 {
-  	//all->width = 1;
-	//all->len = int_in_str(all); //spec
-		//return (-1);
-	//printf("width : %d\n",all->width);
-	//printf("len : %d\n", all->len_arg);
 	all->space = all->width - all->len_arg;
 	if (all->len_arg  < all->space)
 	{
@@ -120,43 +115,62 @@ int 	width_min(t_spec *all)
 
 }
 
-int	fnct_output_s(t_spec *all)
+
+int  width_s(t_spec *all)
+{
+	width_min(all);
+	all->space = all->width - all->len_arg;
+	if (all->len_arg < all->space)
+		fill_width(all);
+	if (all->moins == 1)
+	{
+		ft_putstr(all->conv->c);
+		ft_putstr(all->s_filled);
+	}
+	else if (all->moins != 1)
+	{
+		ft_putstr(all->s_filled);
+		ft_putstr(all->conv->c);
+	}
+	return (0);
+}
+
+int precision_s(t_spec *all)
 {
 	int i;
-	char *j;
- 	char *f;
+
 	i = 0;
-	if (all->w == 1 && all->precision == 1)
-	{
-		 	 j = ft_strsub(all->conv->c,0,all->vision);
-      	all->len_arg = ft_strlen(j);
-      	width_min(all);
-      	if (all->moins == 1)
-	     		 f = ft_strjoin(j,all->s_filled);
-				else if (all->moins != 1)
-					{
-						f = ft_strjoin(all->s_filled, j);
-    				ft_putstr(f);
-					}
-	}
-	else if (all->precision == 1)
+	if (all->len_arg >= all->vision)
 	{
 		while (i != all->vision)
 			ft_putchar(all->conv->c[i++]);
 	}
-	else if (all->w == 1)
+	else if (all->vision > all->len_arg)
+			ft_putstr(all->conv->c);
+	return (0);
+}
+
+int width_precision_s(t_spec *all)
+{
+	char *tmp_s;
+	int i;
+
+	i = 0;
+	tmp_s = ft_strsub(all->conv->c,0,all->vision);
+	all->len_arg = ft_strlen(tmp_s);
+	all->space = all->width - all->len_arg;
+	if (all->len_arg <  all->space)
+		fill_width(all);
+	if (all->moins == 1)
 	{
-		width_min(all);
-		if (all->moins == 1)
-		{
-			ft_putstr(all->conv->c);
-			ft_putstr(all->s_filled);
-		}
-		else if (all->moins != 1)
-		{
-			ft_putstr(all->s_filled);
-			ft_putstr(all->conv->c);
-		}
+		ft_putstr(tmp_s);
+		ft_putstr(all->s_filled);
 	}
+	else if (all->moins == 0)
+	{
+		ft_putstr(all->s_filled);
+		ft_putstr(tmp_s);
+	}
+	//free(tmp_s);
 	return (0);
 }
