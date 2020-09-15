@@ -45,24 +45,31 @@ void flag_exist(t_spec *all)
        all->zero = 1;
       // i++;
 
-     }
-		 else if (all->spec[i] == ' ')
+    }
+    else if (all->spec[i] == '0'  && ft_isascii(all->spec[i + 1]))
+    {
+      all->zero = 1;
+    }
+     else if (all->spec[i] == ' ')
 		{
-      	all->space = 1;
+
+      	all->esp = 1;
       }
+
 		 else if (all->spec[i] == '#')
 		{
       all->hash = 1;
     }
 		 else if (all->spec[i] == '.')
 		{
+
       all->point = 1;
     }
 	   else if ((ft_isdigit(all->spec[i]) && all->point != 1))// all->spec[i - 1] != '.'))
 		{
+
 			all->w = 1;
 			all->width = ft_atoi(&all->spec[i]);
-		
 			break;
 		}
 		i++;
@@ -87,8 +94,8 @@ void    flag_corr(t_spec *all)
 {
   if (all->moins == 1 && all->zero == 1)
    	  all->zero = 0;
-  if (all->plus == 1 && all->space == 1)
-	  all->space = 0;
+  if (all->plus == 1 && all->esp == 1)
+	  all->esp = 0;
   if (all->zero == 1 && all->precision == 1 && all->type != 'f')
 	  all->zero = 0;
   if (all->w == 1 && all->precision == 1)

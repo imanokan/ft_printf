@@ -78,6 +78,14 @@ int 	ft_printf(const char *format, ...)
 	return(0);
 }
 
+
+int main()
+{
+
+  ft_printf("%+ -0.d\n", 4);
+  printf("%+ -0.d\n",4 );
+}
+/*
 int main(void)
 {
 	char *s;
@@ -116,13 +124,12 @@ kiki = 2;
 //printf("Salut %- .d this %-.0d %-+.i %-     .0d s not a test\n", 0, 0, 0, 0));
 //ft_printf("ft_printf11 : %+-5.3i-\n", 0);
   //printf( "printf1     : %+-5.3i-\n", 0);
- ft_printf("hey1:% -+10d\n", 50);
- printf("hey2:% -+10d\n", 50);
-    //printf( "%+0-10.4i-\n", 10);
-	//ft_printf("ft_printf9 %+010.4i-\n", 0);
+  ft_printf("hey1:%-0+5d\n",-50);
+  printf("hey2:%-0+5d\n", -50 );
+
 	 // printf( "printf9    : %+010.4i-\n", 0);
-//printf("Salut %-+10.4d  %-+12.5d %-.5d %-.0d %-.i hihi\n", 50, 140, -587, -21, 44);
-//ft_printf("Salut %-+10.4d  %-+12.5d %-.5d %-.0d %-.i hihi\n", 50, 140, -587, -21, 44);
+//printf("Salut %-+.4d  %-+12.5d %-.5d %-.0d %-.i hihi\n", 50, 140, -587, -21, 44);
+//ft_printf("Salut %-+.4d  %-+12.5d %-.5d %-.0d %-.i hihi\n", 50, 140, -587, -21, 44);
 
 
 //printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-8i lol\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
@@ -149,4 +156,4 @@ printf("\n");
 
 
 	return(0);
-}
+}*/

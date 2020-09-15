@@ -32,19 +32,15 @@ int fill_width_diouxx(t_spec *all)
       i = 0;
 
       all->space = all->width - all->len_arg;
-	  if ((all->isneg == 1 && all->plus == 1 ) || (all->plus == 1)
-    || (all->moins == 1))
-		 {
-
-       all->space = all->space - 1;
       all->s_filled_d = (char*)malloc(sizeof(char));
-    }
+	  if (all->isneg == 1 || (all->plus == 1) )
+       all->space = all->space - 1;
       while (i < all->space)
       {
         if (all->zero == 1 )
-			all->s_filled_d[i++] = '0';
-		else if (all->zero != 1)
-		 	all->s_filled_d[i++] = ' ';
+             all->s_filled_d[i++] = '0';
+		else if (all->zero == 0)
+		 	      all->s_filled_d[i++] = ' ';
 	}
       all->s_filled_d[i] ='\0';
       return (1);
@@ -57,27 +53,28 @@ int fill_precision(t_spec *all)
     j = 0;
     all->pision = all->vision - all->len_arg;
     all->s_filled_p = (char*)malloc(sizeof(char));
-    ft_bzero(all->s_filled_p, all->pision);
     while (j < all->pision)
     {
           all->s_filled_p[j] = '0';
           j++;
     }
     all->s_filled_p[j] ='\0';
-  //  printf("filled :%s\n", all->s_filled_p);
-    //j = all->vision;
     all->len_arg = all->len_arg + j;
     return (1);
 }
 void space_plus(t_spec *all)
 {
+
   if (all->plus == 1 && all->isneg != 1)
 {
     ft_putchar(all->p);
-    all->check1 = 1;
+    all->check1 = 1; // perturbe
   }
-  if (all->esp == 1)
-    write(1," ",1);
+/*if (all->esp == 1)
+{
+  write(1," ",1);
+  all->len_arg += 1;
+}*/
 }
 
 void check_type(t_spec *all)
@@ -92,10 +89,9 @@ void check_type(t_spec *all)
 
 int     width(t_spec *all)
 {
-
+//  printf("zero :%d\n",all->zero );
  	if (all->conv->d > 0)
 	{
-		
 		space_plus(all);
 		fill_width_diouxx(all);
 		all->moins == 1 ? ft_putnbr(all->conv->d) : ft_putstr(all->s_filled_d);
@@ -103,52 +99,50 @@ int     width(t_spec *all)
 	}
 	else if (all->conv->d < 0)
 	{
-
+  //  space_plus(all);
 		fill_width_diouxx(all);
-		//ft_putchar(all->p);
-		all->moins ==  1 ? ft_putnbr(all->conv->d) : ft_putstr(all->s_filled_d);
-		all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr(all->conv->d);
-	}
-  /*fill_width_diouxx(all);
-  //space_plus(all);
-  //printf("%s\n","widht");
-  if (all->moins == 1) //avec plus un char en trop
-  {
-    //printf("%s\n","w4idht");
-all->moins = 1 ? ft_putstr(arg) : ft_pustr(s_filled);
-all->moins = 1 ? ft_pustr(s_filled) : ft_putstr(arg);p
-    space_plus(all);
-    if (all->check1 != 1 && all->isneg == 1)
-      ft_putchar(all->p);
-      check_type(all);
-    ft_putstr(all->s_filled_d);
-    all->check = 1;
-  }
-  //printf("%s\n","widh4t");
-  else if (all->moins != 1)
-  {
+		ft_putchar(all->p);
 
-    //same but all different types
-    ft_putstr(all->s_filled_d);
-    space_plus(all);
-    if (all->check1 != 1 && all->isneg == 1)
-      ft_putchar(all->p);
-  }*/
+    //all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr(all->conv->d);
+		all->moins ==  1 ? ft_putnbr(all->conv->d) : ft_putstr(all->s_filled_d);
+    ft_putnbr(all->conv->d * -1);
+		//all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr(all->conv->d);
+	}
+
 return (1);
+}
+void space_plus_p(t_spec *all)
+{
+  if (all->esp == 1)
+    write(1, " ", 1);
+  if ((all->plus == 1) || (all->isneg == 1))
+    ft_putchar(all->p);
 }
 int   precision(t_spec *all)
 {
+  //printf(" neg : %d, moins : %d, plus : %d\n", all->esp, all->moins, all->plus);
+  fill_precision(all);
+  space_plus_p(all);
   if (all->vision > 0)
+      ft_putstr(all->s_filled_p);
+  if (all->isneg == 1)
   {
-        fill_precision(all);
-        space_plus(all);
-        if (all->isneg == 1)
-          ft_putchar(all->p);
-        ft_putstr(all->s_filled_p);
-    }
-    else if (all->vision == 0) //print rien
-      space_plus(all);
-    return(1);
+    ft_putnbr(all->conv->d * -1);
+  }
+  else
+
+    ft_putnbr(all->conv->d);
+        //all->conv->d < 0 ? ft_putchar(all->p) : ft_putnbr(all->conv->d);
+    //if (all->vision == 0)
+      //ft_putnbr(all->conv->d);
+
+    //all->check1 == 1 ? ft_putnbr(all->conv->d) : ft_putchar(all->p);
+
+    //ft_putnbr(all->conv->d);
+  //  else if (all->vision == 0) //print rien
+      // soit exit soit space_plus
+
+      return (1);
 }
 
 int width_precision(t_spec *all)

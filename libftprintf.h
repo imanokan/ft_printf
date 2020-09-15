@@ -70,7 +70,7 @@ typedef struct  s_spec
 	int isneg;
 	int check1; //check doublon de signes
 	int stop;
-	int esp; //flag space 
+	int esp; //flag space
 
 }		t_spec;
 
@@ -135,3 +135,4 @@ char 	*join_float(t_spec *all);
 int  width_s(t_spec *all);
 int precision_s(t_spec *all);
 int width_precision_s(t_spec *all);
+void space_plus_p(t_spec *all);

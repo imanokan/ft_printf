@@ -11,8 +11,9 @@ int specifier_d(t_spec *all, ...)
 	i = 0;
 	//flag_hh_ll_d(all); //ordre:
 	all->conv->d= va_arg(all->a_list,int);
-
 	all->len_arg = size_nb(all->conv->d);
+//  if (all->esp == 1 && all->conv->d < 0)
+  //  all->len_arg += 1;
 	all->p = all->conv->d < 0 ? '-' :  '+';
 	if (all->conv->d < 0)
 		all->isneg = 1;
@@ -22,6 +23,11 @@ int specifier_d(t_spec *all, ...)
 		precision(all);
 	else if (all->w == 1 && all->precision == 1)
 			width_precision(all);
+  else if (all->wp == 0)
+  {
+    space_plus(all);
+    ft_putnbr(all->conv->d);
+  }
 	//if (all->check != 1)
 	//{
 	//	if (all->isneg == 1 && all->check1 != 1)
