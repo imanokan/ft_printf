@@ -11,29 +11,26 @@ int specifier_d(t_spec *all, ...)
 	i = 0;
 	//flag_hh_ll_d(all); //ordre:
 	all->conv->d= va_arg(all->a_list,int);
+
 	all->len_arg = size_nb(all->conv->d);
 	all->p = all->conv->d < 0 ? '-' :  '+';
 	if (all->conv->d < 0)
- 	{
 		all->isneg = 1;
-		all->conv->d  = all->conv->d * - 1;
-	}
-	//all->len_arg = size_nb(all->conv->d);
 	if (all->w == 1 && all->precision == 0)
 				width(all);
  	else if (all->w == 0 && all->precision == 1)
 		precision(all);
 	else if (all->w == 1 && all->precision == 1)
 			width_precision(all);
-	if (all->check != 1)
-	{
-		if (all->isneg == 1 && all->check1 != 1)
-			ft_putnbr(all->conv->d);
-	else
+	//if (all->check != 1)
+	//{
+	//	if (all->isneg == 1 && all->check1 != 1)
+			//ft_putnbr(all->conv->d);
+	//else
 		//if (all->plus == 1)
 			//ft_putchar(all->p);
-		ft_putnbr(all->conv->d);
-	}
+		//ft_putnbr(all->conv->d);
+
 	return (0);
 }
 

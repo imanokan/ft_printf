@@ -43,7 +43,7 @@ void flag_exist(t_spec *all)
 		 else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
   	 {
        all->zero = 1;
-       i++;
+      // i++;
 
      }
 		 else if (all->spec[i] == ' ')
@@ -62,6 +62,7 @@ void flag_exist(t_spec *all)
 		{
 			all->w = 1;
 			all->width = ft_atoi(&all->spec[i]);
+		
 			break;
 		}
 		i++;

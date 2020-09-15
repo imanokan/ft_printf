@@ -6,7 +6,7 @@
 /*   By: tjuzen <tjuzen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 15:50:50 by tjuzen            #+#    #+#             */
-/*   Updated: 2020/09/14 13:00:58 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/15 13:14:47 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1809,9 +1809,9 @@ ft_printf("#18 %+0#t\n", 9000000000);
    printf( "printf10    : %+0-10.4i-\n", 10); // a check espace
 
  ft_printf("ft_printf11 : %+-5.3i-\n", 0);
-   printf( "printf1     : %+-5.3i-\n", 0); // a check espace
+   printf( "printf1     : %+-5.3i-\n", 0);
 
-	 ft_printf("ft_printf11 : %hhhhhi-\n", 0); // a check espace
+	 ft_printf("ft_printf11 : %hhhhhi-\n", 0);
 		 printf( "printf1     : %hhhhhi-\n", 0);
 
 x += (ft_printf("Coucou float %-#15.1f\n", -0));

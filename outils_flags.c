@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/14 12:15:01 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/15 13:32:52 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int fill_width_diouxx(t_spec *all)
 	  if ((all->isneg == 1 && all->plus == 1 ) || (all->plus == 1)
     || (all->moins == 1))
 		 {
-      
+
        all->space = all->space - 1;
       all->s_filled_d = (char*)malloc(sizeof(char));
     }
@@ -92,13 +92,31 @@ void check_type(t_spec *all)
 
 int     width(t_spec *all)
 {
-  fill_width_diouxx(all);
+
+ 	if (all->conv->d > 0)
+	{
+		
+		space_plus(all);
+		fill_width_diouxx(all);
+		all->moins == 1 ? ft_putnbr(all->conv->d) : ft_putstr(all->s_filled_d);
+		all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr(all->conv->d);
+	}
+	else if (all->conv->d < 0)
+	{
+
+		fill_width_diouxx(all);
+		//ft_putchar(all->p);
+		all->moins ==  1 ? ft_putnbr(all->conv->d) : ft_putstr(all->s_filled_d);
+		all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr(all->conv->d);
+	}
+  /*fill_width_diouxx(all);
   //space_plus(all);
   //printf("%s\n","widht");
   if (all->moins == 1) //avec plus un char en trop
   {
     //printf("%s\n","w4idht");
-
+all->moins = 1 ? ft_putstr(arg) : ft_pustr(s_filled);
+all->moins = 1 ? ft_pustr(s_filled) : ft_putstr(arg);p
     space_plus(all);
     if (all->check1 != 1 && all->isneg == 1)
       ft_putchar(all->p);
@@ -115,7 +133,7 @@ int     width(t_spec *all)
     space_plus(all);
     if (all->check1 != 1 && all->isneg == 1)
       ft_putchar(all->p);
-  }
+  }*/
 return (1);
 }
 int   precision(t_spec *all)
@@ -128,7 +146,7 @@ int   precision(t_spec *all)
           ft_putchar(all->p);
         ft_putstr(all->s_filled_p);
     }
-    else if (all->vision == 0)
+    else if (all->vision == 0) //print rien
       space_plus(all);
     return(1);
 }
@@ -138,8 +156,6 @@ int width_precision(t_spec *all)
 
   fill_precision(all);
   fill_width_diouxx(all);
-  //if (all->width >= all->len_arg)
- // {
 	  //fill_width_diouxx(all);
 	  if (all->moins == 1)
  	 {
@@ -160,8 +176,6 @@ int width_precision(t_spec *all)
       	ft_putchar(all->p);
   	 	ft_putstr(all->s_filled_p);
 	 }
-
-  //}
   return(1);
  }
 
