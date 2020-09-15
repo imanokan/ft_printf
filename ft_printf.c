@@ -82,8 +82,8 @@ int 	ft_printf(const char *format, ...)
 int main()
 {
 
-  ft_printf("%+ -0.d\n", 4);
-  printf("%+ -0.d\n",4 );
+  ft_printf("%10.5s\n","audre");
+  printf("%10.5s\n","audre" );
 }
 /*
 int main(void)

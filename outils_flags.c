@@ -23,6 +23,7 @@ int fill_width(t_spec *all)
 	      all->s_filled[i] = ' ';
 	      i++;
 	  }
+
       return (1);
 }
 int fill_width_diouxx(t_spec *all)
@@ -120,28 +121,14 @@ void space_plus_p(t_spec *all)
 }
 int   precision(t_spec *all)
 {
-  //printf(" neg : %d, moins : %d, plus : %d\n", all->esp, all->moins, all->plus);
   fill_precision(all);
   space_plus_p(all);
   if (all->vision > 0)
       ft_putstr(all->s_filled_p);
   if (all->isneg == 1)
-  {
     ft_putnbr(all->conv->d * -1);
-  }
   else
-
     ft_putnbr(all->conv->d);
-        //all->conv->d < 0 ? ft_putchar(all->p) : ft_putnbr(all->conv->d);
-    //if (all->vision == 0)
-      //ft_putnbr(all->conv->d);
-
-    //all->check1 == 1 ? ft_putnbr(all->conv->d) : ft_putchar(all->p);
-
-    //ft_putnbr(all->conv->d);
-  //  else if (all->vision == 0) //print rien
-      // soit exit soit space_plus
-
       return (1);
 }
 
@@ -153,7 +140,6 @@ int width_precision(t_spec *all)
 	  //fill_width_diouxx(all);
 	  if (all->moins == 1)
  	 {
-
     		space_plus(all);
    			 ft_putstr(all->s_filled_p);
     		check_type(all);
@@ -172,17 +158,3 @@ int width_precision(t_spec *all)
 	 }
   return(1);
  }
-
-/*int 	int_in_str(t_spec *all)
-{
-	int i;
-
-	i = 0;
-	while (all->spec[i] != '\0')
-	{
-		if (ft_isdigit(all->spec[i]))
-			all->n = ft_atoi_bis(all->spec,&i);
-	  	i++;
-	}
-	return (all->n);
-}*/

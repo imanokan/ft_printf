@@ -184,17 +184,22 @@ int width_precision_s(t_spec *all)
 
 	i = 0;
 	tmp_s = ft_strsub(all->conv->c,0,all->vision);
+  //printf(":%s\n",tmp_s);
 	all->len_arg = ft_strlen(tmp_s);
 	all->space = all->width - all->len_arg;
-	if (all->len_arg <  all->space)
-		fill_width(all);
+
+	if (all->len_arg <  all->width)
+      fill_width(all);
 	if (all->moins == 1)
 	{
+  //  printf("in\n");
 		ft_putstr(tmp_s);
 		ft_putstr(all->s_filled);
 	}
 	else if (all->moins == 0)
 	{
+    //printf("in5\n");
+    //ft_putstr(tmp_s);
 		ft_putstr(all->s_filled);
 		ft_putstr(tmp_s);
 	}
