@@ -73,6 +73,7 @@ void flag_exist(t_spec *all)
 			break;
 		}
 		i++;
+
 	}
 }
 

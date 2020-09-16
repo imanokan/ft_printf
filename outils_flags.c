@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/16 12:37:42 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/16 14:13:08 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,9 @@ int fill_precision(t_spec *all)
 void space_plus(t_spec *all)
 {
 
-  if (all->plus == 1 && all->isneg != 1)
-{
+ if (all->plus == 1 && all->isneg != 1 && all->precision == 1)
     ft_putchar(all->p);
     all->check1 = 1; // perturbe
-  }
 if (all->esp == 1)
   write(1," ",1);
 }
@@ -89,17 +87,23 @@ void check_type(t_spec *all)
 
 int     width(t_spec *all)
 {
-//  printf("zero :%d\n",all->zero );
+ 	//printf("zero :%d\n",all->esp );
  	if (all->conv->d > 0)
 	{
 		space_plus(all);
 		fill_width_diouxx(all);
+		/*if (all->plus == 1  && all->check1 == 1)
+		{
+				ft_putchar(all->p);
+		}*/
 		all->moins == 1 ? ft_putnbr(all->conv->d) : ft_putstr(all->s_filled_d);
+		if (all->plus == 1 ) //&& all->check1 == 1)
+				//printf("inds\n");
+				ft_putchar(all->p);
 		all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr(all->conv->d);
 	}
 	else if (all->conv->d < 0)
 	{
-
 		fill_width_diouxx(all);
 	if (all->moins == 1)
 	{
@@ -150,18 +154,14 @@ int width_precision(t_spec *all)
  	 {
     		space_plus(all);
 			if (all->isneg == 1)
-	      		ft_putchar(all->p);
-   			 ft_putstr(all->s_filled_p);
-    		//check_type(all);
+				ft_putchar(all->p);
+   			ft_putstr(all->s_filled_p);
 			all->isneg == 1 ? ft_putnbr(all->conv->d * -1) : ft_putnbr(all->conv->d);
     		ft_putstr(all->s_filled_d);
-  			//ft_putnbr(all->conv->d);
 	 }
  	 else if (all->moins == 0)
  	 {
-   	 //types
     	ft_putstr(all->s_filled_d);
-		//ft_putstr(all->s_filled_p);
     	space_plus(all);
     	if (all->isneg == 1)
       	{
@@ -169,7 +169,7 @@ int width_precision(t_spec *all)
   	 			ft_putstr(all->s_filled_p);
 				ft_putnbr(all->conv->d * -1);
 			}
-			if (all->isneg == 0)
+			else if (all->isneg == 0)
 			{
 				ft_putstr(all->s_filled_p);
 				ft_putnbr(all->conv->d);
