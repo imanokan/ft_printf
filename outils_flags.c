@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/16 14:13:08 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/16 14:33:15 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int     width(t_spec *all)
 }
 void space_plus_p(t_spec *all)
 {
-  if (all->esp == 1)
+  if (all->esp == 1 && all->isneg == 0)
     write(1, " ", 1);
   if ((all->plus == 1) || (all->isneg == 1))
  	ft_putchar(all->p);
@@ -140,7 +140,10 @@ int   precision(t_spec *all)
   if (all->vision > 0)
       ft_putstr(all->s_filled_p);
   if (all->isneg == 1)
+  {
+	//ft_putchar(all->p);
     ft_putnbr(all->conv->d * -1);
+}
   else
     ft_putnbr(all->conv->d);
       return (1);

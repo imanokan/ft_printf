@@ -90,15 +90,17 @@ int main()
 //printf("|%-.5d|\n",-144 );
 //ft_printf("|%-.5d|\n",-144 );
 
-//printf("|%+ 5.0i|\n",5 );
-//ft_printf("|%+ 5.0i|\n",5);
+printf("|%- .5d|\n",-555 );
+ft_printf("|%- .5d|\n",-555);
 
+printf("|%-.ibipboup|\n",44);
+ft_printf("|%-.ibipboup|\n",44);
 
 printf("|%+ 5i|%+ 5.3i|%+ 5.1i|%+ 5.0i|%+ 5.i|\n", 5,5,5,5,5);
 ft_printf ("|%+ 5i|%+ 5.3i|%+ 5.1i|%+ 5.0i|%+ 5.i|\n", 5,5,5,5,5);
 
-//printf("Salut %-+10.4d  %-+12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
-//ft_printf("Salut %-+10.4d  %+-12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
+printf("Salut %-+10.4d  %-+12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
+ft_printf("Salut %-+10.4d  %+-12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
 
 
 //  ft_printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
