@@ -12,8 +12,8 @@ int specifier_d(t_spec *all, ...)
 	//flag_hh_ll_d(all); //ordre:
 	all->conv->d= va_arg(all->a_list,int);
 	all->len_arg = size_nb(all->conv->d);
-//  if (all->esp == 1 && all->conv->d < 0)
-  //  all->len_arg += 1;
+ 	if (all->esp == 1 || all->plus == 1 || all->conv->d < 0)
+    	all->len_arg += 1;
 	all->p = all->conv->d < 0 ? '-' :  '+';
 	if (all->conv->d < 0)
 		all->isneg = 1;

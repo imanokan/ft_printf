@@ -82,8 +82,21 @@ int 	ft_printf(const char *format, ...)
 int main()
 {
 
-  ft_printf("%10.5s\n","audre");
-  printf("%10.5s\n","audre" );
+
+//printf("|%-.5d| |%-.0d| |%-.i|\n",-587,-21,44 );
+//ft_printf("|%-.5d| |%-.0d| |%-.i|\n",-587,-21,44 );
+
+
+printf("|%-.5d|\n",-144 );
+ft_printf("|%-.5d|\n",-144 );
+
+
+//printf("Salut %-+10.4d  %-+12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
+//ft_printf("Salut %-+10.4d  %+-12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
+
+
+//  ft_printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
+  //printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
 }
 /*
 int main(void)
