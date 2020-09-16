@@ -21,3 +21,44 @@ int     conversion_specifier(t_spec *all)
          specifiers_f(all);
       return (0);
 }
+
+
+intmax_t check_l_ll_h_hh(intmax_t nb, t_spec *all)
+{
+	if (all->l == 1)
+		nb = va_arg(all->a_list, long int);
+	else if (all->ll = 1)
+		nb = va_arg(all->a_list, long long int);
+	else if (all->h == 1)
+		nb = (short int)va_arg(all->a_list, int);
+	else if (all->hh == 1)
+		nb = (char)va_arg(all->a_list, int);
+	else
+		nb = va_arg(all->a_list, int);
+	return (nb);
+}
+
+uint_max_t check_l_ll_h_hh_unsigned(uint_max_t nb, t_spec *all)
+{
+	if (all->l == 1)
+		nb = va_arg(all->a_list, unisgned long int);
+	else if (all->ll == 1)
+		nb = va_arg(all->a_list, unisgned long long int);
+ 	else if (all->h == 1)
+		nb = (unsigned short int)va_arg(all->a_list, int);
+	else if (all->hh == 1)
+		nb = (unsigned char)va_arg(all->a_list, int);
+	else
+		nb = va_arg(all->a_list, unsigned int);
+	return(nb);
+
+}
+long double check_l_lupper(t_spec *all)
+{
+	long double nb;
+	if (all->l == 1 || all->L == 1)
+		nb = va_arg(all->a_list, long double);
+	else
+		nb = va_arg(all->a_list, double);
+	return (nb);
+}

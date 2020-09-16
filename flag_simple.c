@@ -121,6 +121,8 @@ void	flag_exist_bis(const char *format, t_spec *all)
 			all->ll = 1;
 		else if (all->spec[i] == 'L')
 			all->L = 1;
+
+		// add condition float
 		i++;
 	}
 }

@@ -49,3 +49,7 @@ pour le reste dans l'autre sens ça
 
 float;
 apres la premiere etape , quand tu veux soustraire nb-float et nb-int alors verifier l'arrondi dans la memoire stocker diff
+
+
+//ajouter param width pour plus de flexibilite et pas de rep
+// changer ft_putnbr en long long comme ca il peut tout prendre
