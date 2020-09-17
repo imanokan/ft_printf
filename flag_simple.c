@@ -58,7 +58,7 @@ void flag_exist(t_spec *all)
 
 		 else if (all->spec[i] == '#')
 		{
-      all->hash = 1;
+      		all->hash = 1;
     }
 		 else if (all->spec[i] == '.')
 		{

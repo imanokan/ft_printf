@@ -3,57 +3,48 @@
 int	specifiers_f(t_spec *all)
 {
 	int i = 0;
-	//hh LL'
-	//all->conv->f = va_arg(all->a_list,double);
 	all->conv->f = check_l_lupper(all);
-	//printf("f : %f\n",all->conv->f );
 	sep_int_deci(all);
-	//printf("f : %s\n",all->conv->fl_str);
-	all->len_arg = ft_strlen(all->conv->fl_str); //+ 1
-	//printf("f f: %s\n", all->conv->fl_str);
+	all->len_arg = ft_strlen(all->conv->fl_str);
 	//fill_width(all);
 	//printf("final1: %s\n", all->conv->fl_str);
-	if (all->plus == 1)
+	//printf("esp : %d\n",all->esp);
+	if ((all->plus == 1 && all->conv->f > 0 )|| (all->esp == 1 && all->conv->f > 0))
 			all->len_arg += 1;
-	//fill_width_diouxx(all);
-	fill_width(all);
+
+	fill_width_diouxx(all);
+	//fill_width(all);
 		//printf("final3 : %s\n", all->conv->fl_str);
 	//printf("f f: %s\n", all->conv->fl_str);
 	if (all->plus == 1 && all->p == '+')
 		ft_putchar(all->p);
+	else if (all->esp == 1 && all->conv->f > 0)
+		write(1," ",1);
+	//	all->len_arg
+
 	if (all->w == 1 && all->moins == 0)
 	{
-			printf("in1\n" );
+			//printf("final3 : %s\n", all->s_filled_d);
+			if (all->conv->f < 0)
+				ft_putchar('-');
 			ft_putstr(all->s_filled_d);
 			if (all->vision == 0 && all->precision == 1)
-					ft_putnbr(all->conv->ent);
-
-			else if (all->vision != 0)
+				{
+						if (all->conv->f  < 0)
+							ft_putnbr(all->conv->ent * -1);
+						else
+							ft_putnbr(all->conv->ent);
+}
+			else //if (all->vision != 0)
+			{
+		//		printf("ind\n" );
 				ft_putstr(all->conv->fl_str);
-	}
-	else if (all-> w == 1 && all->moins == 1)
-	{
-		//printf("filled: %s\n", all->conv->fl_str);
-		//ft_putstr(all->conv->fl_str);
-		//printf("final3 : %s\n", all->conv->fl_str);
-		ft_putstr(all->conv->fl_str);
-		//printf("all->filled: %s\n", all->conv->fl_str);
-		ft_putstr(all->s_filled_f);
-
-	}
-	else if (all->w == 0)
-	{
-		printf("in7\n" );
-		if (all->vision == 0)
-			ft_putnbr(all->conv->ent);
-		else
-			ft_putstr(all->conv->fl_str);
-	}
+			}
+		//printf("dd\n" );
+		}
 	else
-	{
-		printf("in\n" );
 		ft_putstr(all->conv->fl_str);
-	}
+
 	return (1);
 }
 
@@ -88,7 +79,7 @@ char 	*join_float(t_spec *all)
 	char *tmp_float;
 	char *point;
 
-	printf("str : %d\n",all->w);
+
 	float_str = malloc(sizeof(char*) + 1);
 	all->conv->fl_str = malloc(sizeof(char*) + 1);
 	point = ".";
@@ -96,13 +87,24 @@ char 	*join_float(t_spec *all)
 	if (all->conv->fl_int < 0)
 		all->conv->fl_int *= -1;
 	tmp_float = ft_itoa(all->conv->fl_int);
-	//printf("fl_int : %d\n",all->vision);
-	float_str = ft_strjoin(tmp_ent, point); //float_tmp\
-	printf("str : %d\n",all->w);
-	if (all->vision > 0 && all->w == 1)
+	float_str = ft_strjoin(tmp_ent, point);
+	//if (all->vision == 0 && all-> == 1)
+	 //all->conv->fl_str = ft_strjoin(float_str,tmp_float);
+	if (all->vision == 0 && all->hash == 1)
+	{
+			//printf("flag: %d  %d\n",all->vision, all->hash);
+			//printf("%s\n", "IN" );
+			//printf("float : %s\n",float_str );
+			//ft_strcpy(all->conv->fl_str,float_str);
+			all->conv->fl_str = float_str;
+}
+	else if (all->vision > 0 )
+	{
+		//printf("float : %s\n",tmp_float );
 		all->conv->fl_str = ft_strjoin(float_str,tmp_float);
-	else
-		ft_strncpy(all->conv->fl_str,float_str,ft_strlen(float_str) - 1);
+	}
+	else if (all->vision == 0)
+		all->conv->fl_str = tmp_float;
 	free(float_str);
 	//printf("final : %s\n", all->conv->fl_str);
 	return (all->conv->fl_str);
@@ -134,12 +136,18 @@ int 	round_up(t_spec *all)
 		all->conv->fl = cp_float + up;
 		cp_float *= 10;
 		tmp_float = (int)cp_float;
+		if (tmp_float % 10 == 9)
+			tmp_float += 1;
 		if (tmp_float % 10 >= 5)
-			all->conv->fl += 1;
+				all->conv->fl += 1;
 		else if (tmp_float % 10 < 5)
-			all->conv->fl = all->conv->fl;
+		{
+			if (all->conv->f > 0)
+				all->conv->fl = all->conv->fl;
+			else
+				all->conv->fl -=1;
+		}
 		all->conv->fl_int = (int)all->conv->fl;
-		//printf("fl_int : %d\n", all->conv->fl_int);
 	}
 	return (1);
 }
@@ -159,11 +167,21 @@ int	 round_up_bis(t_spec *all)
 	}
 	else if (all->vision == 0)
 	{
+		//positif
+		all->conv->deci *= -1;
 		tmp = all->conv->deci * 10;
-		if (tmp > 5)
+		printf("tmp : %f\n",all->conv->deci);
+		if (tmp >= 5)
 			all->conv->ent += 1;
-		if (tmp <= 5)
+			all->conv->fl_int = all->conv->ent;
+		if (tmp < 5)
+			printf("dd\n" );
 			all->conv->fl = all->conv->ent;
+		//all->conv->fl_int = (int)all->conv->fl; maybe
+
+
+		//same but negative
+		//if f one digit 
 	}
 	return (1);
 }

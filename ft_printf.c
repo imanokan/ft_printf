@@ -82,7 +82,7 @@ int 	ft_printf(const char *format, ...)
 int main()
 {
 
-
+	float d = 15.4;
 //printf("|%-.5d| |%-.0d| |%-.i|\n",-587,-21,44 );
 //ft_printf("|%-.5d| |%-.0d| |%-.i|\n",-587,-21,44 );
 
@@ -90,8 +90,8 @@ int main()
 //printf("|%-.5d|\n",-144 );
 //ft_printf("|%-.5d|\n",-144 );
 
-//printf("|%d|\n",-555 );
-//ft_printf("|%d|\n",-555);
+printf("|% 05.0f|\n",-55.532 );
+ft_printf("|% 05.0f|\n",-55.532);
 
 //printf("|%-.ibipboup|\n",44);
 //ft_printf("|%-.ibipboup|\n",44);
@@ -102,8 +102,8 @@ int main()
 //printf("Salut %-+10.4d  %-+12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
 //ft_printf("Salut %-+10.4d  %+-12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
 
-printf("printf|%-#5f|\n",15.4 );
-ft_printf("ft_printf|%-#5f|\n",15.4);
+//printf("printf|%-0#5.1f|\n",d);
+//ft_printf("ft_printf|%-0#5.1f|\n",d);
 
 //printf ("printf7     :|%-#5f|%-#5.3f|%-#5.1f|%-#5.0f|%-#5.f|\n", 15.4,15.4,15.4,15.4,15.4);
 //ft_printf ("ft_printf7  :|%-#5f|%-#5.3f|%-#5.1f|%-#5.0f|%-#5.f|\n", 15.4,15.4,15.4,15.4,15.4);

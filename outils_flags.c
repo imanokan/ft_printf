@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/17 14:00:19 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/17 18:02:41 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int fill_width(t_spec *all)
 
 	  all->space = all->width - all->len_arg;
       all->s_filled = (char*)malloc(sizeof(char) + 1);
-	  if (all->type == 'f')
-	  	all->s_filled_f = (char*)malloc(sizeof(char) + 1 );
-	//printf("all->space : %d\n",all->space);
+	  //if (all->type == 'f')
+	  	//all->s_filled_f = (char*)malloc(sizeof(char) + 1 );
+	//printf("all->space : %d  %d\n",all->len_arg, all->width);
       while (i < all->space)
       {
 		 // printf("filled1: %s\n", all->conv->fl_str);
-	      all->s_filled_f[i] = ' ';
+	      all->s_filled[i] = ' ';
 	      i++;
 	  }
       return (1);
@@ -36,7 +36,7 @@ int fill_width_diouxx(t_spec *all)
       int i;
       int j;
       i = 0;
-
+	  //int nb;
       all->space = all->width - all->len_arg;
       all->s_filled_d = (char*)malloc(sizeof(char));
       while (i < all->space)
@@ -46,6 +46,7 @@ int fill_width_diouxx(t_spec *all)
 		else if (all->zero == 0)
 		 	 all->s_filled_d[i++] = ' ';
 		 }
+//	printf("len :%zu\n", ft_strlen(all->s_filled_d));
       all->s_filled_d[i] ='\0';
       return (1);
 }
