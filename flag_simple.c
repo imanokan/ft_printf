@@ -119,14 +119,15 @@ void	flag_exist_bis(const char *format, t_spec *all)
 			all->hh = 1;
 		else if (all->spec[i] == 'l' && all->spec[i + 1] == 'l')
 			all->ll = 1;
-		else if (all->spec[i] == 'L')
+		else if (all->spec[i] == 'L' && all->type == 'f')
 			all->L = 1;
-
+		else if (all->type == 'f' && all->spec[i] == 'l')
+			all->l = 2;
 		// add condition float
 		i++;
 	}
 }
-
+/*
 int 	width_min(t_spec *all)
 {
 	all->space = all->width - all->len_arg;
@@ -143,12 +144,12 @@ int 	width_min(t_spec *all)
 	}
 	return (0);
 
-}
+}*/
 
 
 int  width_s(t_spec *all)
 {
-	width_min(all);
+	//width_min(all);
 	all->space = all->width - all->len_arg;
 	if (all->len_arg < all->space)
 		fill_width(all);

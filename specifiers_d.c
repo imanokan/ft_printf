@@ -26,18 +26,9 @@ int specifier_d(t_spec *all, ...)
   else if (all->wp == 0)
   {
     space_plus(all);
-    ft_putnbr(all->conv->d);
+    ft_putnbr_long(all->conv->d);
   }
-	//if (all->check != 1)
-	//{
-	//	if (all->isneg == 1 && all->check1 != 1)
-			//ft_putnbr(all->conv->d);
-	//else
-		//if (all->plus == 1)
-			//ft_putchar(all->p);
-		//ft_putnbr(all->conv->d);
-
-	return (0);
+  	return (0);
 }
 
 int specifier_x(t_spec *all)
@@ -74,6 +65,7 @@ int specifier_o(t_spec *all)
 {
 	char *s;
 	//flag_hh_ll(all);
+	//all->conv->o = check_l_ll_h_hh_unsigned(all->conv->o, all);
 	all->conv->o = va_arg(all->a_list, signed int);
 	s = ft_itoa_base(all->conv->o,8);
 	all->len_arg = size_nb(all->conv->o);
@@ -82,7 +74,7 @@ int specifier_o(t_spec *all)
 	else if (all->w == 0 && all->precision == 1)
 			precision(all);
 	else if (all->w == 1 && all->precision == 1)
-			width_precision(all); // pour chaque fnction une diff
+			width_precision(all);
 	if (all->check != 1)
 		ft_putstr(s); //do not print the right value even if it has it
 	return (0);
@@ -106,6 +98,6 @@ int specifier_u(t_spec *all)
 	else if (all->w == 1 && all->precision == 1)
 			width_precision(all); // pour chaque fnction une diff
 	if (all->check != 1)
-		ft_putnbr(all->conv->u);
+		ft_putnbr_long(all->conv->u);
 	return (0);
 }

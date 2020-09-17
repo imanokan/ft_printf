@@ -6,7 +6,7 @@ int     conversion_specifier(t_spec *all)
     if (all->type == 'c')
         specifier_c(all);
     else if (all->type  == 's')
-	specifier_s(all);
+		specifier_s(all);
     else if (all->type == 'p')
          specifier_p(all);
     else if (all->type == 'd' || all->type == 'i')
@@ -27,7 +27,7 @@ intmax_t check_l_ll_h_hh(intmax_t nb, t_spec *all)
 {
 	if (all->l == 1)
 		nb = va_arg(all->a_list, long int);
-	else if (all->ll = 1)
+	else if (all->ll == 1)
 		nb = va_arg(all->a_list, long long int);
 	else if (all->h == 1)
 		nb = (short int)va_arg(all->a_list, int);
@@ -38,12 +38,12 @@ intmax_t check_l_ll_h_hh(intmax_t nb, t_spec *all)
 	return (nb);
 }
 
-uint_max_t check_l_ll_h_hh_unsigned(uint_max_t nb, t_spec *all)
+uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all)
 {
 	if (all->l == 1)
-		nb = va_arg(all->a_list, unisgned long int);
+		nb = va_arg(all->a_list, unsigned long int);
 	else if (all->ll == 1)
-		nb = va_arg(all->a_list, unisgned long long int);
+		nb = va_arg(all->a_list, unsigned long long int);
  	else if (all->h == 1)
 		nb = (unsigned short int)va_arg(all->a_list, int);
 	else if (all->hh == 1)

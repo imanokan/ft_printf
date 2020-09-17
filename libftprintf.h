@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/16 15:39:15 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/17 13:43:36 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct  s_spec
 	int check1; //check doublon de signes
 	int stop;
 	int esp; //flag space
+	char *s_filled_f;
 
 }		t_spec;
 
@@ -137,5 +138,5 @@ int precision_s(t_spec *all);
 int width_precision_s(t_spec *all);
 void space_plus_p(t_spec *all);
 long double check_l_lupper(t_spec *all);
-uint_max_t check_l_ll_h_hh_unsigned(uint_max_t nb, t_spec *all);
+uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all);
 intmax_t check_l_ll_h_hh(intmax_t nb, t_spec *all);

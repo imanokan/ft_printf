@@ -6,7 +6,7 @@
 #    By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/11 17:47:43 by imanoka-          #+#    #+#              #
-#    Updated: 2020/03/11 16:56:13 by imanoka-         ###   ########.fr        #
+#    Updated: 2020/09/17 11:42:38 by imanoka-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,8 @@ SRCS = ft_memset.c \
 	  ft_lstnew.c\
 	  ft_itoa_base.c\
 		ft_atoi_bis.c\
+		ft_putnbr_long.c\
+
 
 HEADER = libft.h
 OBJECT = $(SRCS:.c=.o)

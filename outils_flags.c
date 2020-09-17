@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/16 14:33:15 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/17 14:00:19 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ int fill_width(t_spec *all)
 {
       int i;
       i = 0;
+
+	  all->space = all->width - all->len_arg;
       all->s_filled = (char*)malloc(sizeof(char) + 1);
+	  if (all->type == 'f')
+	  	all->s_filled_f = (char*)malloc(sizeof(char) + 1 );
+	//printf("all->space : %d\n",all->space);
       while (i < all->space)
       {
-	      all->s_filled[i] = ' ';
+		 // printf("filled1: %s\n", all->conv->fl_str);
+	      all->s_filled_f[i] = ' ';
 	      i++;
 	  }
-
       return (1);
 }
 int fill_width_diouxx(t_spec *all)
@@ -39,10 +44,9 @@ int fill_width_diouxx(t_spec *all)
         if (all->zero == 1 )
              all->s_filled_d[i++] = '0';
 		else if (all->zero == 0)
-		 	      all->s_filled_d[i++] = ' ';
-	}
+		 	 all->s_filled_d[i++] = ' ';
+		 }
       all->s_filled_d[i] ='\0';
-
       return (1);
 }
 
@@ -78,11 +82,11 @@ if (all->esp == 1)
 void check_type(t_spec *all)
 {
   if (all->type == 'd' || all->type == 'i')
-      ft_putnbr(all->conv->d);
+      ft_putnbr_long(all->conv->d);
   if (all->type == 'u')
-      ft_putnbr(all->conv->u);
+      ft_putnbr_long(all->conv->u);
   if (all->type == 'o')
-      ft_putnbr(all->conv->o);
+      ft_putnbr_long(all->conv->o);
 }
 
 int     width(t_spec *all)
@@ -96,11 +100,11 @@ int     width(t_spec *all)
 		{
 				ft_putchar(all->p);
 		}*/
-		all->moins == 1 ? ft_putnbr(all->conv->d) : ft_putstr(all->s_filled_d);
+		all->moins == 1 ? ft_putnbr_long(all->conv->d) : ft_putstr(all->s_filled_d);
 		if (all->plus == 1 ) //&& all->check1 == 1)
 				//printf("inds\n");
 				ft_putchar(all->p);
-		all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr(all->conv->d);
+		all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr_long(all->conv->d);
 	}
 	else if (all->conv->d < 0)
 	{
@@ -109,18 +113,18 @@ int     width(t_spec *all)
 	{
 	//	space_plus(all);
 
-		all->isneg == 1 ? ft_putchar(all->p) : ft_putnbr(all->conv->d);
+		all->isneg == 1 ? ft_putchar(all->p) : ft_putnbr_long(all->conv->d);
 		if (all->isneg == 1)
-			ft_putnbr(all->conv->d * -1);
+			ft_putnbr_long(all->conv->d * -1);
 		ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins == 0)
 	{
 		//space_plus(all);
 		ft_putstr(all->s_filled_d);
-		all->isneg == 1 ? ft_putchar(all->p) : ft_putnbr(all->conv->d);
+		all->isneg == 1 ? ft_putchar(all->p) : ft_putnbr_long(all->conv->d);
 		if (all->isneg == 1)
-			ft_putnbr(all->conv->d * -1);
+			ft_putnbr_long(all->conv->d * -1);
 
 	}
 	}
@@ -142,10 +146,10 @@ int   precision(t_spec *all)
   if (all->isneg == 1)
   {
 	//ft_putchar(all->p);
-    ft_putnbr(all->conv->d * -1);
+    ft_putnbr_long(all->conv->d * -1);
 }
   else
-    ft_putnbr(all->conv->d);
+    ft_putnbr_long(all->conv->d);
       return (1);
 }
 
@@ -159,7 +163,7 @@ int width_precision(t_spec *all)
 			if (all->isneg == 1)
 				ft_putchar(all->p);
    			ft_putstr(all->s_filled_p);
-			all->isneg == 1 ? ft_putnbr(all->conv->d * -1) : ft_putnbr(all->conv->d);
+			all->isneg == 1 ? ft_putnbr_long(all->conv->d * -1) : ft_putnbr_long(all->conv->d);
     		ft_putstr(all->s_filled_d);
 	 }
  	 else if (all->moins == 0)
@@ -170,12 +174,12 @@ int width_precision(t_spec *all)
       	{
 				ft_putchar(all->p);
   	 			ft_putstr(all->s_filled_p);
-				ft_putnbr(all->conv->d * -1);
+				ft_putnbr_long(all->conv->d * -1);
 			}
 			else if (all->isneg == 0)
 			{
 				ft_putstr(all->s_filled_p);
-				ft_putnbr(all->conv->d);
+				ft_putnbr_long(all->conv->d);
 			}
 	 }
   return(1);
