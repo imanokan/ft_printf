@@ -101,7 +101,7 @@ char 	*join_float(t_spec *all)
 	if (all->vision > 0)
 		all->conv->fl_str = ft_strjoin(float_str,tmp_float);
 	else
-		all->conv->fl_str = float_str;
+		ft_strncpy(all->conv->fl_str,float_str,ft_strlen(float_str) - 1);
 	free(float_str);
 	printf("final : %s\n", all->conv->fl_str);
 	return (all->conv->fl_str);
