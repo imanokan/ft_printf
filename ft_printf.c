@@ -102,8 +102,8 @@ int main()
 //printf("Salut %-+10.4d  %-+12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
 //ft_printf("Salut %-+10.4d  %+-12.5d |%-.5d| |%-.0d| |%-.ibipboup|\n", 50, 140, -587, -21, 44);
 
-printf("printf|%-05.0f|\n",15.4 );
-ft_printf("ft_printf|%-05.f|\n",15.4);
+printf("printf|%-#5f|\n",15.4 );
+ft_printf("ft_printf|%-#5f|\n",15.4);
 
 //printf ("printf7     :|%-#5f|%-#5.3f|%-#5.1f|%-#5.0f|%-#5.f|\n", 15.4,15.4,15.4,15.4,15.4);
 //ft_printf ("ft_printf7  :|%-#5f|%-#5.3f|%-#5.1f|%-#5.0f|%-#5.f|\n", 15.4,15.4,15.4,15.4,15.4);

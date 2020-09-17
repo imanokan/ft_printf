@@ -12,12 +12,12 @@ int	specifiers_f(t_spec *all)
 	all->len_arg = ft_strlen(all->conv->fl_str); //+ 1
 	//printf("f f: %s\n", all->conv->fl_str);
 	//fill_width(all);
-	printf("final1: %s\n", all->conv->fl_str);
+	//printf("final1: %s\n", all->conv->fl_str);
 	if (all->plus == 1)
 			all->len_arg += 1;
 	//fill_width_diouxx(all);
 	fill_width(all);
-		printf("final3 : %s\n", all->conv->fl_str);
+		//printf("final3 : %s\n", all->conv->fl_str);
 	//printf("f f: %s\n", all->conv->fl_str);
 	if (all->plus == 1 && all->p == '+')
 		ft_putchar(all->p);
@@ -35,10 +35,11 @@ int	specifiers_f(t_spec *all)
 	{
 		//printf("filled: %s\n", all->conv->fl_str);
 		//ft_putstr(all->conv->fl_str);
-		printf("final3 : %s\n", all->conv->fl_str);
-		//ft_putstr(all->conv->fl_str);
-		printf("all->filled: %s\n", all->conv->fl_str);
+		//printf("final3 : %s\n", all->conv->fl_str);
+		ft_putstr(all->conv->fl_str);
+		//printf("all->filled: %s\n", all->conv->fl_str);
 		ft_putstr(all->s_filled_f);
+
 	}
 	else if (all->w == 0)
 	{
@@ -87,7 +88,7 @@ char 	*join_float(t_spec *all)
 	char *tmp_float;
 	char *point;
 
-
+	printf("str : %d\n",all->w);
 	float_str = malloc(sizeof(char*) + 1);
 	all->conv->fl_str = malloc(sizeof(char*) + 1);
 	point = ".";
@@ -97,13 +98,13 @@ char 	*join_float(t_spec *all)
 	tmp_float = ft_itoa(all->conv->fl_int);
 	//printf("fl_int : %d\n",all->vision);
 	float_str = ft_strjoin(tmp_ent, point); //float_tmp\
-//	printf("str : %s\n",float_str);
-	if (all->vision > 0)
+	printf("str : %d\n",all->w);
+	if (all->vision > 0 && all->w == 1)
 		all->conv->fl_str = ft_strjoin(float_str,tmp_float);
 	else
 		ft_strncpy(all->conv->fl_str,float_str,ft_strlen(float_str) - 1);
 	free(float_str);
-	printf("final : %s\n", all->conv->fl_str);
+	//printf("final : %s\n", all->conv->fl_str);
 	return (all->conv->fl_str);
 }
 
