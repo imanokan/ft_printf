@@ -9,6 +9,7 @@ int	specifiers_f(t_spec *all)
 	all->isneg = all->conv->f < 0 ? 1 : 0;
 	sep_int_deci(all);
 	all->len_arg = ft_strlen(all->conv->fl_str);
+	//printf("len : %d\n",all->len_arg );
 	if ((all->plus == 1 && all->conv->f > 0 )|| (all->esp == 1 && all->conv->f > 0) || all->isneg == 1)
 			all->len_arg += 1;
 	fill_width_diouxx(all);
@@ -18,9 +19,6 @@ int	specifiers_f(t_spec *all)
 		write(1," ",1);
 	if (all->w == 1 && all->moins == 0)
 	{
-
-		//	if (all->isneg == 1)
-		//		ft_putchar('-');
 			ft_putstr(all->s_filled_d);
 			if (all->isneg == 1)
 				ft_putchar(all->p);
@@ -31,21 +29,37 @@ int	specifiers_f(t_spec *all)
 						else
 							ft_putnbr(all->conv->ent);
 				}
-			else //if (all->vision != 0)
+			else
 				ft_putstr(all->conv->fl_str);
 	}
+	else if (all-> w == 1 && all->moins == 1)
+	{
+		if (all->isneg == 1)
+			ft_putchar(all->p);
+		ft_putstr(all->conv->fl_str);
+		ft_putstr(all->s_filled_d);
+	}
 	else
+
 		ft_putstr(all->conv->fl_str);
 	return (1);
 }
 
 int	sep_int_deci(t_spec *all)
 {
-	int dix; // MACRO
+	int dix;
 
 	dix = 10;
-	all->conv->ent = (int)all->conv->f;
-	all->conv->deci = all->conv->f - all->conv->ent;
+	if (all->conv->f == 0.000000)
+	{
+		all->conv->ent = 0;
+		all->conv->deci = 0.000000;
+	}
+	else
+	{
+			all->conv->ent = (int)all->conv->f;
+		all->conv->deci = all->conv->f - all->conv->ent;
+	}
 	if (all->conv->ent < 0)
 		all->conv->ent *= -1;
 	all->stop = all->precision == 0 ? 6 : all->vision;
@@ -67,19 +81,24 @@ char 	*join_float(t_spec *all)
 	all->conv->fl_str = malloc(sizeof(char*) + 1);
 	point = ".";
 	tmp_ent = ft_itoa(all->conv->ent);
+	//printf("tmp : %s\n",tmp_ent );
 	if (all->conv->fl_int < 0)
 		all->conv->fl_int *= -1;
 	tmp_float = ft_itoa(all->conv->fl_int);
 	float_str = ft_strjoin(tmp_ent, point);
 	//if (all->vision == 0 && all-> == 1)
 	 //all->conv->fl_str = ft_strjoin(float_str,tmp_float);
-	if (all->vision == 0 && all->hash == 1)
-			all->conv->fl_str = float_str;
 	all->conv->fl_str = all->vision == 0 ? tmp_float : ft_strjoin(float_str,tmp_float);
-	if (all->conv-> f % 1 = 0)
-		
+	if (all->vision == 0 && all->hash == 1)
+	{
+			all->conv->fl_str = float_str;
+	}
+	//all->conv->fl_str = all->vision == 0 ? tmp_float : ft_strjoin(float_str,tmp_float);
+	if (all->conv->ent % 1 == 0 && all->vision != 0)
+		all->conv->fl_str = ft_strjoin(float_str,tmp_float);
+//	if (all->conv->f == 0.000000)
+//		all->conv->fl_str = ft_strjoin(float_str, "000000");
 	free(float_str);
-
 	//printf("fl_str : %s\n",all->conv->fl_str );
 	return (all->conv->fl_str);
 }
@@ -110,9 +129,9 @@ int 	round_up(t_spec *all)
 		}
 		all->conv->fl = cp_float + up;
 		cp_float *= 10;
-		tmp_float = (int)cp_float;
-		if (tmp_float % 10 == 9)
-			tmp_float += 1;
+		tmp_float = (int)cp_float;;
+		//if (tmp_float % 10 == 9)
+		//	tmp_float += 1;
 		if (tmp_float % 10 >= 5)
 				all->conv->fl += 1;
 		else if (tmp_float % 10 < 5)
@@ -124,6 +143,7 @@ int 	round_up(t_spec *all)
 		}
 		all->conv->fl_int = (int)all->conv->fl;
 	}
+
 	return (1);
 }
 
@@ -152,10 +172,12 @@ int	 round_up_bis(t_spec *all)
 		if (tmp < 5)
 			all->conv->fl = all->conv->ent;
 		//all->conv->fl_int = (int)all->conv->fl; maybe
-
-
-		//same but negative
-		//if f one digit
 	}
+//	else if (all)
 	return (1);
 }
+
+/*int		float_int(t_spec *all)
+{
+
+}*/

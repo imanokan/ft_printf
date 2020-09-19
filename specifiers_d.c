@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-int specifier_d(t_spec *all, ...)
+int specifier_d(t_spec *all)
 {
 	int i;
 	signed int c;
@@ -18,7 +18,7 @@ int specifier_d(t_spec *all, ...)
 	if (all->conv->d < 0)
 		all->isneg = 1;
 	if (all->w == 1 && all->precision == 0)
-				width(all);
+				width(all,all->conv->d);
  	else if (all->w == 0 && all->precision == 1)
 		precision(all);
 	else if (all->w == 1 && all->precision == 1)
@@ -51,7 +51,7 @@ int specifier_x(t_spec *all)
 	}
 	all->len_arg = size_nb(all->conv->x);
 	if (all->w == 1 && all->precision == 0)
-				width(all);
+				width(all,all->conv->x);
  	else if (all->w == 0 && all->precision == 1)
 			precision(all);
 	else if (all->w == 1 && all->precision == 1)
@@ -70,7 +70,7 @@ int specifier_o(t_spec *all)
 	s = ft_itoa_base(all->conv->o,8);
 	all->len_arg = size_nb(all->conv->o);
 	if (all->w == 1 && all->precision == 0)
-			width(all); // moyen de recup la vale
+			width(all,all->conv->o); // moyen de recup la vale
 	else if (all->w == 0 && all->precision == 1)
 			precision(all);
 	else if (all->w == 1 && all->precision == 1)
@@ -92,7 +92,7 @@ int specifier_u(t_spec *all)
 	all->len_arg = size_nb(all->conv->u);
 	//printf("len :%u\n", all->len_arg);
 	if (all->w == 1 && all->precision == 0)
-			width(all); // moyen de recup la vale
+			width(all, all->conv->u); // moyen de recup la vale
 	else if (all->w == 0 && all->precision == 1)
 			precision(all);
 	else if (all->w == 1 && all->precision == 1)

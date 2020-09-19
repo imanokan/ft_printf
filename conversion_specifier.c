@@ -19,7 +19,9 @@ int     conversion_specifier(t_spec *all)
          specifier_x(all);
     else if (all->type == 'f')
          specifiers_f(all);
-      return (0);
+	//else if (all->type == '%')
+	//	specifier_pourcent(all);
+	return(0);
 }
 
 
@@ -61,4 +63,10 @@ long double check_l_lupper(t_spec *all)
 	else
 		nb = va_arg(all->a_list, double);
 	return (nb);
+}
+
+int specifier_pourcent(t_spec *all)
+{
+	printf("in\n");
+	return (0);
 }

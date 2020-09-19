@@ -151,16 +151,18 @@ int  width_s(t_spec *all)
 {
 	//width_min(all);
 	all->space = all->width - all->len_arg;
-	if (all->len_arg < all->space)
-		fill_width(all);
+	if (all->len_arg < all->width)
+		fill_width_diouxx(all);
 	if (all->moins == 1)
 	{
+		printf("is\n");
 		ft_putstr(all->conv->c);
-		ft_putstr(all->s_filled);
+		ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins != 1)
 	{
-		ft_putstr(all->s_filled);
+		//printf("in\n");
+		ft_putstr(all->s_filled_d);
 		ft_putstr(all->conv->c);
 	}
 	return (0);

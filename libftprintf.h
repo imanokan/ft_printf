@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/17 13:43:36 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/19 17:51:06 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int		flag_simple(t_spec *all);
 int 		specifier_c(t_spec *all, ...);
 int		specifier_s(t_spec *all, ...);
 int		specifier_p(t_spec *all, ...);
-int		specifier_d(t_spec *all, ...);
+int		specifier_d(t_spec *all);
 int specifier_u(t_spec *all);
 int		specifiers_f(t_spec *all);
 int		width_min(t_spec *all);
@@ -123,7 +123,7 @@ void 	ft_precision(t_spec *all);
 int		fill_width_diouxx(t_spec *all);
 void flag_corr(t_spec *all);
 void space_plus(t_spec *all);
-int     width(t_spec *all);
+int     width(t_spec *all, unsigned int nb);
 int   precision(t_spec *all);
 int width_precision(t_spec *all);
 void check_type(t_spec *all); //pour width - le bon specifier
@@ -140,3 +140,5 @@ void space_plus_p(t_spec *all);
 long double check_l_lupper(t_spec *all);
 uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all);
 intmax_t check_l_ll_h_hh(intmax_t nb, t_spec *all);
+int specifier_pourcent(t_spec *all);
+int cut_str_bis(const char *format, t_spec *all);

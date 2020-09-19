@@ -5,7 +5,7 @@
 int  type_spec(char c)
 {
     return (c == 'c' || c == 's' || c == 'p' | c == 'f'
-    || c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o' || c == 'u');
+    || c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o' || c == 'u' );//|| c == '%');
 }
 void initialisation(t_spec *all)
 {
@@ -45,8 +45,8 @@ int       cut_str(const char *format, int *i,  t_spec *all)
         all->spec = ft_strsub(format, *i - j, j + 1);
 	flag_exist(all);
 	ft_precision(all);
-  flag_corr(all);
-  ft_precision(all);
+  	flag_corr(all);
+  	ft_precision(all);
 	conversion_specifier(all);
 	free(all->spec);
         }
@@ -72,10 +72,29 @@ int 	ft_printf(const char *format, ...)
 		cut_str(format, &i, all);
 		i++;
 	}
+	//cut_str_bis(format, all);
 	va_end(all->a_list);
 	free(all->conv);
 	free(all);
 	return(0);
+}
+
+int cut_str_bis(const char *format, t_spec *all)
+{
+	int i = 0;
+
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%' && format[i + 1] == '%' && format[i + 2] != '%')
+			all->type = '%';
+				i++;
+		//width et precsion
+		//esp
+		//plus ou min juste write
+		//if width + widht %
+		//modulo
+	}
+	return (1);
 }
 
 
@@ -90,11 +109,18 @@ int main()
 //printf("|%-.5d|\n",-144 );
 //ft_printf("|%-.5d|\n",-144 );
 
-printf("|%-0#5.1f|\n",5.45);
-ft_printf("|%-0#5.1f|\n",5.45);
+printf("|%-0#5.7f|\n",999.7999999);
+ft_printf("|%-0#5.7f|\n",999.7999999);
 
-//printf("|%-.ibipboup|\n",44);
-//ft_printf("|%-.ibipboup|\n",44);
+//printf ("printf23        :|%-0#5f|%-0#5.10f|%-0#5.9f|%-0#5.8f|%-0#5.7f|%-0#5.6f|%-0#5.5f|%-0#5.4f|%-0#5.3f|%-0#5.2f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n\n", 999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999);
+//ft_printf ("ft_printf23     :|%-0#5f|%-0#5.10f|%-0#5.9f|%-0#5.8f|%-0#5.7f|%-0#5.6f|%-0#5.5f|%-0#5.4f|%-0#5.3f|%-0#5.2f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n", 999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999);
+
+//printf("|%5%| \n");
+//ft_printf("|%%5| \n");
+
+
+//printf("|%5d|\n",-44);
+//ft_printf("|%5d|\n",-44);
 
 //printf("|%+ 5i|%+ 5.3i|%+ 5.1i|%+ 5.0i|%+ 5.i|\n", 5,5,5,5,5);
 //ft_printf ("|%+ 5i|%+ 5.3i|%+ 5.1i|%+ 5.0i|%+ 5.i|\n", 5,5,5,5,5);
