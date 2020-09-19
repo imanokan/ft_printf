@@ -90,8 +90,8 @@ int main()
 //printf("|%-.5d|\n",-144 );
 //ft_printf("|%-.5d|\n",-144 );
 
-printf("|% 05.0f|\n",-55.532 );
-ft_printf("|% 05.0f|\n",-55.532);
+printf("|%-0#5.1f|\n",5.45);
+ft_printf("|%-0#5.1f|\n",5.45);
 
 //printf("|%-.ibipboup|\n",44);
 //ft_printf("|%-.ibipboup|\n",44);
