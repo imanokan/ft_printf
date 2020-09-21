@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/19 17:51:06 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/21 21:49:13 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ typedef struct 	s_conv
 	unsigned int x;
 	unsigned int u;
 	double f; //float de va_arg
-	signed int o;
+	unsigned int o; // unsigned int
 	double deci;
 	double fl;  //float utilisé pour les calculs
 	int ent; //partie entière float
 	int fl_int; // partie float arrondie caster en un int
 	char *fl_str; // float en str
+	char *x_str;
 }			t_conv;
 
 typedef struct  s_spec
@@ -95,7 +96,6 @@ typedef struct	s_conv;
 int		cut_str(const char *format, int *i, t_spec *all);
 int		conversion_specifier(t_spec *all);
 int 		type_spec(char c);
-//int		int_in_str(t_spec *all);
 int		check_binary(t_spec *all);
 //char		*fill_space(t_spec *all);
 int 		ft_printf(const char *format, ...);
@@ -108,7 +108,8 @@ int		specifier_d(t_spec *all);
 int specifier_u(t_spec *all);
 int		specifiers_f(t_spec *all);
 int		width_min(t_spec *all);
-int		size_nb(int n);
+int		size_nb_unsigned(unsigned int n);
+int 	size_nb(int n);
 void		space_x(t_spec *all);
 void		flag_exist_bis(const char *format, t_spec *all);
 void		flag_hh_ll_d(t_spec *all);
@@ -116,16 +117,18 @@ void		flag_hh_ll_u(t_spec *all);
 int 		fill_width(t_spec *all);
 int			fill_precision(t_spec *all);
 int 		fill_width_plus(t_spec *all);
-//int		fill_zero(t_spec *all);
 int 	fnct_output_s(t_spec *all);
 int			ft_atoi_bis(char *str, int *i);
 void 	ft_precision(t_spec *all);
 int		fill_width_diouxx(t_spec *all);
 void flag_corr(t_spec *all);
 void space_plus(t_spec *all);
-int     width(t_spec *all, unsigned int nb);
-int   precision(t_spec *all);
-int width_precision(t_spec *all);
+int     width_unsigned(t_spec *all, unsigned int nb);
+int 	width_signed(t_spec *all, signed int nb);
+int 	width_precision_signed(t_spec *all, signed int nb);
+int 	precision_signed(t_spec *all, signed int nb);
+int   precision_unsigned(t_spec *all, unsigned int nb);
+int width_precision_unsigned(t_spec *all, unsigned int nb);
 void check_type(t_spec *all); //pour width - le bon specifier
 int specifier_o(t_spec *all);
 int specifier_x(t_spec *all);
@@ -142,3 +145,6 @@ uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all);
 intmax_t check_l_ll_h_hh(intmax_t nb, t_spec *all);
 int specifier_pourcent(t_spec *all);
 int cut_str_bis(const char *format, t_spec *all);
+int w_p_unsigned_char(t_spec *all, unsigned char s);
+int p_unsigned_char(t_spec *all, unsigned char s);
+int  w_unsigned_char(t_spec *all, unsigned char s);

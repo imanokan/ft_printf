@@ -9,8 +9,8 @@ int specifier_d(t_spec *all)
 	char *s;
 	char *f;
 	i = 0;
-	//flag_hh_ll_d(all); //ordre:
-	all->conv->d= va_arg(all->a_list,int);
+	//all->conv->d= va_arg(all->a_list, signed int);
+	all->conv->d = check_l_ll_h_hh(all->conv->d,all);
 	all->len_arg = size_nb(all->conv->d);
  	if (all->esp == 1 || all->plus == 1 || all->conv->d < 0)
     	all->len_arg += 1;
@@ -18,11 +18,11 @@ int specifier_d(t_spec *all)
 	if (all->conv->d < 0)
 		all->isneg = 1;
 	if (all->w == 1 && all->precision == 0)
-				width(all,all->conv->d);
+				width_signed(all,all->conv->d);
  	else if (all->w == 0 && all->precision == 1)
-		precision(all);
+		precision_signed(all, all->conv->d);
 	else if (all->w == 1 && all->precision == 1)
-			width_precision(all);
+			width_precision_signed(all, all->conv->d);
   else if (all->wp == 0)
   {
     space_plus(all);
@@ -36,27 +36,32 @@ int specifier_x(t_spec *all)
 	char *str;
 	int i;
 	i = 0;
-	//flag_hh_ll(all); //ordre
-	all->conv->x = va_arg(all->a_list,unsigned int);
+
+	//all->conv->x = va_arg(all->a_list,unsigned int);
+	all->conv->x = check_l_ll_h_hh_unsigned(all->conv->x,all);
 	str = ft_itoa_base(all->conv->x,16);
+	//hash_x(all);
 	if (all->type == 'X') // voir l'autre ft_itoa_base avec c
 			while (str[i] != '\0')
 					ft_toupper(str[i++]);
+	printf(" str : %s\n",str );
 	if (all->hash == 1 && all->conv->x != 0)
 	{
 		if (all->type == 'X')
-			write(1,"OX",2);
+			write(1,"0X",2);
 		else
-			write(1,"ox",2);
+			write(1,"0x",2);
+		//check add la longeur
 	}
-	all->len_arg = size_nb(all->conv->x);
+	//fill number if needed et space en precision puis le ar
+	all->len_arg = size_nb_unsigned(all->conv->x);
 	if (all->w == 1 && all->precision == 0)
-				width(all,all->conv->x);
+				w_unsigned_char(all,all->conv->x);
  	else if (all->w == 0 && all->precision == 1)
-			precision(all);
+			p_unsigned_char(all, all->conv->x);
 	else if (all->w == 1 && all->precision == 1)
-			width_precision(all);
-	if (all->check != 1)
+			w_p_unsigned_char(all, all->conv->x);
+	else
 			ft_putstr(str);
 	return (0);
 }
@@ -64,40 +69,37 @@ int specifier_x(t_spec *all)
 int specifier_o(t_spec *all)
 {
 	char *s;
-	//flag_hh_ll(all);
-	//all->conv->o = check_l_ll_h_hh_unsigned(all->conv->o, all);
-	all->conv->o = va_arg(all->a_list, signed int);
+
+	all->conv->o = check_l_ll_h_hh_unsigned(all->conv->o, all);
 	s = ft_itoa_base(all->conv->o,8);
 	all->len_arg = size_nb(all->conv->o);
 	if (all->w == 1 && all->precision == 0)
-			width(all,all->conv->o); // moyen de recup la vale
+			w_unsigned_char(all,all->conv->o);
 	else if (all->w == 0 && all->precision == 1)
-			precision(all);
+			p_unsigned_char(all,all->conv->o);
 	else if (all->w == 1 && all->precision == 1)
-			width_precision(all);
-	if (all->check != 1)
-		ft_putstr(s); //do not print the right value even if it has it
+			w_p_unsigned_char(all,all->conv->o);
+	else
+		ft_putstr(s);
+
 	return (0);
 }
 
 int specifier_u(t_spec *all)
 {
-	//unsigned uint_max c;
-	//flag_hh_ll_u(all);
-	all->conv->u = va_arg(all->a_list, unsigned int);
-	//printf("%u\n", all->conv->u);
+
+	//all->conv->u = va_arg(all->a_list, unsigned int);
+	all->conv->u = check_l_ll_h_hh_unsigned(all->conv->u, all);
 	if (all->conv->u < 0)
 		all->conv->u = UINT_MAX - all->conv->u;
-		//printf("%u\n", all->conv->u);
-	all->len_arg = size_nb(all->conv->u);
-	//printf("len :%u\n", all->len_arg);
+	all->len_arg = size_nb_unsigned(all->conv->u);
 	if (all->w == 1 && all->precision == 0)
-			width(all, all->conv->u); // moyen de recup la vale
+			width_unsigned(all, all->conv->u); // moyen de recup la vale
 	else if (all->w == 0 && all->precision == 1)
-			precision(all);
+			precision_unsigned(all, all->conv->u);
 	else if (all->w == 1 && all->precision == 1)
-			width_precision(all); // pour chaque fnction une diff
-	if (all->check != 1)
+			width_precision_unsigned(all,all->conv->u);
+	else
 		ft_putnbr_long(all->conv->u);
 	return (0);
 }

@@ -1,73 +1,29 @@
 #include "libftprintf.h"
-/*
-static int		ft_numlen(int n)
-{
-	int		i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		i++;
-		n = -n;
-	}
-	while (n > 0)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
-}
-*/
 
 void flag_exist(t_spec *all)
 {
  	int i;
 	i = 0;
 
-  //printf("spec : %s\n", all->spec);
 	while (all->spec[i] != '\0')
 	{
-    //printf("spec : %c\n", all->spec[i]);
+
 		if (all->spec[i] == '+')
-    {
-      //printf("in\n");
-       all->plus = 1;
-       //printf("all->plus : %d\n", all->plus);
-    }
+       		all->plus = 1;
 		else if (all->spec[i] == '-')
-		{
-      all->moins = 1;
-    }
-		 else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
-  	 {
-       all->zero = 1;
-      // i++;
-
-    }
-    else if (all->spec[i] == '0'  && ft_isascii(all->spec[i + 1]))
-    {
-      all->zero = 1;
-    }
-     else if (all->spec[i] == ' ')
-		{
-
-      	all->esp = 1;
-      }
-
+      		all->moins = 1;
+		else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
+       		all->zero = 1;
+    	else if (all->spec[i] == '0'  && ft_isascii(all->spec[i + 1]))
+      		all->zero = 1;
+     	else if (all->spec[i] == ' ')
+      		all->esp = 1;
 		 else if (all->spec[i] == '#')
-		{
       		all->hash = 1;
-    }
 		 else if (all->spec[i] == '.')
-		{
-
-      all->point = 1;
-    }
+      		all->point = 1;
 	   else if ((ft_isdigit(all->spec[i]) && all->point != 1))// all->spec[i - 1] != '.'))
-		{
-
+	   {
 			all->w = 1;
 			all->width = ft_atoi(&all->spec[i]);
 			break;
@@ -102,8 +58,7 @@ void    flag_corr(t_spec *all)
   if (all->w == 1 && all->precision == 1)
   	  all->wp = 1;
   if (all->plus == 1 && all->moins == 1)
-        all->plus = 1;
-  //printf("flags; %d %d %d\n", all->space, all->plus, all->wp);
+		all->plus = 1;
  }
 void	flag_exist_bis(const char *format, t_spec *all)
 {
@@ -212,3 +167,61 @@ int width_precision_s(t_spec *all)
 	//free(tmp_s);
 	return (0);
 }
+/*
+int  w_unsigned_char(t_spec *all, unsigned char s)
+{
+	//width_min(all);
+	all->space = all->width - all->len_arg;
+	if (all->len_arg < all->width)
+		fill_width_diouxx(all);
+	if (all->moins == 1)
+	{
+		ft_putstr(s);
+		ft_putstr(all->s_filled_d);
+	}
+	else if (all->moins != 1)
+	{
+		ft_putstr(all->s_filled_d);
+		ft_putstr(s);
+	}
+	return (0);
+}
+int p_unsigned_char(t_spec *all, unsigned char *s)
+{
+	int i;
+
+	i = 0;
+	if (all->len_arg >= all->vision)
+	{
+		while (i != all->vision)
+			ft_putchar(s);
+	}
+	else if (all->vision > all->len_arg)
+			ft_putstr((const char *) s);
+	return (0);
+}
+
+int w_p_unsigned(t_spec *all, unsigned char s)
+{
+	//char *tmp_s;
+	int i;
+
+	i = 0;
+	s = ft_strsub(s,0,all->vision);
+	all->len_arg = ft_strlen(s);
+	all->space = all->width - all->len_arg;
+	if (all->len_arg <  all->width)
+      fill_width(all);
+	if (all->moins == 1)
+	{
+		ft_putstr(s);
+		ft_putstr(all->s_filled_d);
+	}
+	else if (all->moins == 0)
+	{
+		ft_putstr(all->s_filled_d);
+		ft_putstr(s);
+	}
+
+	return (0);
+}*/
