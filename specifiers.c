@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 13:30:01 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/22 17:53:24 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/22 20:27:07 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@ int		specifier_p(t_spec *all, ...)
 {
 	int i;
 	long long c;
- 	char *s;
-	unsigned char *f;
+
 
 	i = 0;
 	c = va_arg(all->a_list, long long);
-	s = ft_itoa_base(c,16);
-	f = (unsigned char *)ft_strjoin("0x",s);
-	//ft_strcpy(all->conv->p, f);
-	all->len_arg = ft_strlen((const char*)c);
-	if (all->w != 1 && all->precision != 1)
-			ft_putstr((const char *)f);
-	//fnct_output_p(all); same pour p
+	all->conv->p_str = ft_itoa_base(c,16);
+	if (all->w == 1)
+		all->conv->p_str = ft_strjoin("0x",all->conv->p_str);
+	else
+		write (1,"0x",2);
+	all->len_arg = ft_strlen(all->conv->p_str);
+	if (all->w == 1 && all->precision == 0)
+				width_s(all, all->conv->p_str);
+	else
+			ft_putstr(all->conv->p_str);
 	return (0);
 }
 
@@ -69,7 +71,7 @@ int 	specifier_s(t_spec *all, ...)
 			precision_s(all, all->conv->c);
 		else if (all->wp == 1)
 			width_precision_s(all, all->conv->c);
-		//else if (all->conv->c == NULL)
+
 		else if (all->w != 1 && all->precision != 1)
 				ft_putstr(all->conv->c);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/22 18:27:06 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/22 20:31:20 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct 	s_conv
 {
-	unsigned char *p;
+	long long p;
 	char *s;
 	char *c;
 	signed int d;
@@ -34,6 +34,7 @@ typedef struct 	s_conv
 	char *fl_str; // float en str
 	char *x_str;
 	char *o_str;
+	char *p_str;
 
 }			t_conv;
 
@@ -109,10 +110,8 @@ int		specifier_p(t_spec *all, ...);
 int		specifier_d(t_spec *all);
 int specifier_u(t_spec *all);
 int		specifiers_f(t_spec *all);
-int		width_min(t_spec *all);
 int		size_nb_unsigned(unsigned int n);
 int 	size_nb(int n);
-void		space_x(t_spec *all);
 void		flag_exist_bis(const char *format, t_spec *all);
 void		flag_hh_ll_d(t_spec *all);
 void		flag_hh_ll_u(t_spec *all);
@@ -127,7 +126,7 @@ void flag_corr(t_spec *all);
 void space_plus(t_spec *all);
 int     width_unsigned(t_spec *all, unsigned int nb);
 int 	width_signed(t_spec *all, signed int nb);
-int 	width_precision_signed(t_spec *all, signed int nb);
+int 	width_precision_signed(t_spec *all, long long nb);
 int 	precision_signed(t_spec *all, signed int nb);
 int   precision_unsigned(t_spec *all, unsigned int nb);
 int width_precision_unsigned(t_spec *all, unsigned int nb);

@@ -54,16 +54,3 @@ void  flag_hh_ll_u(t_spec *all)
 	else if (all->ll)
 		all->conv->u = va_arg(all->a_list, unsigned long long int);
 }
-
-void  space_x(t_spec *all)
-{
-	int i;
-	i = 0;
-
-	while (all->spec[i] != '\0')
-	{
-		if (all->spec[i] == ' ' && ft_isdigit(all->spec[i + 1]))
-				write(1," ",1);
-		i++;
-	}
-}

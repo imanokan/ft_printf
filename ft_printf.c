@@ -5,7 +5,7 @@
 int  type_spec(char c)
 {
     return (c == 'c' || c == 's' || c == 'p' | c == 'f'
-    || c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o' || c == 'u' );//|| c == '%');
+    || c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o' || c == 'u' );
 }
 void initialisation(t_spec *all)
 {
@@ -42,7 +42,7 @@ int       cut_str(const char *format, int *i,  t_spec *all)
                 j++;
 	}
 	all->type = format[*i];
-        all->spec = ft_strsub(format, *i - j, j + 1);
+    all->spec = ft_strsub(format, *i - j, j + 1);
 	flag_exist(all);
 	ft_precision(all);
   	flag_corr(all);
@@ -78,16 +78,19 @@ int 	ft_printf(const char *format, ...)
 	free(all);
 	return(0);
 }
-
+/*
 int cut_str_bis(const char *format, t_spec *all)
 {
 	int i = 0;
 
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1] == '%' && format[i + 2] != '%')
+		if (format[i] == '%' && format '%')
+		{
 			all->type = '%';
-				i++;
+			//specifier_pourcent(all);
+		}
+		i++;
 		//width et precsion
 		//esp
 		//plus ou min juste write
@@ -96,12 +99,14 @@ int cut_str_bis(const char *format, t_spec *all)
 	}
 	return (1);
 }
-
+*/
 
 int main()
 {
 
 	float d = 15.4;
+	char *s = "aud";
+
 //printf("|%-.5d| |%-.0d| |%-.i|\n",-587,-21,44 );
 //ft_printf("|%-.5d| |%-.0d| |%-.i|\n",-587,-21,44 );
 
@@ -109,8 +114,8 @@ int main()
 //printf("|%-.5d|\n",-144 );
 //ft_printf("|%-.5d|\n",-144 );
 
-printf("|%10.5o|\n",15);
-ft_printf("|%10.5o|\n",15);
+printf("|%541.ad%|\n");
+//ft_printf("|%%5|\n");
 
 //printf ("printf23        :|%-0#5f|%-0#5.10f|%-0#5.9f|%-0#5.8f|%-0#5.7f|%-0#5.6f|%-0#5.5f|%-0#5.4f|%-0#5.3f|%-0#5.2f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n\n", 999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999);
 //ft_printf ("ft_printf23     :|%-0#5f|%-0#5.10f|%-0#5.9f|%-0#5.8f|%-0#5.7f|%-0#5.6f|%-0#5.5f|%-0#5.4f|%-0#5.3f|%-0#5.2f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n", 999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999);

@@ -78,46 +78,41 @@ void	flag_exist_bis(const char *format, t_spec *all)
 			all->L = 1;
 		else if (all->type == 'f' && all->spec[i] == 'l')
 			all->l = 2;
-		// add condition float
 		i++;
 	}
 }
-/*
-int 	width_min(t_spec *all)
-{
-	all->space = all->width - all->len_arg;
-	if (all->len_arg  < all->space)
-	{
-		if (all->type == 's')
-						 fill_width(all);
-		if (all->w == 1)
-						fill_width_diouxx(all);
-		//if (all->zero == 1)
-						//fill_zero(all);
-		else if (all->precision == 1 )//|| all->zero == 1)
-						fill_precision(all);
-	}
-	return (0);
-
-}*/
-
 
 int  width_s(t_spec *all, char *s)
 {
-	//width_min(all);
-	all->space = all->width - all->len_arg;
+
+	if (all->hash == 1)
+		all->len_arg += 2;
 	if (all->len_arg < all->width)
 		fill_width_diouxx(all);
 	if (all->moins == 1)
 	{
-		printf("is\n");
+		if (all->hash == 1)
+		{
+			if (all->type == 'X')
+				write(1,"0X",2);
+			else
+				write(1,"0x",2);
+
+		}
 		ft_putstr(s);
 		ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins != 1)
 	{
-		//printf("in\n");
 		ft_putstr(all->s_filled_d);
+		if (all->hash == 1 )
+		{
+			if (all->type == 'X')
+				write(1,"0X",2);
+			else
+				write(1,"0x",2);
+
+		}
 		ft_putstr(s);
 	}
 	return (0);
@@ -153,14 +148,11 @@ int width_precision_s(t_spec *all, char *s)
       fill_width(all);
 	if (all->moins == 1)
 	{
-  //  printf("in\n");
 		ft_putstr(tmp_s);
 		ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins == 0)
 	{
-    //printf("in5\n");
-    //ft_putstr(tmp_s);
 		ft_putstr(all->s_filled_d);
 		ft_putstr(tmp_s);
 	}
@@ -170,45 +162,46 @@ int width_precision_s(t_spec *all, char *s)
 
 int   precision_ox(t_spec *all, char *s)
 {
+	if (all->hash == 1 )
+	{
+		if (all->type == 'X')
+			write(1,"0X",2);
+		else
+			write(1,"0x",2);
+	}
   fill_precision(all);
   space_plus_p(all);
   if (all->vision > 0)
       ft_putstr(all->s_filled_p);
   ft_putstr(s);
- // if (all->isneg == 1)
-  //{
-	//ft_putchar(all->p);
-    //ft_putnbr_long(all->conv->d * -1);
     return (1);
 }
-int width_precision_ox(t_spec *all, char *s) //same signed unsigned
+int width_precision_ox(t_spec *all, char *s)
 {
-  fill_precision(all);
-  fill_width_diouxx(all);
- if (all->moins == 1)
+	fill_precision(all);
+	if (all->hash == 1)
+		all->len_arg += 2;
+	fill_width_diouxx(all);
+ 	if (all->moins == 1)
 	{
 		   space_plus(all);
-		  // if (all->isneg == 1)
-			//   ft_putchar(all->p);
 			ft_putstr(all->s_filled_p);
 			ft_putstr(s);
-		  // all->isneg == 1 ? ft_putnbr_long(all->conv->d * -1) : ft_putnbr_long(all->conv->d);
 		   ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins == 0)
 	{
-	   ft_putstr(all->s_filled_d);
-	   space_plus(all);
-	 //  if (all->isneg == 1)
-	   //{
-		//	   ft_putchar(all->p);
-			  // ft_putstr(all->s_filled_p);
-			//   ft_putnbr_long(nb * -1);
-
-
-			   ft_putstr(all->s_filled_p);
-			  	ft_putstr(s);
-
+		ft_putstr(all->s_filled_d);
+		space_plus(all);
+		if (all->hash == 1 )
+		{
+			if (all->type == 'X')
+				write(1,"0X",2);
+			else
+				write(1,"0x",2);
 		}
-  return(1);
+		ft_putstr(all->s_filled_p);
+		ft_putstr(s);
+	}
+	  return(1);
  }

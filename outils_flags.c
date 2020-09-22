@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/21 19:49:56 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/22 20:30:38 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int fill_width_diouxx(t_spec *all)
 		 }
 
  	 all->s_filled_d[i] ='\0';
-
-      return (1);
+	 //printf(" s : %s\n",all->s_filled_d );
+	 return (1);
 }
 
 int fill_precision(t_spec *all)
@@ -247,7 +247,7 @@ int width_precision_unsigned(t_spec *all, unsigned int nb) //same signed unsigne
 	 }
   return(1);
  }
- int width_precision_signed(t_spec *all, signed int nb) //same signed unsigned
+ int width_precision_signed(t_spec *all, long long nb)
  {
    fill_precision(all);
    fill_width_diouxx(all);
@@ -257,7 +257,7 @@ int width_precision_unsigned(t_spec *all, unsigned int nb) //same signed unsigne
  			if (all->isneg == 1)
  				ft_putchar(all->p);
     			ft_putstr(all->s_filled_p);
- 			all->isneg == 1 ? ft_putnbr_long(all->conv->d * -1) : ft_putnbr_long(all->conv->d);
+ 			all->isneg == 1 ? ft_putnbr_long(nb * -1) : ft_putnbr_long(nb);
      		ft_putstr(all->s_filled_d);
  	 }
   	 else if (all->moins == 0)
