@@ -102,7 +102,7 @@ int 	width_min(t_spec *all)
 }*/
 
 
-int  width_s(t_spec *all)
+int  width_s(t_spec *all, char *s)
 {
 	//width_min(all);
 	all->space = all->width - all->len_arg;
@@ -111,19 +111,19 @@ int  width_s(t_spec *all)
 	if (all->moins == 1)
 	{
 		printf("is\n");
-		ft_putstr(all->conv->c);
+		ft_putstr(s);
 		ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins != 1)
 	{
 		//printf("in\n");
 		ft_putstr(all->s_filled_d);
-		ft_putstr(all->conv->c);
+		ft_putstr(s);
 	}
 	return (0);
 }
 
-int precision_s(t_spec *all)
+int precision_s(t_spec *all, char *s)
 {
 	int i;
 
@@ -131,21 +131,21 @@ int precision_s(t_spec *all)
 	if (all->len_arg >= all->vision)
 	{
 		while (i != all->vision)
-			ft_putchar(all->conv->c[i++]);
+			ft_putchar(s[i++]);
 	}
 	else if (all->vision > all->len_arg)
-			ft_putstr(all->conv->c);
+			ft_putstr(s);
 	return (0);
 }
 
-int width_precision_s(t_spec *all)
+int width_precision_s(t_spec *all, char *s)
 {
 	char *tmp_s;
 	int i;
 
 	i = 0;
-	tmp_s = ft_strsub(all->conv->c,0,all->vision);
-  //printf(":%s\n",tmp_s);
+	fill_precision(all);
+	tmp_s = ft_strsub(s,0,all->vision);
 	all->len_arg = ft_strlen(tmp_s);
 	all->space = all->width - all->len_arg;
 
@@ -155,73 +155,60 @@ int width_precision_s(t_spec *all)
 	{
   //  printf("in\n");
 		ft_putstr(tmp_s);
-		ft_putstr(all->s_filled);
+		ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins == 0)
 	{
     //printf("in5\n");
     //ft_putstr(tmp_s);
-		ft_putstr(all->s_filled);
+		ft_putstr(all->s_filled_d);
 		ft_putstr(tmp_s);
 	}
 	//free(tmp_s);
 	return (0);
 }
-/*
-int  w_unsigned_char(t_spec *all, unsigned char s)
+
+int   precision_ox(t_spec *all, char *s)
 {
-	//width_min(all);
-	all->space = all->width - all->len_arg;
-	if (all->len_arg < all->width)
-		fill_width_diouxx(all);
-	if (all->moins == 1)
-	{
-		ft_putstr(s);
-		ft_putstr(all->s_filled_d);
-	}
-	else if (all->moins != 1)
-	{
-		ft_putstr(all->s_filled_d);
-		ft_putstr(s);
-	}
-	return (0);
+  fill_precision(all);
+  space_plus_p(all);
+  if (all->vision > 0)
+      ft_putstr(all->s_filled_p);
+  ft_putstr(s);
+ // if (all->isneg == 1)
+  //{
+	//ft_putchar(all->p);
+    //ft_putnbr_long(all->conv->d * -1);
+    return (1);
 }
-int p_unsigned_char(t_spec *all, unsigned char *s)
+int width_precision_ox(t_spec *all, char *s) //same signed unsigned
 {
-	int i;
-
-	i = 0;
-	if (all->len_arg >= all->vision)
+  fill_precision(all);
+  fill_width_diouxx(all);
+ if (all->moins == 1)
 	{
-		while (i != all->vision)
-			ft_putchar(s);
-	}
-	else if (all->vision > all->len_arg)
-			ft_putstr((const char *) s);
-	return (0);
-}
-
-int w_p_unsigned(t_spec *all, unsigned char s)
-{
-	//char *tmp_s;
-	int i;
-
-	i = 0;
-	s = ft_strsub(s,0,all->vision);
-	all->len_arg = ft_strlen(s);
-	all->space = all->width - all->len_arg;
-	if (all->len_arg <  all->width)
-      fill_width(all);
-	if (all->moins == 1)
-	{
-		ft_putstr(s);
-		ft_putstr(all->s_filled_d);
+		   space_plus(all);
+		  // if (all->isneg == 1)
+			//   ft_putchar(all->p);
+			ft_putstr(all->s_filled_p);
+			ft_putstr(s);
+		  // all->isneg == 1 ? ft_putnbr_long(all->conv->d * -1) : ft_putnbr_long(all->conv->d);
+		   ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins == 0)
 	{
-		ft_putstr(all->s_filled_d);
-		ft_putstr(s);
-	}
+	   ft_putstr(all->s_filled_d);
+	   space_plus(all);
+	 //  if (all->isneg == 1)
+	   //{
+		//	   ft_putchar(all->p);
+			  // ft_putstr(all->s_filled_p);
+			//   ft_putnbr_long(nb * -1);
 
-	return (0);
-}*/
+
+			   ft_putstr(all->s_filled_p);
+			  	ft_putstr(s);
+
+		}
+  return(1);
+ }

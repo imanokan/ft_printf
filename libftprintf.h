@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/21 21:49:13 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/22 18:27:06 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct 	s_conv
 	int fl_int; // partie float arrondie caster en un int
 	char *fl_str; // float en str
 	char *x_str;
+	char *o_str;
+
 }			t_conv;
 
 typedef struct  s_spec
@@ -136,9 +138,9 @@ int sep_int_deci(t_spec *all);
 int round_up(t_spec *all);
 int	 round_up_bis(t_spec *all);
 char 	*join_float(t_spec *all);
-int  width_s(t_spec *all);
-int precision_s(t_spec *all);
-int width_precision_s(t_spec *all);
+int  width_s(t_spec *all, char *s);
+int precision_s(t_spec *all, char *s);
+int width_precision_s(t_spec *all, char *s);
 void space_plus_p(t_spec *all);
 long double check_l_lupper(t_spec *all);
 uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all);
@@ -148,3 +150,5 @@ int cut_str_bis(const char *format, t_spec *all);
 int w_p_unsigned_char(t_spec *all, unsigned char s);
 int p_unsigned_char(t_spec *all, unsigned char s);
 int  w_unsigned_char(t_spec *all, unsigned char s);
+int   precision_ox(t_spec *all, char *s);
+int width_precision_ox(t_spec *all, char *s);
