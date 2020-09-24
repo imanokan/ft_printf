@@ -1,5 +1,5 @@
 
-#include "libftprintf.h"
+#include "includes/libftprintf.h"
 
 int	specifiers_f(t_spec *all)
 {
@@ -9,7 +9,6 @@ int	specifiers_f(t_spec *all)
 	all->isneg = all->conv->f < 0 ? 1 : 0;
 	sep_int_deci(all);
 	all->len_arg = ft_strlen(all->conv->fl_str);
-	//printf("len : %d\n",all->len_arg );
 	if ((all->plus == 1 && all->conv->f > 0 )|| (all->esp == 1 && all->conv->f > 0) || all->isneg == 1)
 			all->len_arg += 1;
 	fill_width_diouxx(all);
@@ -23,11 +22,11 @@ int	specifiers_f(t_spec *all)
 			if (all->isneg == 1)
 				ft_putchar(all->p);
 			if (all->vision == 0 && all->precision == 1)
-				{
-						if (all->isneg ==  0)
-							ft_putnbr(all->conv->ent * -1);
-						else
-							ft_putnbr(all->conv->ent);
+			{
+					if (all->isneg ==  0)
+						ft_putnbr(all->conv->ent * -1);
+					else
+						ft_putnbr(all->conv->ent);
 				}
 			else
 				ft_putstr(all->conv->fl_str);

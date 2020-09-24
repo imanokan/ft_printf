@@ -6,14 +6,14 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/22 20:31:20 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/24 21:56:55 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include "./libft/libft.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 #include <limits.h>
 
@@ -41,6 +41,7 @@ typedef struct 	s_conv
 typedef struct  s_spec
 {
 	char *spec;
+	char *spec1;
 	int  plus;
 	int  moins;
 	int  zero;
@@ -104,9 +105,9 @@ int		check_binary(t_spec *all);
 int 		ft_printf(const char *format, ...);
 void		flag_exist(t_spec *all);
 int		flag_simple(t_spec *all);
-int 		specifier_c(t_spec *all, ...);
-int		specifier_s(t_spec *all, ...);
-int		specifier_p(t_spec *all, ...);
+int 		specifier_c(t_spec *all);
+int		specifier_s(t_spec *all);
+int		specifier_p(t_spec *all);
 int		specifier_d(t_spec *all);
 int specifier_u(t_spec *all);
 int		specifiers_f(t_spec *all);
@@ -145,9 +146,10 @@ long double check_l_lupper(t_spec *all);
 uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all);
 intmax_t check_l_ll_h_hh(intmax_t nb, t_spec *all);
 int specifier_pourcent(t_spec *all);
-int cut_str_bis(const char *format, t_spec *all);
+//int cut_str_bis(const char *format, t_spec *all);
 int w_p_unsigned_char(t_spec *all, unsigned char s);
 int p_unsigned_char(t_spec *all, unsigned char s);
 int  w_unsigned_char(t_spec *all, unsigned char s);
 int   precision_ox(t_spec *all, char *s);
 int width_precision_ox(t_spec *all, char *s);
+int cut_str_bis(const char *format, int *i, t_spec *all);
