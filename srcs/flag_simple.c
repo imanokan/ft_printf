@@ -6,12 +6,12 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:06:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/24 21:52:05 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/27 23:49:35 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libftprintf.h"
-
+//#include "./includes/libftprintf.h"
+#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 void flag_exist(t_spec *all) //28 lignes
 {
 	int i;
@@ -27,6 +27,7 @@ void flag_exist(t_spec *all) //28 lignes
 			all->zero = 1;
 		else if (all->spec[i] == '0'  && ft_isascii(all->spec[i + 1]))
 			all->zero = 1;
+// flag_exist_1 (all, &i);
 		else if (all->spec[i] == ' ')
 			all->esp = 1;
 		else if (all->spec[i] == '#')
@@ -97,6 +98,7 @@ void	flag_exist_bis(const char *format, t_spec *all)
 
 int		width_s(t_spec *all, char *s) //29 lignes
 {
+// width_s_plus(t_spec *all, char *s)
 	if (all->hash == 1)
 		all->len_arg += 2;
 	if (all->len_arg < all->width)
@@ -113,6 +115,7 @@ int		width_s(t_spec *all, char *s) //29 lignes
 		ft_putstr(s);
 		ft_putstr(all->s_filled_d);
 	}
+//width_min_s(t_spec *all, char *s)
 	else if (all->moins != 1)
 	{
 		ft_putstr(all->s_filled_d);
@@ -146,9 +149,7 @@ int		precision_s(t_spec *all, char *s)
 int		width_precision_s(t_spec *all, char *s) //29 lines
 {
 	char	*tmp_s;
-	int		i;
 
-	i = 0;
 	fill_precision(all);
 	tmp_s = ft_strsub(s, 0, all->vision);
 	all->len_arg = ft_strlen(tmp_s);
@@ -160,6 +161,7 @@ int		width_precision_s(t_spec *all, char *s) //29 lines
 		ft_putstr(tmp_s);
 		ft_putstr(all->s_filled_d);
 	}
+//width_precision_s_moins(t_spec *all,char *s)
 	else if (all->moins == 0)
 	{
 		ft_putstr(all->s_filled_d);

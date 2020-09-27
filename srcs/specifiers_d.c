@@ -1,12 +1,10 @@
- #include "includes/libftprintf.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int specifier_d(t_spec *all)
 {
-	int i;
-	i = 0;
-
 	all->conv->d = check_l_ll_h_hh(all->conv->d,all);
 	all->len_arg = size_nb(all->conv->d);
  	if (all->esp == 1 || all->plus == 1 || all->conv->d < 0)
@@ -53,7 +51,6 @@ int specifier_x(t_spec *all)
 
 int specifier_o(t_spec *all)
 {
-
 	all->conv->o = check_l_ll_h_hh_unsigned(all->conv->o, all);
  	all->conv->o_str= ft_itoa_base(all->conv->o,8);
 	all->len_arg = size_nb(all->conv->o);
@@ -76,11 +73,11 @@ int specifier_u(t_spec *all)
 		all->conv->u = UINT_MAX - all->conv->u;
 	all->len_arg = size_nb_unsigned(all->conv->u);
 	if (all->w == 1 && all->precision == 0)
-			width_signed(all, all->conv->u);
+			width_unsigned(all, all->conv->u);
 	else if (all->w == 0 && all->precision == 1)
-			precision_signed(all, all->conv->u);
+			precision_unsigned(all, all->conv->u);
 	else if (all->w == 1 && all->precision == 1)
-			width_precision_signed(all,all->conv->u);
+			width_precision_unsigned(all,all->conv->u);
 	else
 		ft_putnbr_long(all->conv->u);
 	return (0);

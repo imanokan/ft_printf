@@ -6,16 +6,18 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/24 21:56:55 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/25 15:49:22 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include "../libft/libft.h"
+//#include "../libft/libft.h"
 #include <stdio.h>
+#include <stdint.h>
 #include <limits.h>
+#include "/mnt/c/Users/Audrey/Desktop/manoka/libft/libft.h"
 
 typedef struct 	s_conv
 {

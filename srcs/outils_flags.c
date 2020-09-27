@@ -6,18 +6,17 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/24 21:53:35 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/26 17:23:39 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "includes/libftprintf.h"
-
+//#include "./libft/libft.h"
+//#include "./includes/libftprintf.h"
+#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 
 int		fill_width_diouxx(t_spec *all)
 {
 	int i;
-	int j;
 
 	i = 0;
 	all->s_filled_d = (char*)malloc(sizeof(char));
@@ -34,7 +33,6 @@ int		fill_width_diouxx(t_spec *all)
 
 int fill_precision(t_spec *all)
 {
-	int i;
 	int j;
 
 	j = 0;
@@ -55,7 +53,7 @@ void space_plus(t_spec *all)
 	{
 		if (all->plus == 1 && all->isneg != 1 && all->precision == 1)
 			ft_putchar(all->p);
-		all->check1 = 1; // perturbe
+		//all->check1 = 1; // perturbe
 		if (all->esp == 1)
 			write(1," ",1);
 	}
@@ -73,7 +71,6 @@ void check_type(t_spec *all)
 
 int     width_unsigned(t_spec *all, unsigned int nb)
 {
-
 	if (nb >= 0)
 	{
 		space_plus(all);
@@ -85,6 +82,7 @@ int     width_unsigned(t_spec *all, unsigned int nb)
 				ft_putchar(all->p);
 		all->moins == 1 ? ft_putstr(all->s_filled_d) : ft_putnbr_long(nb);
 	}
+	/*
 	else if (nb < 0)
 	{
 		fill_width_diouxx(all);
@@ -104,7 +102,7 @@ int     width_unsigned(t_spec *all, unsigned int nb)
 		if (all->isneg == 1)
 			ft_putnbr_long(nb * -1);
 
-	}
+	}*/
 	return (1);
 }
 
@@ -158,13 +156,7 @@ int		precision_unsigned(t_spec *all, unsigned int nb)
 	space_plus_p(all);
 	if (all->vision > 0)
 		ft_putstr(all->s_filled_p);
-	if (all->isneg == 1)
-	{
-	//ft_putchar(all->p);\
-		ft_putnbr_long(all->conv->d * -1);
-	}
-	else
-		ft_putnbr_long(all->conv->d);
+	ft_putnbr_long(nb);
 	return (1);
 }
 
@@ -177,41 +169,33 @@ int		precision_signed(t_spec *all, signed int nb)
 	if (all->isneg == 1)
 	{
 	//ft_putchar(all->p);
-		ft_putnbr_long(all->conv->d * -1);
+		ft_putnbr_long(nb * -1);
 	}
 	else
-		ft_putnbr_long(all->conv->d);
+		ft_putnbr_long(nb);
 	return (1);
 }
 
-int		width_precision_unsigned(t_spec *all, unsigned int nb) //same signed unsigned
+int		width_precision_unsigned(t_spec *all, unsigned int nb)
 {
 	fill_precision(all);
 	fill_width_diouxx(all);
 	if (all->moins == 1)
  	{
 		space_plus(all);
-		if (all->isneg == 1)
-			ft_putchar(all->p);
+	///	if (all->isneg == 1)
+			//ft_putchar(all->p);
 		ft_putstr(all->s_filled_p);
-		all->isneg == 1 ? ft_putnbr_long(nb * -1) : ft_putnbr_long(nb);
+		ft_putnbr_long(nb);
 		ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins == 0)
 	{
 		//ft_putstr(all->s_filled_d);
 		space_plus(all);
-		if (all->isneg == 1)
-		{
-			ft_putchar(all->p);
-			ft_putstr(all->s_filled_p);
-			ft_putnbr_long(nb * -1);
-		}
-		else if (all->isneg == 0)
-		{
-				ft_putstr(all->s_filled_d);
-				ft_putnbr_long(nb);
-		}
+		ft_putstr(all->s_filled_d);
+		ft_putnbr_long(nb);
+
 	}
 	return (1);
 }

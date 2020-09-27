@@ -6,13 +6,13 @@
 #    By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:50:56 by imanoka-          #+#    #+#              #
-#    Updated: 2020/09/24 21:59:54 by imanoka-         ###   ########.fr        #
+#    Updated: 2020/09/25 15:38:42 by anonymous        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c99
 LIB_DIR = libft
 SRCS =		srcs/ft_printf.c \
 			srcs/conversion_specifier.c \

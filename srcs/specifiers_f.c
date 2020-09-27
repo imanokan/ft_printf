@@ -1,21 +1,23 @@
 
-#include "includes/libftprintf.h"
-
+//#include "./includes/libftprintf.h"
+#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int	specifiers_f(t_spec *all)
 {
-	int i = 0;
+
 	all->conv->f = check_l_lupper(all);
 	all->p = all->conv->f < 0 ? '-' : '+';
 	all->isneg = all->conv->f < 0 ? 1 : 0;
 	sep_int_deci(all);
 	all->len_arg = ft_strlen(all->conv->fl_str);
-	if ((all->plus == 1 && all->conv->f > 0 )|| (all->esp == 1 && all->conv->f > 0) || all->isneg == 1)
+	if ((all->plus == 1 && all->conv->f > 0 )|| (all->esp == 1 && all->conv->f > 0)
+	|| all->isneg == 1)
 			all->len_arg += 1;
 	fill_width_diouxx(all);
 	if (all->plus == 1 && all->p == '+')
 		ft_putchar(all->p);
 	else if (all->esp == 1 && all->conv->f > 0)
 		write(1," ",1);
+	//width_float(t_spec *all)
 	if (all->w == 1 && all->moins == 0)
 	{
 			ft_putstr(all->s_filled_d);
@@ -38,6 +40,7 @@ int	specifiers_f(t_spec *all)
 		ft_putstr(all->conv->fl_str);
 		ft_putstr(all->s_filled_d);
 	}
+//else
 	else
 
 		ft_putstr(all->conv->fl_str);
@@ -46,9 +49,6 @@ int	specifiers_f(t_spec *all)
 
 int	sep_int_deci(t_spec *all)
 {
-	int dix;
-
-	dix = 10;
 	if (all->conv->f == 0.000000)
 	{
 		all->conv->ent = 0;
@@ -116,7 +116,6 @@ int 	round_up(t_spec *all)
 	up = 1.0;
 	a = 0;
 	dix = 10;
-	//printf("cp_float : %f\n", cp_float);
 	if (all->stop > 1)
 	{
 		while (a != all->stop)
@@ -166,17 +165,13 @@ int	 round_up_bis(t_spec *all)
 		tmp = all->conv->deci * 10;
 		//printf("tmp : %f\n",all->conv->deci);
 		if (tmp >= 5)
+		{
 			all->conv->ent += 1;
 			all->conv->fl_int = all->conv->ent;
+		}
 		if (tmp < 5)
 			all->conv->fl = all->conv->ent;
 		//all->conv->fl_int = (int)all->conv->fl; maybe
 	}
-//	else if (all)
 	return (1);
 }
-
-/*int		float_int(t_spec *all)
-{
-
-}*/

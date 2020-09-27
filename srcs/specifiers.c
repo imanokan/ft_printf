@@ -6,18 +6,16 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 13:30:01 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/24 21:59:51 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/25 16:00:15 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libftprintf.h"
-
+//#include "./includes/libftprintf.h"
+#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int		specifier_p(t_spec *all)
 {
-	int			i;
 	long long	c;
 
-	i = 0;
 	c = va_arg(all->a_list, long long);
 	all->conv->p_str = ft_itoa_base(c, 16);
 	if (all->w == 1)
@@ -34,10 +32,7 @@ int		specifier_p(t_spec *all)
 
 int		specifier_c(t_spec *all)
 {
-	int i;
 	int c;
-
-	i = 0;
 	c = va_arg(all->a_list, int);
 	all->len_arg = 1;
 	all->space = all->width - all->len_arg;

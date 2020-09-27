@@ -6,17 +6,17 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:04:06 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/24 21:54:51 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/28 00:02:57 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include "includes/libftprintf.h"
-
+//#include <stdio.h>
+//#include "./libft/libft.h"
+//#include "./includes/libftprintf.h"
+#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int  type_spec(char c)
 {
-	return (c == 'c' || c == 's' || c == 'p' | c == 'f'
+	return (c == 'c' || c == 's' || c == 'p' || c == 'f'
 			|| c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o' || c == 'u' );
 }
 void initialisation(t_spec *all)
@@ -84,11 +84,9 @@ int 	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		cut_str(format, &i, all);
-		//cut_str_bis(format, &i, all);
 		i++;
 	}
 	free(all->spec);
-	//cut_str_bis(format, &i, all);
 	va_end(all->a_list);
 	free(all->conv);
 	free(all);
@@ -110,8 +108,8 @@ int main()
 
 
 	ft_printf("%s\n", "aU");
-	printf("\n");
-	printf("%05%\n");
+	//printf("\n");
+	printf("%04s\n", "audrey");
 //
 	//printf ("printf23        :|%-0#5f|%-0#5.10f|%-0#5.9f|%-0#5.8f|%-0#5.7f|%-0#5.6f|%-0#5.5f|%-0#5.4f|%-0#5.3f|%-0#5.2f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n\n", 999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999);
 	//ft_printf ("ft_printf23     :|%-0#5f|%-0#5.10f|%-0#5.9f|%-0#5.8f|%-0#5.7f|%-0#5.6f|%-0#5.5f|%-0#5.4f|%-0#5.3f|%-0#5.2f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n", 999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999);

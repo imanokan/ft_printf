@@ -6,12 +6,12 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:27:21 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/24 21:53:35 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/25 15:47:10 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libftprintf.h"
-
+//#include "./includes/libftprintf.h"
+#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int		size_nb_unsigned (unsigned int n)
 {
 	int l;

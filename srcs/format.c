@@ -6,14 +6,17 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:25:25 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/24 21:53:35 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/28 00:09:05 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft/libft.h"
-#include "includes/libftprintf.h"
+//#include <stdio.h>
+//#include "libft/libft.h"
+//#include "./includes/libftprintf.h"
+#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 
+
+//percent specifier
 int		cut_str_bis(const char *format, int *i, t_spec *all)
 {
 	int j;
