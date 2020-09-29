@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 16:01:03 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/29 16:44:59 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void check_type(t_spec *all)
 	if (all->type == 'o')
 		ft_putnbr_long(all->conv->o);
 }
-
 
 void space_plus_p(t_spec *all)
 {

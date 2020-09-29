@@ -3,7 +3,6 @@
 //#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int	specifiers_f(t_spec *all)
 {
-
 	all->conv->f = check_l_lupper(all);
 	all->p = all->conv->f < 0 ? '-' : '+';
 	all->isneg = all->conv->f < 0 ? 1 : 0;
@@ -20,6 +19,7 @@ int	specifiers_f(t_spec *all)
 	width_float(all);
 	return (1);
 }
+
 int		width_float(t_spec *all)
 {
 	if (all->w == 1 && all->moins == 0)
@@ -55,10 +55,9 @@ int	sep_int_deci(t_spec *all)
 	all->conv->deci = all->conv->f - all->conv->ent;
 	if (all->conv->ent < 0)
 		all->conv->ent *= -1;
-	printf(" ent : %d deci : %f\n", all->conv->ent, all->conv->deci);
 	all->stop = all->precision == 0 ? 6 : all->vision;
 	all->conv->fl = all->conv->deci;
-	round_up(all);
+	round_up_mine(all);
 	round_up_bis(all);
 	join_float(all);
 	return (1);
@@ -90,9 +89,7 @@ char 	*join_float(t_spec *all)
 	return (all->conv->fl_str);
 }
 
-
-
-int 	round_up(t_spec *all)
+int 	round_up_mine(t_spec *all)
 {
 	double cp_float;
 	int tmp_float; // to look at the next one if round up in necessaire or not
@@ -113,16 +110,10 @@ int 	round_up(t_spec *all)
 			up /= 10;
 			a++;
 		}
-		printf("cp_float : %f\n",cp_float);
 		all->conv->fl = cp_float + up;
 		cp_float *= 10;
 		tmp_float = (int)cp_float;
-		printf("cp_float : %d\n",tmp_float );
-		//if (tmp_float % 10 == 9)
-		//	tmp_float += 1;
-		if (tmp_float % 10 >= 5)
-			all->conv->fl += 1;
-		else if (tmp_float % 10 < 5)
+		if (tmp_float % 10 < 5)
 			all->conv->fl = all->conv->f > 0 ?
 				all->conv->fl : all->conv->fl - 1;
 		all->conv->fl_int = (int)all->conv->fl;

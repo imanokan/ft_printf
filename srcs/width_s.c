@@ -6,11 +6,11 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 15:52:48 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 15:54:38 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/29 17:38:36 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf"
+#include "../includes/libftprintf.h"
 
 
 int	width_s_plus(t_spec *all, char *s)
@@ -39,15 +39,15 @@ int	width_s_plus(t_spec *all, char *s)
 
 void	width_min_s(t_spec *all, char *s)
 {
-		ft_putstr(all->s_filled_d);
-		if (all->hash == 1)
-		{
-			if (all->type == 'X')
-				write(1, "0X", 2);
-			else
-				write(1, "0x", 2);
-		}
-		ft_putstr(s);
+	ft_putstr(all->s_filled_d);
+	if (all->hash == 1)
+	{
+		if (all->type == 'X')
+			write(1, "0X", 2);
+		else
+			write(1, "0x", 2);
+	}
+	ft_putstr(s);
 
 }
 
@@ -66,7 +66,7 @@ int		precision_s(t_spec *all, char *s)
 	return (0);
 }
 
-int		width_precision_s(t_spec *all, char *s) //29 lines
+int		width_precision_s(t_spec *all, char *s)
 {
 	fill_precision(all);
 	all->conv->tmp_str = ft_strsub(s, 0, all->vision);
@@ -79,11 +79,11 @@ int		width_precision_s(t_spec *all, char *s) //29 lines
 		ft_putstr(all->conv->tmp_str);
 		ft_putstr(all->s_filled_d);
 	}
-	width_precision_s_moins(all,all->conv->tmp_str);
+	width_precision_s_moins(all);
 	//free function
 	return (1);
 }
-void	width_precision_s_moins(t_spec *all,char *s)
+void	width_precision_s_moins(t_spec *all)
 {
 	if (all->moins == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:25:25 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 15:44:39 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/29 17:43:18 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,13 @@ int		specifier_percent(const char *format,t_spec *all)
 		ft_putchar('%');
 	}
 	return (0);
+}
+
+void 	free_all(t_spec *all)
+{
+	free(all->s_filled_d);
+	free(all->s_filled_p);
+	free(all->s_filled);
+	free(all->conv);
+	free(all);
 }

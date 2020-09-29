@@ -6,13 +6,13 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:06:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 15:55:56 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/29 18:31:09 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 //#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
-void flag_exist(t_spec *all) //28 lignes
+void flag_exist(t_spec *all)
 {
 	int i;
 
@@ -27,6 +27,8 @@ void flag_exist(t_spec *all) //28 lignes
 			all->zero = 1;
 		else if (all->spec[i] == '0'  && ft_isascii(all->spec[i + 1]))
 			all->zero = 1;
+		else if (all->spec[i] == '.')
+			all->point = 1;
 		else if ((ft_isdigit(all->spec[i]) && all->point != 1))
 		{
 			all->w = 1;
@@ -49,9 +51,6 @@ void  flag_exist_1(t_spec *all)
 			all->esp = 1;
 		else if (all->spec[i] == '#')
 			all->hash = 1;
-		else if (all->spec[i] == '.')
-			all->point = 1;
-
 		i++;
 	}
 }

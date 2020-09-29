@@ -1,7 +1,4 @@
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
 #include "../includes/libftprintf.h"
 //#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int specifier_d(t_spec *all)
@@ -14,7 +11,7 @@ int specifier_d(t_spec *all)
 	if (all->conv->d < 0)
 		all->isneg = 1;
 	if (all->w == 1 && all->precision == 0)
-				width_signed(all,all->conv->d);
+			width_signed(all,all->conv->d);
  	else if (all->w == 0 && all->precision == 1)
 		precision_signed(all, all->conv->d);
 	else if (all->w == 1 && all->precision == 1)
