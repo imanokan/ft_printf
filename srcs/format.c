@@ -6,14 +6,14 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:25:25 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/28 00:09:05 by anonymous        ###   ########.fr       */
+/*   Updated: 2020/09/29 11:08:06 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 //#include "libft/libft.h"
-//#include "./includes/libftprintf.h"
-#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
+#include "../includes/libftprintf.h"
+//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 
 
 //percent specifier

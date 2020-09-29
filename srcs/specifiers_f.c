@@ -1,6 +1,6 @@
 
-//#include "./includes/libftprintf.h"
-#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
+#include "../includes/libftprintf.h"
+//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int	specifiers_f(t_spec *all)
 {
 
@@ -80,7 +80,6 @@ char 	*join_float(t_spec *all)
 	all->conv->fl_str = malloc(sizeof(char*) + 1);
 	point = ".";
 	tmp_ent = ft_itoa(all->conv->ent);
-	//printf("tmp : %s\n",tmp_ent );
 	if (all->conv->fl_int < 0)
 		all->conv->fl_int *= -1;
 	tmp_float = ft_itoa(all->conv->fl_int);
@@ -88,17 +87,16 @@ char 	*join_float(t_spec *all)
 	//if (all->vision == 0 && all-> == 1)
 	 //all->conv->fl_str = ft_strjoin(float_str,tmp_float);
 	all->conv->fl_str = all->vision == 0 ? tmp_float : ft_strjoin(float_str,tmp_float);
-	if (all->vision == 0 && all->hash == 1)
-	{
-			all->conv->fl_str = float_str;
-	}
+	if (all->stop == 6)
+		all->conv->fl_str  = ft_strjoin(float_str, tmp_float);
+	if (all->vision == 0 && all->hash == 1 && all->stop != 6)
+				all->conv->fl_str = float_str;
 	//all->conv->fl_str = all->vision == 0 ? tmp_float : ft_strjoin(float_str,tmp_float);
 	if (all->conv->ent % 1 == 0 && all->vision != 0)
 		all->conv->fl_str = ft_strjoin(float_str,tmp_float);
 //	if (all->conv->f == 0.000000)
 //		all->conv->fl_str = ft_strjoin(float_str, "000000");
 	free(float_str);
-	//printf("fl_str : %s\n",all->conv->fl_str );
 	return (all->conv->fl_str);
 }
 
@@ -131,13 +129,14 @@ int 	round_up(t_spec *all)
 		//if (tmp_float % 10 == 9)
 		//	tmp_float += 1;
 		if (tmp_float % 10 >= 5)
-				all->conv->fl += 1;
+			all->conv->fl += 1;
 		else if (tmp_float % 10 < 5)
 		{
-			if (all->conv->f > 0)
+			all->conv->fl = all->conv->f < 0 ? all->conv->fl : all->conv->fl - 1;
+			/*if (all->conv->f > 0)
 				all->conv->fl = all->conv->fl;
 			else
-				all->conv->fl -=1;
+				all->conv->fl -=1;*/
 		}
 		all->conv->fl_int = (int)all->conv->fl;
 	}
@@ -149,6 +148,7 @@ int 	round_up(t_spec *all)
 int	 round_up_bis(t_spec *all)
 {
 	int tmp;
+
 	if (all->stop == 1)
 	{
 		tmp = all->conv->deci * 100;
@@ -158,12 +158,9 @@ int	 round_up_bis(t_spec *all)
 			all->conv->fl = all->conv->deci * 10;
 		all->conv->fl_int = (int)all->conv->fl;
 	}
-	else if (all->vision == 0)
+	else if (all->vision == 0 && all->stop != 6)
 	{
-		//positif
-		//all->conv->deci *= -1;
 		tmp = all->conv->deci * 10;
-		//printf("tmp : %f\n",all->conv->deci);
 		if (tmp >= 5)
 		{
 			all->conv->ent += 1;
@@ -171,7 +168,7 @@ int	 round_up_bis(t_spec *all)
 		}
 		if (tmp < 5)
 			all->conv->fl = all->conv->ent;
-		//all->conv->fl_int = (int)all->conv->fl; maybe
+
 	}
 	return (1);
 }

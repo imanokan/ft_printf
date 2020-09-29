@@ -6,12 +6,12 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:06:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/27 23:49:35 by anonymous        ###   ########.fr       */
+/*   Updated: 2020/09/29 12:09:14 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "./includes/libftprintf.h"
-#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
+#include "../includes/libftprintf.h"
+//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 void flag_exist(t_spec *all) //28 lignes
 {
 	int i;
@@ -27,19 +27,31 @@ void flag_exist(t_spec *all) //28 lignes
 			all->zero = 1;
 		else if (all->spec[i] == '0'  && ft_isascii(all->spec[i + 1]))
 			all->zero = 1;
-// flag_exist_1 (all, &i);
-		else if (all->spec[i] == ' ')
-			all->esp = 1;
-		else if (all->spec[i] == '#')
-			all->hash = 1;
-		else if (all->spec[i] == '.')
-			all->point = 1;
 		else if ((ft_isdigit(all->spec[i]) && all->point != 1))
 		{
 			all->w = 1;
 			all->width = ft_atoi(&all->spec[i]);
 			break ;
 		}
+		i++;
+	}
+	flag_exist_1(all);
+}
+
+void  flag_exist_1(t_spec *all)
+{
+	int i;
+
+	i = 0;
+	while (all->spec[i] != '\0')
+	{
+		if (all->spec[i] == ' ')
+			all->esp = 1;
+		else if (all->spec[i] == '#')
+			all->hash = 1;
+		else if (all->spec[i] == '.')
+			all->point = 1;
+
 		i++;
 	}
 }
@@ -96,9 +108,9 @@ void	flag_exist_bis(const char *format, t_spec *all)
 	}
 }
 
-int		width_s(t_spec *all, char *s) //29 lignes
+int	width_s_plus(t_spec *all, char *s)
 {
-// width_s_plus(t_spec *all, char *s)
+
 	if (all->hash == 1)
 		all->len_arg += 2;
 	if (all->len_arg < all->width)
@@ -115,9 +127,13 @@ int		width_s(t_spec *all, char *s) //29 lignes
 		ft_putstr(s);
 		ft_putstr(all->s_filled_d);
 	}
-//width_min_s(t_spec *all, char *s)
-	else if (all->moins != 1)
-	{
+	if (all->moins == 0)
+		width_min_s(all,s);
+	return (0);
+}
+
+void	width_min_s(t_spec *all, char *s)
+{
 		ft_putstr(all->s_filled_d);
 		if (all->hash == 1)
 		{
@@ -127,8 +143,7 @@ int		width_s(t_spec *all, char *s) //29 lignes
 				write(1, "0x", 2);
 		}
 		ft_putstr(s);
-	}
-	return (0);
+
 }
 
 int		precision_s(t_spec *all, char *s)
@@ -148,27 +163,28 @@ int		precision_s(t_spec *all, char *s)
 
 int		width_precision_s(t_spec *all, char *s) //29 lines
 {
-	char	*tmp_s;
-
 	fill_precision(all);
-	tmp_s = ft_strsub(s, 0, all->vision);
-	all->len_arg = ft_strlen(tmp_s);
+	all->conv->tmp_str = ft_strsub(s, 0, all->vision);
+	all->len_arg = ft_strlen(all->conv->tmp_str);
 	all->space = all->width - all->len_arg;
 	if (all->len_arg < all->width)
-		fill_width(all);
+		fill_width_diouxx(all);
 	if (all->moins == 1)
 	{
-		ft_putstr(tmp_s);
+		ft_putstr(all->conv->tmp_str);
 		ft_putstr(all->s_filled_d);
 	}
-//width_precision_s_moins(t_spec *all,char *s)
-	else if (all->moins == 0)
+	width_precision_s_moins(all,all->conv->tmp_str);
+	//free function
+	return (1);
+}
+void	width_precision_s_moins(t_spec *all,char *s)
+{
+	if (all->moins == 0)
 	{
 		ft_putstr(all->s_filled_d);
-		ft_putstr(tmp_s);
+		ft_putstr(all->conv->tmp_str);
 	}
-	//free function
-	return (0);
 }
 
 int		precision_ox(t_spec *all, char *s)

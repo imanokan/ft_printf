@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
+#include "../includes/libftprintf.h"
+//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int specifier_d(t_spec *all)
 {
 	all->conv->d = check_l_ll_h_hh(all->conv->d,all);
@@ -39,7 +40,7 @@ int specifier_x(t_spec *all)
 	//fill number if needed et space en precision puis le ar
 	all->len_arg = ft_strlen(all->conv->x_str);
 	if (all->w == 1 && all->precision == 0)
-				width_s(all, all->conv->x_str);
+				width_s_plus(all, all->conv->x_str);
  	else if (all->w == 0 && all->precision == 1)
 				precision_ox(all,all->conv->x_str);
 	else if (all->w == 1 && all->precision == 1)
@@ -55,7 +56,7 @@ int specifier_o(t_spec *all)
  	all->conv->o_str= ft_itoa_base(all->conv->o,8);
 	all->len_arg = size_nb(all->conv->o);
 	if (all->w == 1 && all->precision == 0)
-			width_s(all,all->conv->o_str);
+			width_s_plus(all,all->conv->o_str);
 	else if (all->w == 0 && all->precision == 1)
 			precision_ox(all,all->conv->o_str); //
 	else if (all->w == 1 && all->precision == 1)

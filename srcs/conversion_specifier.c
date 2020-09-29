@@ -6,12 +6,12 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:00:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/25 15:45:09 by anonymous        ###   ########.fr       */
+/*   Updated: 2020/09/29 11:09:31 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "./includes/libftprintf.h"
-#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
+#include "../includes/libftprintf.h"
+//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 int			conversion_specifier(t_spec *all)
 {
 	if (all->type == 'c')

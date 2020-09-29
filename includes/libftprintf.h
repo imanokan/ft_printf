@@ -6,18 +6,18 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/25 15:49:22 by anonymous        ###   ########.fr       */
+/*   Updated: 2020/09/29 12:01:39 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
-//#include "../libft/libft.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <limits.h>
-#include "/mnt/c/Users/Audrey/Desktop/manoka/libft/libft.h"
+//#include "/mnt/c/Users/Audrey/Desktop/manoka/libft/libft.h"
 
 typedef struct 	s_conv
 {
@@ -37,7 +37,7 @@ typedef struct 	s_conv
 	char *x_str;
 	char *o_str;
 	char *p_str;
-
+	char *tmp_str; // width_precision chaine pour les modif
 }			t_conv;
 
 typedef struct  s_spec
@@ -155,3 +155,7 @@ int  w_unsigned_char(t_spec *all, unsigned char s);
 int   precision_ox(t_spec *all, char *s);
 int width_precision_ox(t_spec *all, char *s);
 int cut_str_bis(const char *format, int *i, t_spec *all);
+void  flag_exist_1(t_spec *all);
+int	width_s_plus(t_spec *all, char *s);
+void   width_min_s(t_spec *all, char *s);
+void	width_precision_s_moins(t_spec *all,char *s);
