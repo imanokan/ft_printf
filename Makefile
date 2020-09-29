@@ -6,13 +6,13 @@
 #    By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:50:56 by imanoka-          #+#    #+#              #
-#    Updated: 2020/09/29 11:04:42 by imanoka-         ###   ########.fr        #
+#    Updated: 2020/09/29 17:35:14 by imanoka-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -
+CFLAGS = -Wall -Wextra -Werror
 LIB_DIR = libft
 SRCS =		srcs/ft_printf.c \
 			srcs/conversion_specifier.c \
@@ -23,6 +23,11 @@ SRCS =		srcs/ft_printf.c \
 			srcs/specifiers.c \
 			srcs/specifiers_d.c \
 			srcs/specifiers_f.c \
+			srcs/width_precision_ox.c \
+			srcs/width_precision_di.c \
+			srcs/width_s.c \
+
+
 
 RESULT = 	ft_printf.o \
 			conversion_specifier.o \
@@ -33,10 +38,14 @@ RESULT = 	ft_printf.o \
 			specifiers.o \
 			specifiers_d.o\
 			specifiers_f.o \
+			width_precision_ox.o \
+			width_precision_di.o \
+			width_s.o \
+
 
 INCLUDES = includes/libftprintf.h
 all: $(NAME)
-$(NAME):
+$(NAME) :
 	@make -C $(LIB_DIR)
 	@cp $(LIB_DIR)/libft.a $(NAME)
 	@$(CC) -c $(CFLAGS) $(SRCS) $(INCLUDES)
