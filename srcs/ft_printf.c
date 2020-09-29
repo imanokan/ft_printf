@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:04:06 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 12:35:51 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/29 15:51:14 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 			*i = *i + 1;
 			j++;
 		}
+		//specifier_percent(format, all);
 		all->type = format[*i];
 		all->spec = ft_strsub(format, *i - j, j + 1);
 		flag_exist(all);
 		ft_precision(all);
 		flag_corr(all);
 		ft_precision(all);
+		//specifier_percent(format, all);
 		conversion_specifier(all);
 	}
 	else
@@ -73,7 +75,7 @@ int 	ft_printf(const char *format, ...)
 {
 	t_spec *all;
 	int i;
-	
+
 	i = 0;
 	all = malloc(sizeof(t_spec));
 	initialisation(all);
@@ -84,7 +86,6 @@ int 	ft_printf(const char *format, ...)
 		cut_str(format, &i, all);
 		i++;
 	}
-	free(all->spec);
 	va_end(all->a_list);
 	free(all->conv);
 	free(all);
@@ -105,9 +106,11 @@ int main()
 	//ft_printf("|%-.5d|\n",-144 );
 
 
-	ft_printf("%10f\n", 3.7);
+	ft_printf("|%5%|\n");
 	//printf("\n");
-	printf("%10f\n",3.7);
+	printf("|%5%|\n");
+	//printf("\n");
+	//printf("%5%\n");
 	//printf ("printf23        :|%-0#5f|%-0#5.10f|%-0#5.9f|%-0#5.8f|%-0#5.7f|%-0#5.6f|%-0#5.5f|%-0#5.4f|%-0#5.3f|%-0#5.2f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n\n", 999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999);
 	//ft_printf ("ft_printf23     :|%-0#5f|%-0#5.10f|%-0#5.9f|%-0#5.8f|%-0#5.7f|%-0#5.6f|%-0#5.5f|%-0#5.4f|%-0#5.3f|%-0#5.2f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n", 999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999,999.7999999);
 
@@ -133,81 +136,3 @@ int main()
 	//ft_printf ("ft_printf9  :|%-0#5f|%-0#5.3f|%-0#5.1f|%-0#5.0f|%-0#5.f|\n", 0,0,0,0,0);
 	return (0);
 }
-
-
-//printf("|%s\n", );
-//  ft_printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
-//printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
-
-/*
-   int main(void)
-   {
-   char *s;
-   char c;
-   int a;
-   unsigned int d;
-   float b;
-   int kiki;
-   int coucou = 0;
-   int caca = 1;
-
-   kiki = 2;
-   d = 28;
-   a = -35;
-   s = "abcdef";
-   c = 'a';
-   b = 45.123456;
-
-// + - flag avec un moins et space
-// 0 avec flag width et precision
-// .0
-//int max
-// flag space
-//moins width
-
-//printf("Salut %00+10.4d  %+12.5d %.5d %.0d %.i\n", 50, 140, -587, -21, 23);
-
-//ft_printf("Salut %00+10.4d  %+12.5d %.5d %.0d %.i\n", 50, 140, -587, -21, 23);
-
-
-
-//printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
-//ft_printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-5ibipboup\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
-
-//ft_printf("Salut %- .d this %-.0d %-+.i %-     .0d s not a test\n", 0, 0, 0, 0));
-//printf("Salut %- .d this %-.0d %-+.i %-     .0d s not a test\n", 0, 0, 0, 0));
-//ft_printf("ft_printf11 : %+-5.3i-\n", 0);
-//printf( "printf1     : %+-5.3i-\n", 0);
-ft_printf("hey1:%-0+5d\n",-50);
-printf("hey2:%-0+5d\n", -50 );
-
-// printf( "printf9    : %+010.4i-\n", 0);
-//printf("Salut %-+.4d  %-+12.5d %-.5d %-.0d %-.i hihi\n", 50, 140, -587, -21, 44);
-//ft_printf("Salut %-+.4d  %-+12.5d %-.5d %-.0d %-.i hihi\n", 50, 140, -587, -21, 44);
-
-
-//printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-8i lol\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
-//ft_printf("Salut %-+10.4d  %-+5.20d %-+5.30d %-4d %-d %-d %-7d %-8i %-8i lol\n", 50, 140, 230, 0, -230, 79, 1234, -7, -53);
-printf("\n");
-//printf("|%+ 5d|%+ 5.3d|%+ 5.1d|%+5.0d|%+ 5.d|\n",   0,0,0,0,0);
-//ft_printf("|%+ 5d|%+ 5.3d|%+ 5.1d|%+5.0d|%+ 5.d|\n", 0,0,0,0,0);
-
-//printf("|% 5d|% 5.3d|% 5.1d|% 5.0d|% 5.d|\n",   0,056135135315,22,23,0);
-//ft_printf("|% 5d|% 5.3d|% 5.1d|% 5.0d|% 5.d|\n", 0,056135135315,22,23,0);
-
-//printf("|%+5d|%+5.3d|%+5.4d|%+5.4d|%+5.0d|\n",   0,0,-45,-45,-45);
-//ft_printf("|%+5d|%+5.3d|%+5.4d|%+5.4d|%+5.0d|\n", 0,0,-45,-45,-45);
-
-//printf("|%0+5d|%0+5.3d|%0+5.1d|%0+5.0d|%0+5.d|\n",   0,0,-85,0,0);
-//ft_printf("|%0+5d|%0+5.3d|%0+5.1d|%0+5.0d|%0+5.d|\n", 0,0,-85,0,0);
-
-//printf("|%+05d|%+05.3d|%+05.1d|%+05.0d|%+05.d|\n",   0,0,0,0,0);
-//ft_printf("|%+05d|%+05.3d|%+05.1d|%+05.0d|%+05.d|\n", 0,0,0,0,0);
-
-// printf("|% 05d|% 05.3d|% 05.1d|% 05.0d|% 05.d|\n",   0,INT_MIN,0,0,0);
-//ft_printf("|% 05d|% 05.3d|% 05.1d|% 05.0d|% 05.d|\n", 0,INT_MIN,0,0,0);
-
-
-
-return (0);
-}*/

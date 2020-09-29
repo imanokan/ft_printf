@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:25:25 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 11:08:06 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/29 15:44:39 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,29 @@
 //#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
 
 
-//percent specifier
-int		cut_str_bis(const char *format, int *i, t_spec *all)
+int		specifier_percent(const char *format,t_spec *all)
 {
 	int j;
+	int i;
 
 	j = 0;
-	while (format[*i] != '%')
-		*i = *i + 1;
-	j = *i;
+	i = 0;
+
+	while (format[i] != '%')
+		i += 1;
+	j = i;
 	j += 1;
 	while (format[j] != '%')
+	{
 		j++;
-	all->spec = ft_strsub(format, *i, j + 1);
+ 		if (ft_isdigit(format[i]) && all->point != 1)
+		{
+			all->w = 1;
+			all->width = ft_atoi(&all->spec[i]);
+			break ;
+		}
+	}
+	//all->spec = ft_strsub(format, i, j + 1);
 	all->len_arg = 1;
 	flag_exist(all);
 	flag_corr(all);

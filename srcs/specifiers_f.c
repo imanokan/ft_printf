@@ -17,7 +17,11 @@ int	specifiers_f(t_spec *all)
 		ft_putchar(all->p);
 	else if (all->esp == 1 && all->conv->f > 0)
 		write(1," ",1);
-	//width_float(t_spec *all)
+	width_float(all);
+	return (1);
+}
+int		width_float(t_spec *all)
+{
 	if (all->w == 1 && all->moins == 0)
 	{
 			ft_putstr(all->s_filled_d);
@@ -40,27 +44,18 @@ int	specifiers_f(t_spec *all)
 		ft_putstr(all->conv->fl_str);
 		ft_putstr(all->s_filled_d);
 	}
-//else
 	else
-
-		ft_putstr(all->conv->fl_str);
+			ft_putstr(all->conv->fl_str);
 	return (1);
 }
 
 int	sep_int_deci(t_spec *all)
 {
-	if (all->conv->f == 0.000000)
-	{
-		all->conv->ent = 0;
-		all->conv->deci = 0.000000;
-	}
-	else
-	{
-			all->conv->ent = (int)all->conv->f;
-		all->conv->deci = all->conv->f - all->conv->ent;
-	}
+	all->conv->ent = (int)all->conv->f;
+	all->conv->deci = all->conv->f - all->conv->ent;
 	if (all->conv->ent < 0)
 		all->conv->ent *= -1;
+	printf(" ent : %d deci : %f\n", all->conv->ent, all->conv->deci);
 	all->stop = all->precision == 0 ? 6 : all->vision;
 	all->conv->fl = all->conv->deci;
 	round_up(all);
@@ -84,18 +79,13 @@ char 	*join_float(t_spec *all)
 		all->conv->fl_int *= -1;
 	tmp_float = ft_itoa(all->conv->fl_int);
 	float_str = ft_strjoin(tmp_ent, point);
-	//if (all->vision == 0 && all-> == 1)
-	 //all->conv->fl_str = ft_strjoin(float_str,tmp_float);
 	all->conv->fl_str = all->vision == 0 ? tmp_float : ft_strjoin(float_str,tmp_float);
 	if (all->stop == 6)
 		all->conv->fl_str  = ft_strjoin(float_str, tmp_float);
 	if (all->vision == 0 && all->hash == 1 && all->stop != 6)
 				all->conv->fl_str = float_str;
-	//all->conv->fl_str = all->vision == 0 ? tmp_float : ft_strjoin(float_str,tmp_float);
 	if (all->conv->ent % 1 == 0 && all->vision != 0)
 		all->conv->fl_str = ft_strjoin(float_str,tmp_float);
-//	if (all->conv->f == 0.000000)
-//		all->conv->fl_str = ft_strjoin(float_str, "000000");
 	free(float_str);
 	return (all->conv->fl_str);
 }
@@ -123,52 +113,20 @@ int 	round_up(t_spec *all)
 			up /= 10;
 			a++;
 		}
+		printf("cp_float : %f\n",cp_float);
 		all->conv->fl = cp_float + up;
 		cp_float *= 10;
-		tmp_float = (int)cp_float;;
+		tmp_float = (int)cp_float;
+		printf("cp_float : %d\n",tmp_float );
 		//if (tmp_float % 10 == 9)
 		//	tmp_float += 1;
 		if (tmp_float % 10 >= 5)
 			all->conv->fl += 1;
 		else if (tmp_float % 10 < 5)
-		{
-			all->conv->fl = all->conv->f < 0 ? all->conv->fl : all->conv->fl - 1;
-			/*if (all->conv->f > 0)
-				all->conv->fl = all->conv->fl;
-			else
-				all->conv->fl -=1;*/
-		}
+			all->conv->fl = all->conv->f > 0 ?
+				all->conv->fl : all->conv->fl - 1;
 		all->conv->fl_int = (int)all->conv->fl;
 	}
 
-	return (1);
-}
-
-
-int	 round_up_bis(t_spec *all)
-{
-	int tmp;
-
-	if (all->stop == 1)
-	{
-		tmp = all->conv->deci * 100;
-		if (tmp % 10 >= 5)
-			all->conv->fl = all->conv->deci * 10 + 1;
-		else if (tmp % 10 < 5)
-			all->conv->fl = all->conv->deci * 10;
-		all->conv->fl_int = (int)all->conv->fl;
-	}
-	else if (all->vision == 0 && all->stop != 6)
-	{
-		tmp = all->conv->deci * 10;
-		if (tmp >= 5)
-		{
-			all->conv->ent += 1;
-			all->conv->fl_int = all->conv->ent;
-		}
-		if (tmp < 5)
-			all->conv->fl = all->conv->ent;
-
-	}
 	return (1);
 }

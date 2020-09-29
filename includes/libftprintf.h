@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 12:01:39 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/29 14:48:39 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,7 @@ void space_plus_p(t_spec *all);
 long double check_l_lupper(t_spec *all);
 uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all);
 intmax_t check_l_ll_h_hh(intmax_t nb, t_spec *all);
-int specifier_pourcent(t_spec *all);
-//int cut_str_bis(const char *format, t_spec *all);
+int		specifier_percent(const char *format, t_spec *all);
 int w_p_unsigned_char(t_spec *all, unsigned char s);
 int p_unsigned_char(t_spec *all, unsigned char s);
 int  w_unsigned_char(t_spec *all, unsigned char s);
@@ -159,3 +158,4 @@ void  flag_exist_1(t_spec *all);
 int	width_s_plus(t_spec *all, char *s);
 void   width_min_s(t_spec *all, char *s);
 void	width_precision_s_moins(t_spec *all,char *s);
+int		width_float(t_spec *all);
