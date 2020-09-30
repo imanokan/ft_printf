@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 12:09:47 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 15:54:29 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		fill_width_diouxx(t_spec *all)
 			all->s_filled_d[i++] = ' ';
 	}
 	all->s_filled_d[i] = '\0';
+	//all->count = all->count + all->space;
 	return (1);
 }
 
@@ -43,6 +44,7 @@ int		fill_precision(t_spec *all)
 		all->s_filled_p[j++] = '0';
 	all->s_filled_p[j] = '\0';
 	all->len_arg = all->len_arg + j;
+	//all->count = all->count + ft_strlen(all->s_filled_p);
 	return (1);
 }
 
@@ -51,9 +53,15 @@ void	space_plus(t_spec *all)
 	if ((all->type != 'u') || (all->type != 'x'))
 	{
 		if (all->plus == 1 && all->isneg != 1 && all->precision == 1)
-			ft_putchar(all->p);
+		{
+				ft_putchar(all->p);
+				all->count += 1;
+		}
 		if (all->esp == 1)
+		{
 			write(1, " ", 1);
+			all->count += 1;
+		}
 	}
 }
 
@@ -70,7 +78,13 @@ void	check_type(t_spec *all)
 void	space_plus_p(t_spec *all)
 {
 	if (all->esp == 1 && all->isneg == 0)
+	{
 		write(1, " ", 1);
+		all->count += 1;
+	}
 	if ((all->plus == 1) || (all->isneg == 1))
+	{
 		ft_putchar(all->p);
+		all->count += 1;
+	}
 }

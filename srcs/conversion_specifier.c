@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:00:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 13:37:03 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 15:57:16 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,25 @@ long double			check_l_lupper(t_spec *all)
 	else
 		nb = va_arg(all->a_list, double);
 	return (nb);
+}
+int			count_return(t_spec *all)
+{
+	//printf("all->count : %d\n", all->count);
+	if (all->w == 1 && all->precision == 0)
+	{
+		all->count = all->width;
+		//printf("all->count 1 : %d\n", all->count);
+	}
+	else if (all->w == 0 && all->precision == 1)
+		all->count = all->precision;
+	else if (all->w == 1 && all->precision == 1)
+		all->count = all->width;
+	if (all->esp == 1 && all->plus == 1)
+	 	all->count = all->count+ 1;
+		//printf("all->count 2: %d\n",all->count);
+
+	//if (all->esp == 1 || all->isneg == 1 || all->plus == 1)
+	//	all->count += 1;
+
+	return (all->count);
 }

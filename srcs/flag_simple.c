@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:06:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 13:36:57 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 15:23:24 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void		flag_exist(t_spec *all)
 		else if (all->spec[i] == '-')
 			all->moins = 1;
 		else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
-			all->zero = 1;
-		else if (all->spec[i] == '0' && ft_isascii(all->spec[i + 1]))
 			all->zero = 1;
 		else if (all->spec[i] == '.')
 			all->point = 1;

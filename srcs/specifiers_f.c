@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 12:18:03 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 12:42:54 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 15:51:31 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		specifiers_f(t_spec *all)
 {
 	all->conv->f = check_l_lupper(all);
-
 	all->p = all->conv->f < 0 ? '-' : '+';
 	all->isneg = all->conv->f < 0 ? 1 : 0;
 	sep_int_deci(all);
@@ -26,10 +25,17 @@ int		specifiers_f(t_spec *all)
 		all->len_arg += 1;
 	fill_width_diouxx(all);
 	if (all->plus == 1 && all->p == '+')
+	{
 		ft_putchar(all->p);
+		all->count += 1;
+	}
 	else if (all->esp == 1 && all->conv->f > 0)
+	{
 		write(1, " ", 1);
+		all->count += 1;
+	}
 	width_float(all);
+	all->count = all->count + all->len_arg;
 	return (1);
 }
 

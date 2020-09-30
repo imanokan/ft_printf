@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 13:48:57 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 16:17:22 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct		s_conv
 	char			*o_str;
 	char			*p_str;
 	char			*tmp_str;
+	char			*u_str;
 
 }					t_conv;
 
@@ -79,6 +80,7 @@ typedef struct		s_spec
 	int				stop;
 	int				esp;
 	char			*s_filled_f;
+	int				count;
 
 }					t_spec;
 
@@ -89,6 +91,7 @@ int					conversion_specifier(t_spec *all);
 intmax_t			check_l_ll_h_hh(intmax_t nb, t_spec *all);
 uintmax_t			check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all);
 long double			check_l_lupper(t_spec *all);
+int					count_return(t_spec *all);
 
 /*
 ** flag_simple

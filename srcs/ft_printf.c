@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:04:06 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 13:11:29 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 17:01:04 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			type_spec(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'f'
 			|| c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o'
-			|| c == 'u');
+			|| c == 'u' );//|| c == '%');
 }
 
 void		initialisation(t_spec *all)
@@ -39,6 +39,7 @@ void		initialisation(t_spec *all)
 	all->vision = 0;
 	all->isneg = 0;
 	all->esp = 0;
+	all->count = 0;
 }
 
 int			cut_str(const char *format, int *i, t_spec *all)
@@ -56,6 +57,7 @@ int			cut_str(const char *format, int *i, t_spec *all)
 		//specifier_percent(format, all);
 		all->type = format[*i];
 		all->spec = ft_strsub(format, *i - j, j + 1);
+		//printf("all->spec : %s", all->spec);
 		flag_exist(all);
 		ft_precision(all);
 		flag_corr(all);
@@ -68,7 +70,9 @@ int			cut_str(const char *format, int *i, t_spec *all)
 		if (format[*i] == '%')
 			*i = *i + 1;
 		write(1, &format[*i], 1);
+		all->count += 1;
 	}
+	// rintf("all->spec : %s\n", all->spec);
 	return (1);
 }
 
@@ -76,6 +80,7 @@ int			ft_printf(const char *restrict format, ...)
 {
 	t_spec	*all;
 	int		i;
+	int		count;
 
 	i = 0;
 	all = malloc(sizeof(t_spec));
@@ -88,6 +93,9 @@ int			ft_printf(const char *restrict format, ...)
 		i++;
 	}
 	va_end(all->a_list);
-	free_all(all);
-	return (0);
+	count_return(all);
+	count = all->count;
+	//free_all(all);
+	//printf(" count : %d\n", count);
+	return (count);
 }
