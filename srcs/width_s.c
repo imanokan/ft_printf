@@ -6,16 +6,14 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 15:52:48 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 17:38:36 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:01:11 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-
-int	width_s_plus(t_spec *all, char *s)
+int		width_s_plus(t_spec *all, char *s)
 {
-
 	if (all->hash == 1)
 		all->len_arg += 2;
 	if (all->len_arg < all->width)
@@ -33,7 +31,7 @@ int	width_s_plus(t_spec *all, char *s)
 		ft_putstr(all->s_filled_d);
 	}
 	if (all->moins == 0)
-		width_min_s(all,s);
+		width_min_s(all, s);
 	return (0);
 }
 
@@ -48,7 +46,6 @@ void	width_min_s(t_spec *all, char *s)
 			write(1, "0x", 2);
 	}
 	ft_putstr(s);
-
 }
 
 int		precision_s(t_spec *all, char *s)
@@ -80,9 +77,9 @@ int		width_precision_s(t_spec *all, char *s)
 		ft_putstr(all->s_filled_d);
 	}
 	width_precision_s_moins(all);
-	//free function
 	return (1);
 }
+
 void	width_precision_s_moins(t_spec *all)
 {
 	if (all->moins == 0)

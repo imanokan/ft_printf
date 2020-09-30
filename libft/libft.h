@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 14:34:31 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/21 19:45:13 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:52:11 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void					ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void					ft_lstadd(t_list **alst, t_list *new);
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-char 					*ft_itoa_base(long long value, int base);
+char					*ft_itoa_base(long long value, int base);
 int						ft_atoi(const char *str);
 void					ft_putnbr_long(long n);
 #endif

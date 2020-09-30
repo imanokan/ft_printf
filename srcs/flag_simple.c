@@ -6,13 +6,13 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:06:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 18:31:09 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:36:57 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
-void flag_exist(t_spec *all)
+
+void		flag_exist(t_spec *all)
 {
 	int i;
 
@@ -25,7 +25,7 @@ void flag_exist(t_spec *all)
 			all->moins = 1;
 		else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
 			all->zero = 1;
-		else if (all->spec[i] == '0'  && ft_isascii(all->spec[i + 1]))
+		else if (all->spec[i] == '0' && ft_isascii(all->spec[i + 1]))
 			all->zero = 1;
 		else if (all->spec[i] == '.')
 			all->point = 1;
@@ -40,7 +40,7 @@ void flag_exist(t_spec *all)
 	flag_exist_1(all);
 }
 
-void  flag_exist_1(t_spec *all)
+void		flag_exist_1(t_spec *all)
 {
 	int i;
 
@@ -55,7 +55,7 @@ void  flag_exist_1(t_spec *all)
 	}
 }
 
-void ft_precision(t_spec *all)
+void		ft_precision(t_spec *all)
 {
 	int i;
 
@@ -70,7 +70,8 @@ void ft_precision(t_spec *all)
 		i++;
 	}
 }
-void    flag_corr(t_spec *all)
+
+void		flag_corr(t_spec *all)
 {
 	if (all->moins == 1 && all->zero == 1)
 		all->zero = 0;
@@ -84,7 +85,7 @@ void    flag_corr(t_spec *all)
 		all->plus = 1;
 }
 
-void	flag_exist_bis(const char *format, t_spec *all)
+void		flag_exist_bis(const char *format, t_spec *all)
 {
 	int i;
 
@@ -100,9 +101,9 @@ void	flag_exist_bis(const char *format, t_spec *all)
 		else if (all->spec[i] == 'l' && all->spec[i + 1] == 'l')
 			all->ll = 1;
 		else if (all->spec[i] == 'L' && all->type == 'f')
-			all->L = 1;
-		else if (all->type == 'f' && all->spec[i] == 'l')
 			all->l = 2;
+		else if (all->type == 'f' && all->spec[i] == 'l')
+			all->l = 1;
 		i++;
 	}
 }

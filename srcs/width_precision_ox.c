@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   width_precison_ox.c                                :+:      :+:    :+:   */
+/*   width_precision_ox.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 15:55:33 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 15:58:50 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 12:41:01 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		width_precision_ox(t_spec *all, char *s)
 	return (1);
 }
 
-int     width_unsigned(t_spec *all, unsigned int nb)
+int		width_unsigned(t_spec *all, unsigned int nb)
 {
 	fill_width_diouxx(all);
 	all->moins == 1 ? ft_putnbr_long(nb) : ft_putstr(all->s_filled_d);
@@ -89,7 +89,6 @@ int		width_precision_unsigned(t_spec *all, unsigned int nb)
 		//space_plus(all);
 		ft_putstr(all->s_filled_p);
 		ft_putnbr_long(nb);
-
 	}
 	return (1);
 }

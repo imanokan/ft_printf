@@ -6,20 +6,20 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:04:06 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 18:30:08 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:11:29 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include "./libft/libft.h"
 #include "../includes/libftprintf.h"
-//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
-int  type_spec(char c)
+
+int			type_spec(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'f'
-			|| c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o' || c == 'u' );
+			|| c == 'd' || c == 'x' || c == 'X' || c == 'i' || c == 'o'
+			|| c == 'u');
 }
-void initialisation(t_spec *all)
+
+void		initialisation(t_spec *all)
 {
 	all->zero = 0;
 	all->space = 0;
@@ -38,10 +38,10 @@ void initialisation(t_spec *all)
 	all->precision = 0;
 	all->vision = 0;
 	all->isneg = 0;
-	all->check1  = 0;
 	all->esp = 0;
 }
-int       cut_str(const char *format, int *i,  t_spec *all)
+
+int			cut_str(const char *format, int *i, t_spec *all)
 {
 	int j;
 
@@ -71,10 +71,11 @@ int       cut_str(const char *format, int *i,  t_spec *all)
 	}
 	return (1);
 }
-int 	ft_printf(const char *restrict format, ...)
+
+int			ft_printf(const char *restrict format, ...)
 {
-	t_spec *all;
-	int i;
+	t_spec	*all;
+	int		i;
 
 	i = 0;
 	all = malloc(sizeof(t_spec));

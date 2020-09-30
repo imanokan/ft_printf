@@ -6,12 +6,12 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 13:30:01 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 12:35:34 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 12:27:29 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
+
 int		specifier_p(t_spec *all)
 {
 	long long	c;
@@ -33,7 +33,7 @@ int		specifier_p(t_spec *all)
 int		specifier_c(t_spec *all)
 {
 	int c;
-	
+
 	c = va_arg(all->a_list, int);
 	all->len_arg = 1;
 	all->space = all->width - all->len_arg;
@@ -59,7 +59,7 @@ int		specifier_s(t_spec *all)
 	all->conv->c = va_arg(all->a_list, char*);
 	all->len_arg = ft_strlen(all->conv->c);
 	if (all->w == 1 && all->precision == 0)
-			width_s_plus(all, all->conv->c);
+		width_s_plus(all, all->conv->c);
 	else if (all->precision == 1 && all->w == 0)
 		precision_s(all, all->conv->c);
 	else if (all->wp == 1)

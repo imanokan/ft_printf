@@ -6,13 +6,13 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:27:21 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 16:06:19 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 12:06:03 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
-int		size_nb_unsigned (unsigned int n)
+
+int			size_nb_unsigned(unsigned int n)
 {
 	int l;
 
@@ -27,7 +27,7 @@ int		size_nb_unsigned (unsigned int n)
 	return (l);
 }
 
-int size_nb(int n)
+int			size_nb(int n)
 {
 	int l;
 
@@ -42,19 +42,19 @@ int size_nb(int n)
 	return (l);
 }
 
-void  flag_hh_ll_d(t_spec *all)
+void		flag_hh_ll_d(t_spec *all)
 {
 	if (all->h)
 		all->conv->d = va_arg(all->a_list, int);
 	else if (all->hh)
-		all->conv->d = va_arg(all->a_list, int );
+		all->conv->d = va_arg(all->a_list, int);
 	else if (all->l)
 		all->conv->d = va_arg(all->a_list, long int);
 	else if (all->ll)
 		all->conv->d = va_arg(all->a_list, long long int);
 }
 
-void  flag_hh_ll_u(t_spec *all)
+void		flag_hh_ll_u(t_spec *all)
 {
 	if (all->h)
 		all->conv->u = va_arg(all->a_list, int);
@@ -66,7 +66,7 @@ void  flag_hh_ll_u(t_spec *all)
 		all->conv->u = va_arg(all->a_list, unsigned long long int);
 }
 
-int	 round_up_bis(t_spec *all)
+int			round_up_bis(t_spec *all)
 {
 	int tmp;
 
@@ -89,7 +89,6 @@ int	 round_up_bis(t_spec *all)
 		}
 		if (tmp < 5)
 			all->conv->fl = all->conv->ent;
-
 	}
 	return (1);
 }

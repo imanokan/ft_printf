@@ -6,13 +6,13 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:00:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/29 11:09:31 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/09/30 13:37:03 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-//#include "/mnt/c/Users/Audrey/Desktop/manoka/includes/libftprintf.h"
-int			conversion_specifier(t_spec *all)
+
+int					conversion_specifier(t_spec *all)
 {
 	if (all->type == 'c')
 		specifier_c(all);
@@ -33,7 +33,7 @@ int			conversion_specifier(t_spec *all)
 	return (0);
 }
 
-intmax_t	check_l_ll_h_hh(intmax_t nb, t_spec *all)
+intmax_t			check_l_ll_h_hh(intmax_t nb, t_spec *all)
 {
 	if (all->l == 1)
 		nb = va_arg(all->a_list, long int);
@@ -48,7 +48,7 @@ intmax_t	check_l_ll_h_hh(intmax_t nb, t_spec *all)
 	return (nb);
 }
 
-uintmax_t	check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all)
+uintmax_t			check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all)
 {
 	if (all->l == 1)
 		nb = va_arg(all->a_list, unsigned long int);
@@ -63,11 +63,11 @@ uintmax_t	check_l_ll_h_hh_unsigned(uintmax_t nb, t_spec *all)
 	return (nb);
 }
 
-long double	check_l_lupper(t_spec *all)
+long double			check_l_lupper(t_spec *all)
 {
 	long double nb;
 
-	if (all->l == 1 || all->L == 1)
+	if (all->l == 1 || all->l == 2)
 		nb = va_arg(all->a_list, long double);
 	else
 		nb = va_arg(all->a_list, double);

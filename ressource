@@ -54,4 +54,35 @@ apres la premiere etape , quand tu veux soustraire nb-float et nb-int alors veri
 //ajouter param width pour plus de flexibilite et pas de rep
 // changer ft_putnbr en long long comme ca il peut tout prendre
 
-#include <stdarg.h>
+tmp_float ; to look at the next one if round up in necessaire or not
+
+LIBFTPRINTF.H
+double f; //float de va_arg
+unsigned int o; // unsigned int
+double deci;
+double fl;  //float utilisé pour les calculs
+int ent; //partie entière float
+int fl_int; // partie float arrondie caster en un int
+char *fl_str; // float en str
+char *x_str;
+char *o_str;
+char *p_str;
+char *tmp_str; // width_precision chaine pour les modif
+
+int  n; //pour check binary
+va_list a_list;
+t_conv *conv;
+char type;
+char *s_filled;
+char *s_filled_p;
+int 	precision;
+char *s_filled_d;
+char *filled_float;
+char 	p; // char + ou - pour all->plus
+int check;
+int point;
+int wp; // check si w et p existe en meme temps
+int isneg;
+int check1; //check doublon de signes
+int stop;
+int esp; //flag space
