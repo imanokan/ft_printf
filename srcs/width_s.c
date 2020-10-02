@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 15:52:48 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 13:01:11 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 14:01:13 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ int		width_s_plus(t_spec *all, char *s)
 		all->len_arg += 2;
 	if (all->len_arg < all->width)
 		fill_width_diouxx(all);
+	printf(" w : %d %d\n", all->width , all->space);
 	if (all->moins == 1)
 	{
-		if (all->hash == 1)
+		/*if (all->hash == 1)
 		{
 			if (all->type == 'X')
 				write(1, "0X", 2);
-			else
+			else if (all->type == 'x')
 				write(1, "0x", 2);
-		}
+		}*/
 		ft_putstr(s);
 		ft_putstr(all->s_filled_d);
 	}
@@ -38,13 +39,13 @@ int		width_s_plus(t_spec *all, char *s)
 void	width_min_s(t_spec *all, char *s)
 {
 	ft_putstr(all->s_filled_d);
-	if (all->hash == 1)
+	/*if (all->hash == 1)
 	{
 		if (all->type == 'X')
 			write(1, "0X", 2);
-		else
+		else if (all->type == 'x')
 			write(1, "0x", 2);
-	}
+	}*/
 	ft_putstr(s);
 }
 

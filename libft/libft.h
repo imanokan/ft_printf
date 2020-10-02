@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 14:34:31 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 13:52:11 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 11:53:43 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 char					*ft_itoa_base(long long value, int base);
 int						ft_atoi(const char *str);
 void					ft_putnbr_long(long n);
+char					*ft_toupper_string(char *c);
 #endif

@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 13:30:01 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 15:48:09 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 12:54:39 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int		specifier_c(t_spec *all)
 	if (all->moins == 1)
 	{
 		ft_putchar(c);
-		ft_putstr(all->s_filled);
+		ft_putstr(all->s_filled_d);
 	}
 	else if (all->moins == 0)
 	{
-		ft_putstr(all->s_filled);
+		ft_putstr(all->s_filled_d);
 		ft_putchar(c);
 	}
 	else
@@ -69,6 +69,5 @@ int		specifier_s(t_spec *all)
 		width_precision_s(all, all->conv->c);
 	else if (all->w != 1 && all->precision != 1)
 		ft_putstr(all->conv->c);
-	all->count = all->count + all->len_arg;
 	return (0);
 }

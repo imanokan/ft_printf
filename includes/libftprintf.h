@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 16:17:22 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 12:26:08 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct		s_spec
 	int				esp;
 	char			*s_filled_f;
 	int				count;
+	int				count_bis;
 
 }					t_spec;
 

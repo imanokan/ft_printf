@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:04:06 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 17:01:04 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 12:52:48 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ void		initialisation(t_spec *all)
 	all->isneg = 0;
 	all->esp = 0;
 	all->count = 0;
+	all->count_bis = 0;
 }
 
 int			cut_str(const char *format, int *i, t_spec *all)
 {
 	int j;
+
 
 	if (format[*i] == '%' && format[*i + 1] != '%')
 	{
@@ -70,7 +72,7 @@ int			cut_str(const char *format, int *i, t_spec *all)
 		if (format[*i] == '%')
 			*i = *i + 1;
 		write(1, &format[*i], 1);
-		all->count += 1;
+		all->count_bis += 1;
 	}
 	// rintf("all->spec : %s\n", all->spec);
 	return (1);
@@ -95,7 +97,8 @@ int			ft_printf(const char *restrict format, ...)
 	va_end(all->a_list);
 	count_return(all);
 	count = all->count;
+	free(all->conv);
+	free(all);
 	//free_all(all);
-	//printf(" count : %d\n", count);
 	return (count);
 }

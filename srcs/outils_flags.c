@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 15:54:29 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 14:00:01 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	space_plus(t_spec *all)
 {
 	if ((all->type != 'u') || (all->type != 'x'))
 	{
-		if (all->plus == 1 && all->isneg != 1 && all->precision == 1)
+		if (all->plus == 1 && all->isneg != 1 )//&& all->precision == 1)
 		{
 				ft_putchar(all->p);
 				all->count += 1;

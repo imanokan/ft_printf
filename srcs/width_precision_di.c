@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 16:00:21 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 16:21:57 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 13:52:16 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ void	width_signed_moins(t_spec *all, signed int nb)
 	else if (all->moins == 0)
 	{
 		//space_plus(all);
-		ft_putstr(all->s_filled_d);
-		all->isneg == 1 ? ft_putchar(all->p) : ft_putnbr_long(nb);
 		if (all->isneg == 1)
-			ft_putnbr_long(nb * -1);
+			ft_putchar(all->p);
+		ft_putstr(all->s_filled_d);
+		//ft_putnbr_long(nb);
+		all->isneg == 1 ? ft_putnbr_long(nb * -1) : ft_putnbr_long(nb);
+		//if (all->isneg == 1)
+			//ft_putnbr_long(nb * -1);
 	}
 }
 
@@ -84,7 +87,7 @@ int		width_precision_signed(t_spec *all, long long nb)
 		all->isneg == 1 ? ft_putnbr_long(nb * -1) : ft_putnbr_long(nb);
 		ft_putstr(all->s_filled_d);
 	}
-	if (all->moins == 1)
+	if (all->moins == 0)
 		width_precision_signed_moins(all, nb);
 	return (1);
 }

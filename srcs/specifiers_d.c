@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 12:10:13 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/09/30 16:38:14 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 13:32:03 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int		specifier_d(t_spec *all)
 {
-	printf("wp : %d\n", all->wp);
 	all->conv->d = check_l_ll_h_hh(all->conv->d, all);
 	all->len_arg = size_nb(all->conv->d);
-	if (all->esp == 1 || all->plus == 1 || all->conv->d < 0)
-		all->len_arg += 1;
+	//if (all->esp == 1 || all->plus == 1 || all->conv->d < 0)
+		//all->len_arg += 1;
+	//printf("len : %d\n",all->len_arg);
 	all->p = all->conv->d < 0 ? '-' : '+';
-	if (all->conv->d < 0)
-		all->isneg = 1;
+	all->isneg = all->conv->d < 0 ? 1 : 0;
+	if (all->isneg == 1)
+		all->len_arg += 1;
 	if (all->w == 1 && all->precision == 0)
 		width_signed(all, all->conv->d);
 	else if (all->w == 0 && all->precision == 1)
@@ -39,15 +40,28 @@ int		specifier_d(t_spec *all)
 int		specifier_x(t_spec *all)
 {
 	int i;
+	char *s;
 
 	i = 0;
 	all->conv->x = check_l_ll_h_hh_unsigned(all->conv->x, all);
-	all->conv->x_str = ft_itoa_base(all->conv->x, 16);
+	s = ft_itoa_base(all->conv->x, 16);
 	if (all->type == 'X')
-		while (all->conv->x_str[i] != '\0')
-			ft_toupper(all->conv->x_str[i++]);
+		while (s[i] != '\0')
+			ft_toupper_string(&s[i++]);
 	//fill number if needed et space en precision puis le ar
-	all->len_arg = ft_strlen(all->conv->x_str);
+	all->len_arg = ft_strlen(s);
+	/*if (all->hash == 1 && s[0] != '0')
+	{
+		if (all->type == 'X')
+			all->conv->x_str = ft_strjoin("0X", s);
+		else if (all->type == 'x')
+			all->conv->x_str = ft_strjoin("0x",s);
+		//free(s);
+	}
+	else
+		all->conv->x_str = s;
+	free(s); autre fonction */
+	all->len_arg = ft_strlen(all->conv->x_str) + 1;
 	if (all->w == 1 && all->precision == 0)
 		width_s_plus(all, all->conv->x_str);
 	else if (all->w == 0 && all->precision == 1)
