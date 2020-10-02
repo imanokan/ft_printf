@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:22:52 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 12:26:08 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 20:16:21 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct		s_conv
 	long long		p;
 	char			*s;
 	char			*c;
-	signed int		d;
+	intmax_t		d;
 	unsigned int	x;
 	unsigned int	u;
 	double			f;
@@ -185,4 +185,12 @@ void				width_min_s(t_spec *all, char *s);
 int					precision_s(t_spec *all, char *s);
 int					width_precision_s(t_spec *all, char *s);
 void				width_precision_s_moins(t_spec *all);
+
+
+/*
+** flag_x
+*/
+int 				width_x(t_spec *all);
+int 				precision_x(t_spec *all);
+int 				width_precision_x(t_spec *all);
 #endif

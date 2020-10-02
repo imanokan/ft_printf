@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 15:52:48 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 14:09:11 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 16:43:01 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		width_s_plus(t_spec *all, char *s)
 {
-	if (all->hash == 1)
+	if (all->hash == 1 && all->type != 'o')
 		all->len_arg += 2;
 	if (all->len_arg < all->width)
 		fill_width_diouxx(all);
@@ -38,6 +38,7 @@ int		width_s_plus(t_spec *all, char *s)
 void	width_min_s(t_spec *all, char *s)
 {
 	ft_putstr(all->s_filled_d);
+	//printf("all->s_filled_d\n", );
 	/*if (all->hash == 1)
 	{
 		if (all->type == 'X')

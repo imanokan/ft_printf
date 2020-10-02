@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:04:06 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 12:52:48 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 20:20:28 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int			cut_str(const char *format, int *i, t_spec *all)
 		ft_precision(all);
 		flag_corr(all);
 		ft_precision(all);
+		flag_exist_bis(format, all);
 		//specifier_percent(format, all);
 		conversion_specifier(all);
 	}

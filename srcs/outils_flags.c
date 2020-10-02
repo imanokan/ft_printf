@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 14:00:01 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 20:54:20 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		fill_width_diouxx(t_spec *all)
 
 	i = 0;
 	all->space = all->width - all->len_arg;
+	//printf(" space : %d %d %d %d\n", all->space, all->width, all->len_arg, all->zero );
 	all->s_filled_d = (char*)malloc(sizeof(char));
 	while (i < all->space)
 	{
@@ -52,12 +53,13 @@ void	space_plus(t_spec *all)
 {
 	if ((all->type != 'u') || (all->type != 'x'))
 	{
-		if (all->plus == 1 && all->isneg != 1 )//&& all->precision == 1)
+		if (all->plus == 1 && all->isneg == 0 )//&& all->precision == 1)
 		{
 				ft_putchar(all->p);
 				all->count += 1;
+				//all->len_arg += 1;
 		}
-		if (all->esp == 1)
+		if (all->esp == 1 && all->isneg == 0)
 		{
 			write(1, " ", 1);
 			all->count += 1;

@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:06:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 14:05:18 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 20:53:42 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void		flag_exist(t_spec *all)
 			all->plus = 1;
 		else if (all->spec[i] == '-')
 			all->moins = 1;
-		else if (all->spec[i] == '0' && ft_isdigit(all->spec[i + 1]))
+		else if (all->spec[i] == '0')
 				all->zero = 1;
 		else if (all->spec[i] == '.')
 			all->point = 1;
 		else if ((ft_isdigit(all->spec[i]) && all->point != 1))
 		{
+			//printf("\n", );
 			all->w = 1;
 			all->width = ft_atoi(&all->spec[i]);
 			break ;
@@ -81,6 +82,8 @@ void		flag_corr(t_spec *all)
 		all->wp = 1;
 	if (all->plus == 1 && all->moins == 1)
 		all->plus = 1;
+	if (all->zero == 1 && all->type == 's')
+		all->zero = 0;
 }
 
 void		flag_exist_bis(const char *format, t_spec *all)

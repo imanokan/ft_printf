@@ -6,7 +6,7 @@
 #    By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:50:56 by imanoka-          #+#    #+#              #
-#    Updated: 2020/09/30 12:38:06 by imanoka-         ###   ########.fr        #
+#    Updated: 2020/10/02 20:03:47 by imanoka-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =		srcs/ft_printf.c \
 			srcs/width_precision_ox.c \
 			srcs/width_precision_di.c \
 			srcs/width_s.c \
+			srcs/flag_x.c\
 
 
 
@@ -41,6 +42,7 @@ RESULT = 	ft_printf.o \
 			width_precision_ox.o \
 			width_precision_di.o \
 			width_s.o \
+			flag_x.o \
 
 
 INCLUDES = includes/libftprintf.h
