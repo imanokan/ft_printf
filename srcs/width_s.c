@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 15:52:48 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 14:01:13 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/02 14:09:11 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		width_s_plus(t_spec *all, char *s)
 		all->len_arg += 2;
 	if (all->len_arg < all->width)
 		fill_width_diouxx(all);
-	printf(" w : %d %d\n", all->width , all->space);
 	if (all->moins == 1)
 	{
 		/*if (all->hash == 1)
