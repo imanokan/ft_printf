@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 16:00:21 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 21:10:00 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/03 22:16:11 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int		width_precision_signed(t_spec *all, long long nb)
 		if (all->isneg == 1)
 			ft_putchar(all->p);
 		ft_putstr(all->s_filled_p);
+		if (all->vision == 0 && nb == 0)
+			//write(rien)
 		all->isneg == 1 ? ft_putnbr_long(nb * -1) : ft_putnbr_long(nb);
 		ft_putstr(all->s_filled_d);
 	}

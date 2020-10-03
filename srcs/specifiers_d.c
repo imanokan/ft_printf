@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 12:10:13 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 20:47:37 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/03 22:00:32 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 int		specifier_d(t_spec *all)
 {
+	//printf("ll : %d\n", all->ll);
 	all->conv->d = check_l_ll_h_hh(all->conv->d, all);
+//	printf("d : %jd\n",all->conv->d );
+	all->conv->d_str = ft_itoa_base(all->conv->d, 10);
+//	printf("d44 : %s\n",all->conv->d_str );
 	all->len_arg = size_nb(all->conv->d);
 	if (all->esp == 1 || all->plus == 1)
 			all->len_arg += 1;
@@ -32,6 +36,7 @@ int		specifier_d(t_spec *all)
 	{
 		space_plus(all);
 		ft_putnbr_long(all->conv->d);
+		//ft_putstr(all->conv->d_str);
 	}
 	return (0);
 }
@@ -85,8 +90,6 @@ int		specifier_u(t_spec *all)
 	all->conv->u = check_l_ll_h_hh_unsigned(all->conv->u, all);
 	if (all->conv->u < 0)
 		all->conv->u = UINT_MAX - all->conv->u;
-	else if (all->conv->u > UINT_MAX)
-		all->conv->u = UINT_MAX + all->conv->u;
 	all->conv->u_str= ft_itoa_base(all->conv->u, 10);
 	all->len_arg = ft_strlen(all->conv->u_str);
 	if (all->w == 1 && all->precision == 0)

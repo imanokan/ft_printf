@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:04:06 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 20:20:28 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/03 21:55:59 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void		initialisation(t_spec *all)
 	all->esp = 0;
 	all->count = 0;
 	all->count_bis = 0;
+	all->ll = 0;
+	all->h = 0;
+	all->hh = 0;
+	all->l = 0;
 }
 
 int			cut_str(const char *format, int *i, t_spec *all)

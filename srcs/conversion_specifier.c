@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:00:43 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 20:22:22 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/03 22:01:23 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int					conversion_specifier(t_spec *all)
 
 intmax_t			check_l_ll_h_hh(intmax_t nb, t_spec *all)
 {
+
 	if (all->l == 1)
 		nb = va_arg(all->a_list, long int);
 	else if (all->ll == 1)

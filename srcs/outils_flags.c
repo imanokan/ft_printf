@@ -6,7 +6,7 @@
 /*   By: imanoka- <imanoka-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:10:22 by imanoka-          #+#    #+#             */
-/*   Updated: 2020/10/02 20:54:20 by imanoka-         ###   ########.fr       */
+/*   Updated: 2020/10/03 22:10:48 by imanoka-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ int		fill_precision(t_spec *all)
 	int j;
 
 	j = 0;
-	all->pision = all->vision - all->len_arg;
+	if (all->vision == 0)
+		all->s_filled_p = NULL;
+	else
+		all->pision = all->vision - all->len_arg;
 	if (all->conv->d < 0 || all->plus == 1)
 		all->pision += 1;
+	//printf("pision : %d %d %d\n",all->pision, all->vision, all->len_arg );
 	all->s_filled_p = (char*)malloc(sizeof(char));
 	while (j < all->pision)
 		all->s_filled_p[j++] = '0';
